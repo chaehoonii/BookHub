@@ -10,6 +10,7 @@ META-INF/*
 application.properties
 keystore.p12
 keystore.jks
+*/application.properties
 
 ### Eclipse ###
 .metadata
