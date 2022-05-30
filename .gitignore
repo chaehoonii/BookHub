@@ -4,14 +4,12 @@
 
 HELP.md
 target/*
-*/target/*
 META-INF/*
 .mvn/*
 .springBeans
 application.properties
 keystore.p12
 keystore.jks
-*/application.properties
 
 ### Eclipse ###
 .metadata
