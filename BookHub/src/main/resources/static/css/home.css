@@ -1,18 +1,159 @@
 :root{
 	--slide-1-bg: #5b9ab0;
-	--slide-2-bg: #785d8a;
+	--slide-2-bg: #408080;
 	--slide-3-bg: #5465b3;
 	
-	--slide-1-link: #205163;
-	--slide-2-link: #33233D;
-	--slide-3-link: #B39645
+	--slide-1-bgi: url("/static/img/main/literature.jpg");
+	--slide-2-bgi: url("/static/img/main/stack.jpg");
+	--slide-3-bgi: url("/static/img/main/grass.jpg");
+	
+	--slide-1-link: #0b63bb;
+	--slide-2-link: #000000;
+	--slide-3-link: #00572c;
 }
 .slider{
+	margin-top:80px;
 	position: absolute;
 	left: 0; right: 0;top: 0;bottom: 0;
 	overflow: hidden;
 	z-index: 0;
 }
+.slide{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	transition: transform 1s cubic-bezier(0.65, 0, 0.35, 1);
+	flex-direction: column;
+	text-align: center;
+	align-items: center;
+	padding:3rem;
+}
 .slide img{
-	height: 100vh;
+	height: 60vh;
+}
+#slide-1 {
+	color:#fff;
+	background-image:var(--slide-1-bgi);
+	left:0;
+}
+#slide-2 {
+	background-image:var(--slide-2-bgi);
+	left:100%;
+}
+#slide-3 {
+	background-image:var(--slide-3-bgi);
+	left:200%;
+}
+
+#slide-radio-1:checked ~.slide{transform:translateX(0);}
+#slide-radio-2:checked ~.slide{transform:translateX(-100%);}
+#slide-radio-3:checked ~.slide{transform:translateX(-200%);}
+
+.slider input{
+	display: none;
+}
+.pagination{
+	width:100px;
+	height:24px;
+	position: absolute;
+	left:50%;
+	transform:translateX(-50%);
+	bottom: 6rem;
+	z-index: 1;
+}
+.pagination label{
+	width: 24px;
+	height: 24px;
+	padding: 16px;
+	opacity:0.3;
+	cursor: pointer;
+	position: relative;
+	transition:opacity 0.3s ease-in-out;
+}
+.pagination label:before,
+.pagination label:after{
+	content: '';
+	border-radius: 50%;
+	position: absolute;
+	left:50%;
+	top:50%;
+	transform: translate(-50%, -50%);
+}
+.pagination label:before{
+	width: 10px;
+	height: 10px;
+	background: #fff;
+}
+.pagination label:after{
+	width: 24px;
+	height: 24px;
+	border: 1px solid #fff;
+	opacity: 0;
+}
+#slide-radio-1:checked ~ .pagination label:nth-child(1),
+#slide-radio-2:checked ~ .pagination label:nth-child(2),
+#slide-radio-3:checked ~ .pagination label:nth-child(3){
+	opacity: 0.8;
+}
+#slide-radio-1:checked ~ .pagination label:nth-child(1):after,
+#slide-radio-2:checked ~ .pagination label:nth-child(2):after,
+#slide-radio-3:checked ~ .pagination label:nth-child(3):after{
+	opacity: 1;
+}
+.slide-content-1{
+	margin-top: 10%;
+}
+.slide-content-2{
+	margin-top: 3%;
+}
+.slide-content-3{
+	float:right;
+	margin-top: 8%;
+	margin-right: 10%;
+}
+.slide h1{
+	font-size: 40px;
+	line-height: 48px;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	font-weight: 900;
+	margin-bottom: 30px;
+}
+.slide h2{
+	font-size: 20px;
+	line-height: 30px;
+	letter-spacing: 1px;
+	font-weight: 500;
+	margin-bottom: 50px;
+}
+.slide a{
+	display: inline-block;
+	text-decoration: none;
+	color: #fff;
+	text-transform: uppercase;
+	font-weight: 700;
+	letter-spacing: 1px;
+	font-size: 14px;
+	padding: 16px 32px;
+	border-radius: 50px;
+	border: 1px solid transparent;
+	transition: all 0.3s ease-in-out;
+}
+
+#slide-1 a {background: var(--slide-1-link);}
+#slide-2 a {background: var(--slide-2-link);}
+#slide-3 a {background: var(--slide-3-link);}
+
+.slide a:hover{
+	border-color: #fff;
+	color: #fff;
+	background: transparent !important;
+}
+@media screen and (min-width:1200px){
+	.slide{
+		flex-direction: row;
+		justify-content: space-between;
+		text-align: left;
+		padding: 0 0 0 10rem;
+	}
 }
