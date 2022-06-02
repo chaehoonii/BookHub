@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="multi.dokgi.bookhub.user.dao.IUserDAO">
+	<!-- 회원 유무조회-->
+	<select id="findByUserId" resultType="UserDTO">
+		SELECT * FROM `bookhub`.`user` WHERE `user_id` = #{user_id};
+	</select>
+	<select id="findByMbNick" resultType="UserDTO">
+		SELECT * FROM `bookhub`.`user` WHERE `user_nick` = #{user_nick};
+	</select>
+	
+	<insert id="savesns" parameterType="UserDTO">
+		INSERT INTO `bookhub`.`user` (`user_id`, `user_provider`, `user_nick`, `user_email`, `user_thumbnail`, `user_role`) 
+		VALUES (#{userId}, #{userProvider}, #{userNick}, #{userEmail}, #{userThumbnail}, #{userRole});
+	</insert>
+	
+	<update id="updateRegister" parameterType="UserDTO">
+		UPDATE `bookhub`.`user` SET `user_nick`=#{userNick}, `user_role`=#{userRole}
+		WHERE  `user_id`= #{userId};
+	</update>
+</mapper>
