@@ -4,7 +4,7 @@
 
     <head>
         <meta charset="UTF-8">
-        <title>${username}</title>
+        <title>${userId}</title>
         <link rel="stylesheet" href="/static/css/profile/profile.css">
         <link rel="stylesheet" href="/static/css/profile/library.css">
     </head>
@@ -17,15 +17,15 @@
             <!-- Profile Head -->
             <div id="profile-head">
                 <h1 id="profile-username">
-                    ${username}
+                    ${userId}
                 </h1>
             </div>
             <!-- Profile Tab -->
             <div id="profile-tabmenu">
-                <a class="tabmenu-btn" href="/profile/${username}">
+                <a class="tabmenu-btn" href="/profile/${userId}">
                     📋 활동 요약
                 </a>
-                <a class="tabmenu-btn activetab" href="/profile/${username}/library">
+                <a class="tabmenu-btn activetab" href="/profile/${userId}/library">
                     📚 내 서재
                 </a>
             </div>
