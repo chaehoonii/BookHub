@@ -22,22 +22,21 @@
             <div class="nav_menu" id="nav-menu">
                 <ul class="nav_list">
                     <li class="nav_item">
-                        <a href="#" class="nav_link">About</a>
+                        <a href="${url}" class="nav_link">About</a>
                     </li>
                     <li class="nav_item">
-                        <a href="#" class="nav_link">Books</a>
+                        <a href="${url}/booklist" class="nav_link">Books</a>
                         
                     </li>
                     <li class="nav_item">
-                        <a href="#" class="nav_link">Calendar</a>
+                        <a href="${url}/profile" class="nav_link">Calendar</a>
                     </li>
                 </ul>
 			</div>	
 		<div class="main_top">
 			<div class="main_user">
 				   <c:if test="${logId == null}">
-   					   <a href="${url}" class="main_login">Login</a>
-  					   <a href="${url}" class="main_signup">Sign-up</a>
+   					   <a href="${url}/oauth2/authorization/google" class="main_login">Google Login</a>
  				  </c:if>
  				 <c:if test="${logId != null }">
  				 	<div class="main_logId"><b>${logId}</b>님 환영합니다🙇‍♀️</div>
