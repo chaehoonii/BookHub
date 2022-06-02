@@ -1,17 +1,18 @@
 @charset "UTF-8";
+@import url(https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap);
 /*=====기본 설정=====*/
 *{
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  
+  font-family: "Noto Sans Kr", sans-serif;
 }
 html {
   scroll-behavior: smooth;
 }
 a, a:visited, a:hover, a:active{
-	text-decoration: none;
-	color: black;
+	text-decoration: none !important;
+	color: black !important;
 }
 ul {
   list-style: none;
@@ -19,6 +20,7 @@ ul {
 body{
 	max-height: 100vh;
 }
+
 /*=============== HEADER ===============*/
 .header{
 	width: 100%;

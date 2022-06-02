@@ -1,14 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <c:set var="url" value="<%=request.getContextPath()%>"></c:set>
  
 <!DOCTYPE html>
 <html>
-<head>
-<title>BookHub</title>
-<link rel="shortcut icon" type="image/jpg" href="img/fav_logo.jpg">
-<link rel="stylesheet" href="static/css/inc/top.css" type="text/css">
-</head>
+	<head>
+		<title>BookHub</title>
+		<link rel="shortcut icon" type="image/jpg" href="img/fav_logo.jpg">
+		<link rel="stylesheet" href="static/css/inc/top.css" type="text/css">
+		<!-- jQuery WebJars -->
+		<script src="/webjars/jquery/jquery.min.js"></script>
+		<!-- sweetalert CDN libs -->
+		<link rel="stylesheet" href="/static/libs/sweetalert.min.css" />
+		<script src="/static/libs/sweetalert.min.js"></script>
+	</head>
 <body>
 	  <header class="header" id="header">
         <nav class="nav_container">
@@ -35,12 +41,12 @@
 			</div>	
 		<div class="main_top">
 			<div class="main_user">
-				   <c:if test="${logId == null}">
+				   <c:if test="${empty user}">
    					   <a href="${url}/oauth2/authorization/google" class="main_login"><img src="${url}/static/img/google.png">&nbsp;&nbsp;&nbsp;&nbsp;oogle Login</a>
  				  </c:if>
- 				 <c:if test="${logId != null }">
- 				 	<div class="main_logId"><b>${logId}</b>님 환영합니다🙇‍♀️</div>
-    				<a href="${url}" class="main_login">Logout</a>
+ 				 <c:if test="${not empty user}">
+ 				 	<div class="main_logId"><b>${user.userNick}</b>님 환영합니다🙇‍♀️</div>
+    				<a href="${url}/logout" class="main_login">Logout</a>
    					<a href="${url}" class="main_signup">My-page</a>
   				 </c:if>
 			</div>
