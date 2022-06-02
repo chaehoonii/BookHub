@@ -1,0 +1,49 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="url" value="<%=request.getContextPath()%>"></c:set>
+ 
+<!DOCTYPE html>
+<html>
+<head>
+<title>BookHub</title>
+<link rel="shortcut icon" type="image/jpg" href="img/fav_logo.jpg">
+<link rel="stylesheet" href="static/css/inc/top.css" type="text/css">
+</head>
+<body>
+	  <header class="header" id="header">
+        <nav class="nav_container">
+            <div class="logo">
+                <a href="/"><img src="${url}/static/img/BookHub.jpg"></a>
+            </div>
+            <div class="search_box">
+            	<input type="search" id="search" placeholder=" 책을 검색해보세요."/>
+            	<input type="submit" value="검색" id="search_btn"/>
+            </div>
+            <div class="nav_menu" id="nav-menu">
+                <ul class="nav_list">
+                    <li class="nav_item">
+                        <a href="${url}" class="nav_link">About</a>
+                    </li>
+                    <li class="nav_item">
+                        <a href="${url}/booklist" class="nav_link">Books</a>
+                        
+                    </li>
+                    <li class="nav_item">
+                        <a href="${url}/profile" class="nav_link">Calendar</a>
+                    </li>
+                </ul>
+			</div>	
+		<div class="main_top">
+			<div class="main_user">
+				   <c:if test="${logId == null}">
+   					   <a href="${url}/oauth2/authorization/google" class="main_login">Google Login</a>
+ 				  </c:if>
+ 				 <c:if test="${logId != null }">
+ 				 	<div class="main_logId"><b>${logId}</b>님 환영합니다🙇‍♀️</div>
+    				<a href="${url}" class="main_login">Logout</a>
+   					<a href="${url}" class="main_signup">My-page</a>
+  				 </c:if>
+			</div>
+        </div>
+     </nav>
+ </header>
