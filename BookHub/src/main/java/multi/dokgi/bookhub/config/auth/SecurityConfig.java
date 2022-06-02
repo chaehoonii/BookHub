@@ -32,15 +32,20 @@ public class SecurityConfig {
 		http.csrf().disable() // csrf: 페이지 위변조 방지. 유니크 키값 토큰넣어줌.
 				.exceptionHandling().accessDeniedPage("/err/denied-page"); // 접근 불가 페이지
 
-		http.authorizeRequests().antMatchers("/", "/login/**", "/static/**", "/logout/**", "/err*").permitAll()
+		// 화이트리스트
+		http.authorizeRequests().antMatchers("/", "/login/**","/google-login/**", "/static/**", "/logout/**", "/err*").permitAll()
+			.antMatchers("/book**").permitAll()
 			.antMatchers("/register/**").access("hasRole('ROLE_uncerti_USER') or hasRole('ROLE_ADMIN')")
-			.antMatchers("/main").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
 			.anyRequest().authenticated();
 
 		// 기본 로그인 해제
 		http.httpBasic().disable();
 
-		http.logout().logoutSuccessUrl("/");
+		http.logout()
+	        .clearAuthentication(true)
+	        .invalidateHttpSession(true)
+	        .deleteCookies("JSESSIONID")
+			.logoutSuccessUrl("/");
 
 		http.oauth2Login().defaultSuccessUrl("/") // oauth2 로그인
 				.userInfoEndpoint() // oauth2Login 성공 이후의 설정을 시작
@@ -54,12 +59,14 @@ public class SecurityConfig {
 		return http.build();
 	}
 
+	// 정적 파일 열기
 	@Bean
 	public WebSecurityCustomizer webSecurityCustomizer() {
-		return (web) -> web.ignoring().antMatchers("/favicon.ico", "/static/**", "/error", "/lib/**")
+		return (web) -> web.ignoring().antMatchers("/favicon.ico", "/static/**", "/error", "/lib/**", "/img/**")
 				.mvcMatchers("/static/**").requestMatchers(PathRequest.toStaticResources().atCommonLocations());
 	}
 
+	// 세션 변경
 	@Bean
 	public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)
 			throws Exception {
