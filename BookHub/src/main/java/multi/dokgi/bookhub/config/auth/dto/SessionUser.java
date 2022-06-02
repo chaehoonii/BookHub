@@ -8,17 +8,17 @@ import java.io.Serializable;
 
 @Getter
 public class SessionUser implements Serializable {
-	private String id;
-	private String name;
-	private String email;
-	private String picture;
-	private Role role;
+	private String userId;
+	private String userNick;
+	private String userEmail;
+	private String userThumbnail;
+	private Role userRole;
 
 	public SessionUser(UserDTO user) {
-		this.id = user.getUserId();
-		this.name = user.getUserNick();
-		this.email = user.getUserEmail();
-		this.picture = user.getUserThumbnail();
-		this.role = user.getUserRole();
+		this.userId = user.getUserId();
+		this.userNick = user.getUserNick();
+		this.userEmail = user.getUserEmail();
+		this.userThumbnail = user.getUserThumbnail();
+		this.userRole = user.getUserRole();
 	}
 }

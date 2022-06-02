@@ -9,7 +9,8 @@
 </head>
 
 <body>
-	<h3> ${userId}</h3>
+	<h3> ${user.userNick}</h3>
+	<h3> ${user.userId}</h3>
 	
 </body>
 </html>

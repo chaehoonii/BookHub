@@ -13,6 +13,7 @@ import java.util.List;
 public class WebConfig implements WebMvcConfigurer {
 	private final LoginUserArgumentResolver loginUserArgumentResolver;
 
+	// @LoginUser 어노테이션을 위한 메서드
 	@Override
 	public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
 		argumentResolvers.add(loginUserArgumentResolver);

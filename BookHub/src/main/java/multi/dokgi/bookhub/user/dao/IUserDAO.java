@@ -14,6 +14,10 @@ public interface IUserDAO {
 	// 회원 조회
 	public UserDTO findByUserId(@Param("user_id") String userId);
 
+	public UserDTO findByMbNick(@Param("user_nick") String userNick);
+
 	// 회원가입 1차: sns 가입
 	public void savesns(UserDTO userDto);
+	
+	public void updateRegister(UserDTO userDto);
 }
