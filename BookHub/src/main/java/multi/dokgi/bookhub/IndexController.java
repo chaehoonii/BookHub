@@ -40,10 +40,11 @@ public class IndexController {
 	@Autowired
 	IUserDAO userDao;
 
-	// 로그인
+	// 초기 로그인페이지
 	@GetMapping({ "", "/" })
 	public String home(Model model, @LoginUser SessionUser user) {
 		// Session user = (user) httpSession.getAttribute("user")
+		// Authentication auth , parseService.parseUserId 
 		// ==> @LoginUser SessionUser user(개선된 코드)
 		if (user != null) {
 			if (user.getUserRole() == Role.UN_USER) {

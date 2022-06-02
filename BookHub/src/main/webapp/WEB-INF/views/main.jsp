@@ -11,6 +11,7 @@
 <body>
 	<h3> ${user.userNick}</h3>
 	<h3> ${user.userId}</h3>
+	<img alt="" src="https://lh3.googleusercontent.com/a/AATXAJzeEvKRhm5WNrQCNApA_AOYNi3clEk_vCzOJkOn=s96-c">
 	
 </body>
 </html>
