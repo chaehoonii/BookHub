@@ -1,3 +1,18 @@
-@charset "EUC-KR";
-
-#home{}
+:root{
+	--slide-1-bg: #5b9ab0;
+	--slide-2-bg: #785d8a;
+	--slide-3-bg: #5465b3;
+	
+	--slide-1-link: #205163;
+	--slide-2-link: #33233D;
+	--slide-3-link: #B39645
+}
+.slider{
+	position: absolute;
+	left: 0; right: 0;top: 0;bottom: 0;
+	overflow: hidden;
+	z-index: 0;
+}
+.slide img{
+	height: 100vh;
+}
