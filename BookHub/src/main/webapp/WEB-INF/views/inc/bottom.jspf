@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<link rel="stylesheet" href="/css/inc/bottom.css" type="text/css">
+<link rel="stylesheet" href="/static/css/inc/bottom.css" type="text/css">
 <div style="clear:both"></div>
 <footer class="bottom">
 	상호명 (주)북허브&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;대표 김채훈<br/>
