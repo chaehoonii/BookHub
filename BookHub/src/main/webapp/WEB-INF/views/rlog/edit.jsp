@@ -6,7 +6,7 @@
     <head>
         <meta charset="UTF-8">
         <title>BookHub :: 독서 활동 기록하기</title>
-        <link rel="stylesheet" href="/static/css/readinglog/edit.css">
+        <link rel="stylesheet" href="/static/css/rlog/edit.css">
     </head>
 
     <body>
@@ -24,7 +24,7 @@
             </div>
             <!-- ReadingLog Edit -->
             <div id="readinglog-body">
-                <form action="/readinglog/edit" method="post">
+                <form action="/rlog/edit" method="post">
                     읽은 날짜: <input name="readDate" type="date" pattern="\d{4}-\d{2}-\d{2}" required><br>
                     읽은 페이지: <input name="startPage" type="number" required> ~ <input name="endPage" type="number"
                         required><label><input name="readComplete" value="true" type="checkbox">완독</label><br>

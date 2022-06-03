@@ -34,7 +34,7 @@
                         
                     </li>
                     <li class="nav_item">
-                        <a href="/readinglog" class="nav_link">My Log</a>
+                        <a href="/rlog" class="nav_link">My Log</a>
                     </li>
                 </ul>
 			</div>	

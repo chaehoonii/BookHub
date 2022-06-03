@@ -5,8 +5,8 @@
     <head>
         <meta charset="UTF-8">
         <title>BookHub :: 내 서재</title>
-        <link rel="stylesheet" href="/static/css/readinglog/readinglog.css">
-        <link rel="stylesheet" href="/static/css/readinglog/library.css">
+        <link rel="stylesheet" href="/static/css/rlog/rlog.css">
+        <link rel="stylesheet" href="/static/css/rlog/library.css">
     </head>
 
     <body>
@@ -22,10 +22,10 @@
             </div>
             <!-- Profile Tab -->
             <div id="profile-tabmenu">
-                <a class="tabmenu-btn" href="/readinglog/summary">
+                <a class="tabmenu-btn" href="/rlog/summary">
                     📋 활동 요약
                 </a>
-                <a class="tabmenu-btn activetab" href="/readinglog/library">
+                <a class="tabmenu-btn activetab" href="/rlog/library">
                     📚 내 서재
                 </a>
             </div>

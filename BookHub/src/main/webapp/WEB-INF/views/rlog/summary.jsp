@@ -6,8 +6,8 @@
     <head>
         <meta charset="UTF-8">
         <title>BookHub :: 활동 요약</title>
-        <link rel="stylesheet" href="/static/css/readinglog/readinglog.css">
-        <link rel="stylesheet" href="/static/css/readinglog/summary.css">
+        <link rel="stylesheet" href="/static/css/rlog/rlog.css">
+        <link rel="stylesheet" href="/static/css/rlog/summary.css">
     </head>
 
     <body>
@@ -23,10 +23,10 @@
             </div>
             <!-- Profile Tab -->
             <div id="profile-tabmenu">
-                <a class="tabmenu-btn activetab" href="/readinglog/summary">
+                <a class="tabmenu-btn activetab" href="/rlog/summary">
                     📋 활동 요약
                 </a>
-                <a class="tabmenu-btn" href="/readinglog/library">
+                <a class="tabmenu-btn" href="/rlog/library">
                     📚 내 서재
                 </a>
             </div>
@@ -68,7 +68,7 @@
                                     <div class="recent-item">
                                         <img class="recent-thumbnail" src="${bookInfo[log.bookISBN].get('coverSmallUrl')}">
                                         <div class="recent-info">
-                                            <span class="recent-title" title="${bookInfo[log.bookISBN].get('title')}"><a class="recent-title-link" href="/readinglog/edit?isbn=${log.bookISBN}">${bookInfo[log.bookISBN].get('title')}</a></span>
+                                            <span class="recent-title" title="${bookInfo[log.bookISBN].get('title')}"><a class="recent-title-link" href="/rlog/edit?isbn=${log.bookISBN}">${bookInfo[log.bookISBN].get('title')}</a></span>
                                             <span class="recent-author">${bookInfo[log.bookISBN].get('author')}</span>
                                         </div>
                                     </div>
