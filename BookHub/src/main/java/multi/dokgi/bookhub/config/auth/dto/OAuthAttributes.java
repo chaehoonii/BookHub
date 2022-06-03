@@ -90,7 +90,7 @@ public class OAuthAttributes {
 	            	.userNick ((String) attributes.get("name"))
 	            	.userEmail ((String) attributes.get("email")) 
 	            	.userThumbnail((String) attributes.get("picture"))
-	                .userRole(Role.USER) 
+	                .userRole(Role.UN_USER) 
 	                .attributes(attributes)
 	                .nameAttributeKey(userNameAttributeName)
 	                .build();
