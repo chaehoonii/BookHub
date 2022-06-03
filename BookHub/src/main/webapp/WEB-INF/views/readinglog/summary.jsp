@@ -6,8 +6,8 @@
     <head>
         <meta charset="UTF-8">
         <title>BookHub :: 활동 요약</title>
-        <link rel="stylesheet" href="/static/css/profile/profile.css">
-        <link rel="stylesheet" href="/static/css/profile/summary.css">
+        <link rel="stylesheet" href="/static/css/readinglog/readinglog.css">
+        <link rel="stylesheet" href="/static/css/readinglog/summary.css">
     </head>
 
     <body>
@@ -18,15 +18,15 @@
             <!-- Profile Head -->
             <div id="profile-head">
                 <h1 id="profile-username">
-                    ${user.userNick}님의 독서 활동 캘린더
+                    ${user.userNick}님의 독서 기록
                 </h1>
             </div>
             <!-- Profile Tab -->
             <div id="profile-tabmenu">
-                <a class="tabmenu-btn activetab" href="/profile/summary">
+                <a class="tabmenu-btn activetab" href="/readinglog/summary">
                     📋 활동 요약
                 </a>
-                <a class="tabmenu-btn" href="/profile/library">
+                <a class="tabmenu-btn" href="/readinglog/library">
                     📚 내 서재
                 </a>
             </div>

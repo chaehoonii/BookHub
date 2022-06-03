@@ -1,40 +1,83 @@
 @charset "UTF-8";
 
-html,
-body {
-    margin: 0;
-    padding: 0;
-}
-
-#readinglog-wrapper {
+#profile-wrapper {
     box-sizing: border-box;
     width: 940px;
     margin: 0 auto;
     margin-top: 80px;
 }
 
-#readinglog-head {
+#profile-head {
     box-sizing: border-box;
     width: 100%;
-    height: 200px;
+    height: 100px;
     padding: 20px;
-    background-color: black;
 }
-
-#bookimage {
+#profile-username {
     float: left;
-    width: 160px;
-    height: 160px;
-    object-fit: contain;
-}
-#bookTitle {
-    color: white;
-}
-#bookAuthor {
-    color: white;
+    height: 60px;
+    line-height: 60px;
+    font-size: 32px;
+    margin: 0;
 }
 
-#readinglog-body {
+#profile-tabmenu {
     box-sizing: border-box;
     width: 100%;
+    height: 50px;
+    border-bottom: 1px solid #9b9b9b;
+    overflow: hidden;
+}
+
+.tabmenu-btn {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 120px;
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+}
+.tabmenu-btn.activetab {
+    font-weight: bold;
+    border-bottom: 4px solid orange;
+}
+.tabmenu-btn:hover {
+    cursor: pointer;
+    background-color: #eeeeee;
+}
+.tabmenu-btn:link,
+.tabmenu-btn:active,
+.tabmenu-btn:visited {
+    color: black;
+    text-decoration: none;
+}
+
+#profile-body {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.profile-section {
+    box-sizing: border-box;
+    width: 100%;
+    margin-top: 20px;
+    border: 1px solid #9b9b9b;
+    border-radius: 5px;
+    border-collapse: collapse;
+    overflow: hidden;
+}
+.profile-section:last-child {
+    margin-bottom: 20px;
+}
+
+.profile-section-title {
+    box-sizing: border-box;
+    height: 40px;
+    line-height: 20px;
+    font-size: 16px;
+    margin: 0;
+    padding: 10px;
+    border-bottom: 1px solid #9b9b9b;
+    background-color: #eeeeee;
 }
