@@ -59,12 +59,16 @@
                         </h2>
                         <div class="recent-content">
                             <c:if test="${empty recentLog}">
-                                NONE
+                                <div class="recent-item">    
+                                    <span class="no-recent-item">아직 독서 활동을 시작하지 않았습니다.</span>
+                                </div>
                             </c:if>
                             <c:if test="${!empty recentLog}">
                                 <c:forEach items="${recentLog}" var="log">
                                     <div class="recent-item">
-                                        ${log.key.bookISBN}
+                                        <img class="recent-thumbnail" src="${log.value.get('coverSmallUrl')}">
+                                        <a href="/readinglog/edit?isbn=${log.key.bookISBN}"><span class="recent-title" title="${log.value.get('title')}">${log.value.get('title')}</span></a>
+                                        <span class="recent-author">${log.value.get('author')}</span>
                                     </div>
                                 </c:forEach>
                             </c:if>
@@ -72,18 +76,21 @@
                     </div>
                     <div id="summary-recent-review" class="profile-section">
                         <h2 class="profile-section-title">
-                            최근 리뷰
+                            최근 작성 리뷰
                         </h2>
                         <div class="recent-content">
-                            <div class="recent-item">
-
-                            </div>
-                            <div class="recent-item">
-
-                            </div>
-                            <div class="recent-item">
-
-                            </div>
+                            <c:if test="${empty recentReview}">
+                                <div class="recent-item">    
+                                    <span class="no-recent-item">작성한 리뷰가 없습니다.</span>
+                                </div>
+                            </c:if>
+                            <c:if test="${!empty recentReview}">
+                                <c:forEach items="${recentReview}" var="review">
+                                    <div class="recent-item">
+                                        
+                                    </div>
+                                </c:forEach>
+                            </c:if>
                         </div>
                     </div>
                 </div>
