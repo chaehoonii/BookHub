@@ -39,6 +39,6 @@
 		ORDER BY
 			write_date DESC
 		LIMIT
-			0, 6
+			0, 3
 	</select>
 </mapper>
