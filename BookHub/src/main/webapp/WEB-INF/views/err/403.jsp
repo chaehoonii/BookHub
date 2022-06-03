@@ -9,7 +9,7 @@
   <title>403 | BookHub</title>
 
   <!-- CSS -->
-  <jsp:include page="../libs/libsStyles.jsp" flush="false" />
+  <jsp:include page="./libs/libsStyles.jsp" flush="false" />
   <link rel="stylesheet" href="/static/css/error.css" />
 </head>
 
@@ -31,7 +31,7 @@
     </div>
   </div>
 
-  <jsp:include page="../libs/libsScript.jsp" flush="false" />
+  <jsp:include page="./libs/libsScript.jsp" flush="false" />
 </body>
 
 </html>

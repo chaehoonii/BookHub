@@ -1,4 +1,4 @@
-package multi.dokgi.bookhub;
+package multi.dokgi.bookhub.user.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,26 +35,30 @@ import multi.dokgi.bookhub.user.dto.UserDTO;
  * @author Seongil, Yoon
  */
 @Controller
-public class IndexController {
+public class UserController {
 
 	@Autowired
 	IUserDAO userDao;
 
-	// 로그인
-	@GetMapping({ "", "/" })
-	public String home(Model model, @LoginUser SessionUser user) {
-		// Session user = (user) httpSession.getAttribute("user")
-		// ==> @LoginUser SessionUser user(개선된 코드)
-		if (user != null) {
-			if (user.getUserRole() == Role.UN_USER) {
-				model.addAttribute("user", user);
-				return "register";
-			} else if (user.getUserRole() == Role.USER) {
-				return "redirect:/main";
-			}
-		}
-		return "index";
-	}
+	// 헤더의 로그인버튼
+//	@GetMapping("/google-login")
+//	public String home(Model model, @LoginUser SessionUser user) {
+//		// Session user = (user) httpSession.getAttribute("user")
+//		// Authentication auth , parseService.parseUserId
+//		// ==> @LoginUser SessionUser user(개선된 코드)
+//		if (user != null) {
+//			if (user.getUserRole() == Role.UN_USER) {
+//				model.addAttribute("user", user);
+//				return "register";
+//			} else if (user.getUserRole() == Role.USER) {
+//				return "redirect:/main";
+//			}
+//		} else {
+//			// 세션자체가 null이므로 구글로그인폼으로 이동
+//			return "redirect:/oauth2/authorization/google";
+//		}
+//		return "index";
+//	}
 
 	@ResponseBody
 	@GetMapping("/register/vali/{userId}")
@@ -107,16 +111,18 @@ public class IndexController {
 		// 위에서 설정한 값을 Spring security에서 사용할 수 있도록 세션에 설정
 		session.setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY, context);
 
-		model.addAttribute("register", userDto.getUserRole());
+		model.addAttribute("user", userDto);
+		System.out.println("사용자닉 :" + user.getUserNick() + ", 현재권한 :" + user.getUserRole());
 
-		return "redirect:/main";
+		// 브라우저 쿠키까지 삭제해야 되지만 어차피 초기화면으로 이동할꺼라 /logout으로 처리
+		return "redirect:/logout";
 	}
 
-	@GetMapping("/main")
-	public String goMain(Model model, @LoginUser SessionUser user) {
-		model.addAttribute("user", user);
-		return "main";
-	}
+//	@GetMapping("/main")
+//	public String goMain(Model model, @LoginUser SessionUser user) {
+//		model.addAttribute("user", user);
+//		return "main";
+//	}
 
 	@GetMapping("/err/denied-page")
 	public String accessDenied() {

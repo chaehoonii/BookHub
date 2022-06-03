@@ -8,4 +8,4 @@
 <link rel="stylesheet" href="/static/libs/sweetalert.min.css" />
 
 <!-- 공통 스타일 -->
-<link rel="stylesheet" href="/static/css/common_style.css" />
+<link rel="stylesheet" href="/static/css/user/common_style.css" />

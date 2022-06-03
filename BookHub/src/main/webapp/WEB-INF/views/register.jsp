@@ -1,14 +1,13 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 
 <head>
 	<meta charset="UTF-8">
 	<title>BookHub : 회원가입</title>
+	<!-- Bootstrap WebJars -->
+	<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+	<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="/static/css/user/user_register_new.css">
-	<jsp:include page="libs/libsStyles.jsp" flush="false" />
 </head>
 
 <body>
@@ -32,10 +31,7 @@
 			</form>
 		</div>
 	</div>
-	<br>
-	<br>
 
-	<jsp:include page="libs/libsScript.jsp" flush="false" />
 	<script src="/static/js/user/user_register.js"></script>
 </body>
 

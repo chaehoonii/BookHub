@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="multi.dokgi.bookhub.readinglog.dao.IReadingLogDAO">
+	<!-- 독서활동 기록하기 -->
+	<insert id="writeReadingLog" parameterType="ReadingLogDTO">
+		INSERT INTO
+			`bookhub`.`readinglog`(user_id, book_isbn, start_page, end_page, summary, read_date, read_complete)
+		VALUES
+			(#{userId}, #{bookISBN}, #{startPage}, #{endPage}, #{summary}, #{readDate}, #{readComplete});
+	</insert>
+	
+	<!-- 최근 독서활동 조회 -->
+	<select id="getRecentReadingLog" resultType="ReadingLogDTO">
+		SELECT
+			rl.*
+		FROM
+			`bookhub`.`readinglog` AS rl
+			JOIN
+				(SELECT
+					max(read_date) AS max_read_date,
+					max(end_page) AS max_end_date
+				FROM
+					`bookhub`.`readinglog`
+				WHERE user_id LIKE #{userId}
+				GROUP BY
+					book_ISBN) AS maxrl
+			ON (rl.read_date = maxrl.max_read_date AND rl.end_page = maxrl.max_end_date)
+		ORDER BY
+			write_date DESC
+		LIMIT
+			0, 6
+	</select>
+</mapper>

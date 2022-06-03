@@ -1,15 +1,10 @@
 @charset "UTF-8";
 
-html,
-body {
-    margin: 0;
-    padding: 0;
-}
-
 #profile-wrapper {
     box-sizing: border-box;
     width: 940px;
     margin: 0 auto;
+    margin-top: 80px;
 }
 
 #profile-head {
@@ -17,13 +12,11 @@ body {
     width: 100%;
     height: 100px;
     padding: 20px;
-    background-color: black;
 }
 #profile-username {
     float: left;
     height: 60px;
     line-height: 60px;
-    color: white;
     font-size: 32px;
     margin: 0;
 }

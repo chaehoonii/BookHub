@@ -1,3 +1,4 @@
+let change_urlForm = document.querySelector("#change_url");
 let ajax_check = "";
 
 // ajax로 닉네임 중복확인
@@ -31,4 +32,13 @@ $("#register_btn").on("click", function () {
 	if (ajax_check == "") { // 회원가입 불가
 		alert("닉네임 중복확인부터 진행해주세요.");
 	}
+});
+
+document.querySelector('form').addEventListener('submit', function(e){
+	e.preventDefault();
+	swal('가입을 축하합니다🎉', '다시 로그인해주세요', 'success');
+	//등록 성공하면 내가등록한 게시글화면으로 이동
+	setTimeout(function () {
+		change_urlForm.submit();
+	}, 2000);
 });
