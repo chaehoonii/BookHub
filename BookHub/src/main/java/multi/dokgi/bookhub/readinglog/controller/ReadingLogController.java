@@ -29,10 +29,10 @@ public class ReadingLogController {
 		ModelAndView mv = new ModelAndView();
 		JSONObject book = rlService.getBookInfo(isbn);
 
+		mv.addObject("user", user);
 		mv.addObject("bookInfo", book);
-		mv.addObject("userInfo", user);
+		
 		mv.setViewName("readinglog/edit");
-
 		return mv;
 	}
 
