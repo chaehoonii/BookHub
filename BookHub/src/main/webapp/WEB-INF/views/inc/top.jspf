@@ -1,14 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<c:set var="url" value="<%=request.getContextPath()%>"></c:set>
  
 <!DOCTYPE html>
 <html>
 	<head>
 		<title>BookHub</title>
 		<link rel="shortcut icon" type="image/jpg" href="img/fav_logo.jpg">
-		<link rel="stylesheet" href="static/css/inc/top.css" type="text/css">
+		<link rel="stylesheet" href="/static/css/inc/top.css" type="text/css">
 		<!-- jQuery WebJars -->
 		<script src="/webjars/jquery/jquery.min.js"></script>
 		<!-- sweetalert CDN libs -->
@@ -19,7 +18,7 @@
 	  <header class="header" id="header">
         <nav class="nav_container">
             <div class="logo">
-                <a href="/"><img src="${url}/static/img/BookHub.jpg"></a>
+                <a href="/"><img src="/static/img/BookHub.jpg"></a>
             </div>
             <div class="search_box">
             	<input type="search" id="search" placeholder=" 책을 검색해보세요."/>
@@ -28,26 +27,26 @@
             <div class="nav_menu" id="nav-menu">
                 <ul class="nav_list">
                     <li class="nav_item">
-                        <a href="${url}" class="nav_link">About</a>
+                        <a href="#" class="nav_link">About</a>
                     </li>
                     <li class="nav_item">
-                        <a href="${url}/booklist" class="nav_link">Books</a>
+                        <a href="/booklist" class="nav_link">Books</a>
                         
                     </li>
                     <li class="nav_item">
-                        <a href="${url}/profile" class="nav_link">Calendar</a>
+                        <a href="/profile" class="nav_link">Calendar</a>
                     </li>
                 </ul>
 			</div>	
 		<div class="main_top">
 			<div class="main_user">
 				   <c:if test="${empty user}">
-   					   <a href="${url}/oauth2/authorization/google" class="main_login"><img src="${url}/static/img/google.png">&nbsp;&nbsp;&nbsp;&nbsp;oogle Login</a>
+   					   <a href="/oauth2/authorization/google" class="main_login"><img src="/static/img/google.png">&nbsp;&nbsp;&nbsp;&nbsp;oogle Login</a>
  				  </c:if>
  				 <c:if test="${not empty user}">
  				 	<div class="main_logId"><b>${user.userNick}</b>님 환영합니다🙇‍♀️</div>
-    				<a href="${url}/logout" class="main_login">Logout</a>
-   					<a href="${url}" class="main_signup">My-page</a>
+    				<a href="/logout" class="main_login">Logout</a>
+   					<a href="#" class="main_signup">My-page</a>
   				 </c:if>
 			</div>
         </div>
