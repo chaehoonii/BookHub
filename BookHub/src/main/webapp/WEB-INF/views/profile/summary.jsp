@@ -66,9 +66,9 @@
                             <c:if test="${!empty recentLog}">
                                 <c:forEach items="${recentLog}" var="log">
                                     <div class="recent-item">
-                                        <img class="recent-thumbnail" src="${log.value.get('coverSmallUrl')}">
-                                        <a href="/readinglog/edit?isbn=${log.key.bookISBN}"><span class="recent-title" title="${log.value.get('title')}">${log.value.get('title')}</span></a>
-                                        <span class="recent-author">${log.value.get('author')}</span>
+                                        <img class="recent-thumbnail" src="${bookInfo[log.bookISBN].get('coverSmallUrl')}">
+                                        <a href="/readinglog/edit?isbn=${log.bookISBN}"><span class="recent-title" title="${bookInfo[log.bookISBN].get('title')}">${bookInfo[log.bookISBN].get('title')}</span></a>
+                                        <span class="recent-author">${bookInfo[log.bookISBN].get('author')}</span>
                                     </div>
                                 </c:forEach>
                             </c:if>
