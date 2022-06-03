@@ -49,15 +49,16 @@ public class ProfileController {
 		ModelAndView mv = new ModelAndView();
 
 		List<ReadingLogDTO> recentLog = rlService.getRecentReadingLog(userId);
-		Map<ReadingLogDTO, JSONObject> map = new HashMap<ReadingLogDTO, JSONObject>();
+		Map<String, JSONObject> bookInfo = new HashMap<String, JSONObject>();
 
 		for (ReadingLogDTO dto : recentLog) {
 			JSONObject book = rlService.getBookInfo(dto.getBookISBN());
-			map.put(dto, book);
+			bookInfo.put(dto.getBookISBN(), book);
 		}
 
 		mv.addObject("userId", userId);
-		mv.addObject("recentLog", map);
+		mv.addObject("recentLog", recentLog);
+		mv.addObject("bookInfo", bookInfo);
 		mv.setViewName("profile/summary");
 
 		return mv;
