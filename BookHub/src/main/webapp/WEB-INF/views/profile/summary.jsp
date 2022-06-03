@@ -55,12 +55,12 @@
                 <div id="summary-recent">
                     <div id="summary-recent-book" class="profile-section">
                         <h2 class="profile-section-title">
-                            최근 독서 활동
+                            최근 읽은 책
                         </h2>
                         <div class="recent-content">
                             <c:if test="${empty recentLog}">
                                 <div class="recent-item">    
-                                    <span class="no-recent-item">아직 독서 활동을 시작하지 않았습니다.</span>
+                                    <span class="no-recent-item">아직 독서 활동을 기록하지 않았습니다.</span>
                                 </div>
                             </c:if>
                             <c:if test="${!empty recentLog}">
@@ -76,7 +76,7 @@
                     </div>
                     <div id="summary-recent-review" class="profile-section">
                         <h2 class="profile-section-title">
-                            최근 작성 리뷰
+                            최근 작성한 리뷰
                         </h2>
                         <div class="recent-content">
                             <c:if test="${empty recentReview}">
