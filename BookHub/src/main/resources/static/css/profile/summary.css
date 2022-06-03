@@ -48,7 +48,7 @@
     border: none;
 }
 .no-recent-item {
-    float:left;
+    float: left;
     width: 459px;
     height: 150px;
     line-height: 50px;
@@ -65,17 +65,32 @@
     margin: 10px;
     border: 1px solid #9b9b9b;
 }
-.recent-title {
+.recent-info {
     float: left;
     width: 289px;
-    margin: 10px 10px 0 10px;
+    margin: 10px;
+}
+.recent-title {
+    display: flex;
+    max-width: 289px;
+    height: 25px;
+    line-height: 25px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+}
+.recent-title-link {
     font-weight: bold;
-    color: royalblue;
+    color: royalblue !important;
 }
 .recent-author {
-    float: left;
-    width: 289px;
+    display: flex;
+    max-width: 289px;
+    height: 20px;
+    line-height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
     font-size: 14px;
-    margin: 0 10px 10px 10px;
     color: #777777;
 }

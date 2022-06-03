@@ -5,7 +5,7 @@
 
     <head>
         <meta charset="UTF-8">
-        <title>${userInfo.userNick}</title>
+        <title>BookHub :: 독서 활동 기록하기</title>
         <link rel="stylesheet" href="/static/css/readinglog/readinglog.css">
         <link rel="stylesheet" href="/static/css/readinglog/edit.css">
     </head>

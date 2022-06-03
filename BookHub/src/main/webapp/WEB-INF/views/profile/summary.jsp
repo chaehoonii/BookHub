@@ -5,7 +5,7 @@
 
     <head>
         <meta charset="UTF-8">
-        <title>${userId}</title>
+        <title>BookHub :: 활동 요약</title>
         <link rel="stylesheet" href="/static/css/profile/profile.css">
         <link rel="stylesheet" href="/static/css/profile/summary.css">
     </head>
@@ -18,15 +18,15 @@
             <!-- Profile Head -->
             <div id="profile-head">
                 <h1 id="profile-username">
-                    ${userId}
+                    ${user.userNick}님의 독서 활동 캘린더
                 </h1>
             </div>
             <!-- Profile Tab -->
             <div id="profile-tabmenu">
-                <a class="tabmenu-btn activetab" href="/profile/${userId}">
+                <a class="tabmenu-btn activetab" href="/profile/summary">
                     📋 활동 요약
                 </a>
-                <a class="tabmenu-btn" href="/profile/${userId}/library">
+                <a class="tabmenu-btn" href="/profile/library">
                     📚 내 서재
                 </a>
             </div>
@@ -67,8 +67,10 @@
                                 <c:forEach items="${recentLog}" var="log">
                                     <div class="recent-item">
                                         <img class="recent-thumbnail" src="${bookInfo[log.bookISBN].get('coverSmallUrl')}">
-                                        <a href="/readinglog/edit?isbn=${log.bookISBN}"><span class="recent-title" title="${bookInfo[log.bookISBN].get('title')}">${bookInfo[log.bookISBN].get('title')}</span></a>
-                                        <span class="recent-author">${bookInfo[log.bookISBN].get('author')}</span>
+                                        <div class="recent-info">
+                                            <span class="recent-title" title="${bookInfo[log.bookISBN].get('title')}"><a class="recent-title-link" href="/readinglog/edit?isbn=${log.bookISBN}">${bookInfo[log.bookISBN].get('title')}</a></span>
+                                            <span class="recent-author">${bookInfo[log.bookISBN].get('author')}</span>
+                                        </div>
                                     </div>
                                 </c:forEach>
                             </c:if>
