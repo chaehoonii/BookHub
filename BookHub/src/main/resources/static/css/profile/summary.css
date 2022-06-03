@@ -40,11 +40,42 @@
 
 .recent-item {
     float: left;
-    box-sizing: border-box;
     width: 459px;
     height: 150px;
     border-bottom: 1px solid #9b9b9b;
 }
 .recent-item:last-child {
     border: none;
+}
+.no-recent-item {
+    float:left;
+    width: 459px;
+    height: 150px;
+    line-height: 50px;
+    padding: 50px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.recent-thumbnail {
+    float: left;
+    width: 130px;
+    height: 130px;
+    object-fit: contain;
+    margin: 10px;
+    border: 1px solid #9b9b9b;
+}
+.recent-title {
+    float: left;
+    width: 289px;
+    margin: 10px 10px 0 10px;
+    font-weight: bold;
+    color: royalblue;
+}
+.recent-author {
+    float: left;
+    width: 289px;
+    font-size: 14px;
+    margin: 0 10px 10px 10px;
+    color: #777777;
 }
