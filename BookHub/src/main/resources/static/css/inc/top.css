@@ -1,8 +1,10 @@
-/*=====±âº» ¼³Á¤=====*/
+@charset "UTF-8";
+/*=====ê¸°ë³¸ ì„¤ì •=====*/
 *{
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  
 }
 html {
   scroll-behavior: smooth;
@@ -94,11 +96,17 @@ body{
 }
 .main_top{
 	float: right;
-	width: 10%;
+	width: 12%;
 }
 .main_user{
 	position: relative;
 	margin-top:8%;
+}
+.main_user img{
+	position:absolute;
+	top:15px;
+	height: 25px;
+	width: 25px;
 }
 .main_signup{
 	margin-left: 15px;
