@@ -27,7 +27,7 @@
             <div class="nav_menu" id="nav-menu">
                 <ul class="nav_list">
                     <li class="nav_item">
-                        <a href="" class="nav_link">About</a>
+                        <a href="#" class="nav_link">About</a>
                     </li>
                     <li class="nav_item">
                         <a href="/booklist" class="nav_link">Books</a>
@@ -46,7 +46,7 @@
  				 <c:if test="${not empty user}">
  				 	<div class="main_logId"><b>${user.userNick}</b>님 환영합니다🙇‍♀️</div>
     				<a href="/logout" class="main_login">Logout</a>
-   					<a href="" class="main_signup">My-page</a>
+   					<a href="#" class="main_signup">My-page</a>
   				 </c:if>
 			</div>
         </div>
