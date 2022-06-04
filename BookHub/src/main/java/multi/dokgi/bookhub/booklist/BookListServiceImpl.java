@@ -10,14 +10,24 @@ import java.util.Map;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.helpers.ParserAdapter;
 
+import multi.dokgi.bookhub.booklist.dao.CategoryDAO;
+import multi.dokgi.bookhub.booklist.dto.BookListDTO;
+import multi.dokgi.bookhub.booklist.dto.CategoryDTO;
+
 @Service("booklistservice")
 public class BookListServiceImpl implements BookListService{
+	
+	@Autowired
+	@Qualifier("categorydao")
+	CategoryDAO dao;
 	
 	//상품 리스트 API
 	@Override
@@ -53,7 +63,7 @@ public class BookListServiceImpl implements BookListService{
 			
 			for(BookListDTO item : api.Items){
 				booklist.add(item);
-				System.out.println(item.bookIsbn + " : " + item.bookName);
+				System.out.println(item.getBookIsbn() + " : " + item.getBookName());
 			}
 			totalResults = api.totalResults;
 			
@@ -88,6 +98,7 @@ public class BookListServiceImpl implements BookListService{
 			hm.put("start", start);
 			hm.put("SearchTarget", "Book");
 			hm.put("Sort", "Accuracy");
+			hm.put("CategoryId", "1");
 			hm.put("output", "xml");
 			
 			StringBuffer sb = new StringBuffer();
@@ -104,7 +115,7 @@ public class BookListServiceImpl implements BookListService{
 			
 			for(BookListDTO item : api.Items){
 				booklist.add(item);
-				System.out.println(item.bookIsbn + " : " + item.bookName);
+				System.out.println(item.getBookIsbn() + " : " + item.getBookName());
 			}
 			totalResults = api.totalResults;
 			
@@ -151,7 +162,7 @@ public class BookListServiceImpl implements BookListService{
 			
 			for(BookListDTO item : api.Items){
 				booklist.add(item);
-				System.out.println(item.bookIsbn + " : " + item.bookName);
+				System.out.println(item.getBookIsbn() + " : " + item.getBookName());
 			}
 			bookdetail = booklist.get(0);
 			
@@ -163,8 +174,16 @@ public class BookListServiceImpl implements BookListService{
 		return bookdetail;
 	}
 
+	//검색대상(mall)별 카테고리 조회
+	@Override
+	public List<CategoryDTO> getCategoryList(String mall) {
+		return dao.getCategoryList(mall);
+	}
+
 }
 
+
+//알라딘 API
 class AladdinOpenAPIHandler extends DefaultHandler {
 	public List<BookListDTO> Items;
 	private BookListDTO currentItem;
@@ -222,21 +241,21 @@ class AladdinOpenAPIHandler extends DefaultHandler {
 				currentItem = null;
 				inItemElement = false;
 			} else if (localName.equals("isbn13")) {
-				currentItem.bookIsbn = tempValue;
+				currentItem.setBookIsbn(tempValue);
 			} else if (localName.equals("title")) {
-				currentItem.bookName = tempValue;
+				currentItem.setBookName(tempValue);
 			} else if (localName.equals("cover")) {
-				currentItem.bookImg = tempValue;
+				currentItem.setBookImg(tempValue);
 			} else if (localName.equals("author")) {
-				currentItem.bookAuthor = tempValue;
+				currentItem.setBookAuthor(tempValue);
 			} else if (localName.equals("description")) {
-				currentItem.bookContent = tempValue;
+				currentItem.setBookContent(tempValue);
 			} else if (localName.equals("pubdate")) {
-				currentItem.bookPubdate = tempValue;
+				currentItem.setBookPubdate(tempValue);
 			} else if (localName.equals("publisher")) {
-				currentItem.bookPublisher = tempValue;
+				currentItem.setBookPublisher(tempValue);
 			} else if (localName.equals("itemPage")) {
-				currentItem.bookEndpage = Integer.parseInt(tempValue);
+				currentItem.setBookEndpage(Integer.parseInt(tempValue));
 			}
 		}
 	}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="multi.dokgi.bookhub.booklist.dao.CategoryDAO">
+	<!-- mall별 카테고리 조회 -->
+	<select id="getCategoryList" resultType="CategoryDTO" parameterType="String">
+		select cid, mall, category_name from book_category where mall like #{mall} group by one_depth
+	</select>
+
+</mapper>

@@ -6,7 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%-- <script src="/jquery-3.6.0.min.js"></script> --%>
+<link rel='stylesheet' href='/static/css/booklist/booklist.css'>
+<script src="/webjars/jquery/3.6.0/jquery.min.js"></script>
+<script src='/static/js/booklist.js'></script>
 </head>
 <body>
 	<div class="booklist_container">
@@ -14,16 +16,21 @@
 			<div class="head_title">
 				카테고리 별
 			</div>
-			<div class="head_cate_select">				
+			<div class="head_cate_select">	
+	
 				검색 대상
-				<select name="SearchTarget" id="Search_target">
+				<select name="SearchTarget" id="search_target">
 					<option value="Book" selected>국내도서</option>
 					<option value="Foreign">외국도서</option>
 					<option value="eBook">전자책</option>
 				</select>
 				분야보기
-				<select name="CategoryId" id="category_td">
+				<select name="CategoryId" id="category_id">
 					<option value="0" selected>전체</option>
+					<!-- 반복할 category 시작 -->
+					<c:forEach items="${ catagory }" var="cate" >
+						<option value="${cate.cid}">${cate.categoryName}</option>
+					</c:forEach>   
 				</select>
 			</div>
 			<div class="book_search">				
@@ -34,7 +41,7 @@
 					<option value="Author">저자</option>
 					<option value="Publisher">출판사검색</option>
 				</select>
-				<input type="text" id="book_search_word">
+				<input type="search" id="book_search_word">
 				
 				<button id="book_search_btn">분야 내 검색</button>
 				

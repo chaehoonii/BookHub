@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+.booklist_container{
+	margin-top:80px;
+	background-color: grey;
+}
+.booklist_content_title{
+	height:30px;
+}
+.booklist_item{
+	display:flex;
+	background-color: grey;
+}
