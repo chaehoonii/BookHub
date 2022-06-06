@@ -80,13 +80,16 @@
                     </div>
                     <div id="calendar-stat">
                         <div class="stat-content">
-                            <h3 class="stat-title">누적 독서페이지</h3>
+                            <h3 class="stat-title">누적 독서 페이지</h3>
+                            <span class="stat-value"></span>
                         </div>
                         <div class="stat-content">
-                            <h3 class="stat-title">최대 연속독서일</h3>
+                            <h3 class="stat-title">최대 연속 독서일</h3>
+                            <span class="stat-value"></span>
                         </div>
                         <div class="stat-content">
-                            <h3 class="stat-title">현재 연속독서일</h3>
+                            <h3 class="stat-title">현재 연속 독서일</h3>
+                            <span class="stat-value"></span>
                         </div>
                     </div>
                 </div>
@@ -137,6 +140,9 @@
             </div>
         </div>
 
+        <script>
+            const recentCalendar = "${recentCalendar}";
+        </script>
         <script src="/static/js/rlog/summary.js"></script>
     </body>
 

@@ -12,6 +12,7 @@ import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 import multi.dokgi.bookhub.readinglog.dao.IReadingLogDAO;
+import multi.dokgi.bookhub.readinglog.dto.ReadingCalendarDTO;
 import multi.dokgi.bookhub.readinglog.dto.ReadingLogDTO;
 
 /**
@@ -86,6 +87,11 @@ public class ReadingLogServiceImpl implements IReadingLogService {
 	@Override
 	public List<ReadingLogDTO> getRecentReadingLog(String userId) {
 		return rlDAO.getRecentReadingLog(userId);
+	}
+
+	@Override
+	public List<ReadingCalendarDTO> getRecentReadingCalendar(String userId) {
+		return rlDAO.getRecentReadingCalendar(userId);
 	}
 
 }
