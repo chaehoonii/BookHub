@@ -49,7 +49,7 @@ function calendarInitializer() {
     }
 
     async function setCalendar() {
-        const colorSet = ["#add3f7", "#7ea9d4", "#43689f", "#374760"];
+        const colorSet = ["var(--bs-gray-500)", "var(--bs-gray-600)", "var(--bs-gray-700)", "var(--bs-gray-800)"];
 
         // 최근 활동 기록 조회
         const recentCalendar = await fetch("/rlog/recentcalendar")

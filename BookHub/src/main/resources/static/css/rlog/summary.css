@@ -3,7 +3,7 @@
 #calendar-graph {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    border-bottom: 1px solid #9b9b9b;
+    border-bottom: 1px solid var(--bs-gray-500);
 }
 .graph-content {
     float: left;
@@ -26,14 +26,14 @@
     height: 20px;
     line-height: 20px;
     font-size: 14px;
-    color: #777777;
+    color: var(--bs-gray-600);
 }
 .graph-day {
     width: 35px;
     height: 35px;
     line-height: 35px;
     margin: 3.5px auto;
-    background-color: #f3f3f5;
+    background-color: var(--bs-gray-100);
     border-radius: 5px;
     user-select: none;
 }
@@ -76,19 +76,16 @@
     width: 461px;
 }
 
-.recent-item {
-    float: left;
-    width: 459px;
-    height: 150px;
-    border-bottom: 1px solid #9b9b9b;
+.recent-content {
+    display: grid;
 }
-.recent-item:last-child {
-    border: none;
+
+.recent-item {
+    height: 150px;
 }
 .no-recent-item {
-    float: left;
-    width: 459px;
-    height: 150px;
+    display: block;
+    height: 100%;
     line-height: 50px;
     padding: 50px;
     text-align: center;
@@ -101,7 +98,7 @@
     height: 130px;
     object-fit: contain;
     margin: 10px;
-    border: 1px solid #9b9b9b;
+    border: 1px solid var(--bs-gray-500);
 }
 .recent-info {
     float: left;
@@ -133,10 +130,13 @@
     word-break: break-all;
     white-space: nowrap;
     font-size: 14px;
-    color: #777777;
+    color: var(--bs-gray-600);
 }
 .progress {
     float: left;
     width: 289px;
     margin: 10px;
+}
+.progress-bar {
+    background-color: var(--bs-blue);
 }
