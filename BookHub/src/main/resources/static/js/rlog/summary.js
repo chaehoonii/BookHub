@@ -49,7 +49,7 @@ function calendarInitializer() {
     }
 
     async function setCalendar() {
-        const colorSet = ["#ddbfa8", "#b29273", "#8e643c", "#71462d"];
+        const colorSet = ["#add3f7", "#7ea9d4", "#43689f", "#374760"];
 
         // 최근 활동 기록 조회
         const recentCalendar = await fetch("/rlog/recentcalendar")
@@ -62,10 +62,18 @@ function calendarInitializer() {
                 `time[datetime="` +
                     recentCalendar[i].readDate.split("T")[0] +
                     `"]`
-            ).parentElement;
+            );
 
-            calendarDay.style.backgroundColor =
-                colorSet[parseInt(recentCalendar[i].readPage / 10)];
+            if (recentCalendar[i].readPage <= 10) {
+                calendarDay.parentElement.style.backgroundColor = colorSet[0];
+            } else if (recentCalendar[i].readPage <= 20) {
+                calendarDay.parentElement.style.backgroundColor = colorSet[1];
+            } else if (recentCalendar[i].readPage <= 50) {
+                calendarDay.parentElement.style.backgroundColor = colorSet[2];
+            } else {
+                calendarDay.parentElement.style.backgroundColor = colorSet[3];
+            }
+            calendarDay.style.color = "white";
         }
     }
 }
