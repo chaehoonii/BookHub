@@ -7,9 +7,9 @@
 	<!-- 독서활동 기록하기 -->
 	<insert id="writeReadingLog" parameterType="ReadingLogDTO">
 		INSERT INTO
-			`bookhub`.`readinglog`(user_id, book_isbn, start_page, end_page, summary, read_date, read_complete)
+			`bookhub`.`readinglog`(user_id, book_isbn, end_page, summary, read_date, read_complete)
 		VALUES
-			(#{userId}, #{bookISBN}, #{startPage}, #{endPage}, #{summary}, #{readDate}, #{readComplete});
+			(#{userId}, #{bookISBN}, #{endPage}, #{summary}, #{readDate}, #{readComplete});
 	</insert>
 	
 	<!-- 최근 독서활동 조회 -->
