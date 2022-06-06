@@ -1,29 +1,66 @@
 @charset "UTF-8";
 
-#summary-calendar {
-    height: 300px;
-}
 #calendar-graph {
-    box-sizing: border-box;
-    width: 100%;
-    height: 150px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     border-bottom: 1px solid #9b9b9b;
 }
+.graph-content {
+    float: left;
+    text-align: center;
+    padding: 10px;
+}
+.graph-title {
+    height: 30px;
+    line-height: 30px;
+    font-size: 20px;
+    text-align: left;
+    padding-left: 5px;
+}
+.graph-dayofweek, .graph-main {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+.graph-dayofweek {
+    height: 20px;
+    line-height: 20px;
+    font-size: 14px;
+    color: #777777;
+}
+.graph-day {
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    margin: 3.5px auto;
+    background-color: whitesmoke;
+    border-radius: 5px;
+    user-select: none;
+}
+#graph-content-left .graph-day:first-child {
+    grid-column: 6;
+}
+
 #calendar-stat {
-    box-sizing: border-box;
-    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     height: 110px;
 }
 .stat-content {
     float: left;
-    width: 312px;
     height: 100%;
+    padding: 10px;
+    text-align: center;
 }
-.stat-content:first-child {
-    border-right: 1px solid #9b9b9b;
+.stat-title {
+    height: 30px;
+    line-height: 30px;
+    font-size: 20px;
 }
-.stat-content:last-child {
-    border-left: 1px solid #9b9b9b;
+.stat-value {
+    display: block;
+    height: 60px;
+    line-height: 60px;
+    font-size: 20px;
 }
 
 #summary-recent {
@@ -71,26 +108,29 @@
     margin: 10px;
 }
 .recent-title {
-    display: flex;
+    display: block;
     max-width: 289px;
     height: 25px;
     line-height: 25px;
     overflow: hidden;
     text-overflow: ellipsis;
     word-break: break-all;
+    white-space: nowrap;
 }
 .recent-title-link {
+    max-width: 289px;
     font-weight: bold;
     color: royalblue !important;
 }
 .recent-author {
-    display: flex;
+    display: block;
     max-width: 289px;
     height: 20px;
     line-height: 20px;
     overflow: hidden;
     text-overflow: ellipsis;
     word-break: break-all;
+    white-space: nowrap;
     font-size: 14px;
     color: #777777;
 }

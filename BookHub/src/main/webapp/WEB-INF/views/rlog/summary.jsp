@@ -35,20 +35,58 @@
             <div id="profile-body">
                 <div id="summary-calendar" class="profile-section">
                     <h2 class="profile-section-title">
-                        나의 독서 활동
+                        최근 독서 활동
                     </h2>
                     <div id="calendar-graph">
-
+                        <div id="graph-content-left" class="graph-content">
+                            <h3 class="graph-title"></h3>
+                            <div class="graph-dayofweek">
+                                <span>일</span>
+                                <span>월</span>
+                                <span>화</span>
+                                <span>수</span>
+                                <span>목</span>
+                                <span>금</span>
+                                <span>토</span>
+                            </div>
+                            <div class="graph-main"></div>
+                        </div>
+                        <div id="graph-content-center" class="graph-content">
+                            <h3 class="graph-title"></h3>
+                            <div class="graph-dayofweek">
+                                <span>일</span>
+                                <span>월</span>
+                                <span>화</span>
+                                <span>수</span>
+                                <span>목</span>
+                                <span>금</span>
+                                <span>토</span>
+                            </div>
+                            <div class="graph-main"></div>
+                        </div>
+                        <div id="graph-content-right" class="graph-content">
+                            <h3 class="graph-title"></h3>
+                            <div class="graph-dayofweek">
+                                <span>일</span>
+                                <span>월</span>
+                                <span>화</span>
+                                <span>수</span>
+                                <span>목</span>
+                                <span>금</span>
+                                <span>토</span>
+                            </div>
+                            <div class="graph-main"></div>
+                        </div>
                     </div>
                     <div id="calendar-stat">
                         <div class="stat-content">
-                        
+                            <h3 class="stat-title">누적 독서페이지</h3>
                         </div>
                         <div class="stat-content">
-                        
+                            <h3 class="stat-title">최대 연속독서일</h3>
                         </div>
                         <div class="stat-content">
-                        
+                            <h3 class="stat-title">현재 연속독서일</h3>
                         </div>
                     </div>
                 </div>
@@ -99,7 +137,7 @@
             </div>
         </div>
 
-
+        <script src="/static/js/rlog/summary.js"></script>
     </body>
 
     </html>
