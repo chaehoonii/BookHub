@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+/* 조회 결과*/
+.booklist_result{
+	margin:5px;
+	padding:5px 0px 0px 5px;
+/*	border-top: 1px solid #9b9b9b;
+	border-bottom: 1px solid #9b9b9b;
+	background-color: #eeeeee; */
+	border-top: 2px solid #e8e8e8;
+	border-bottom: 2px solid #e8e8e8;
+}
+/* 검색 결과 없을 경우 최소 높이*/
+.booklist_content_item{
+	min-height:100px;
+}
+/* 페이지 번호 */
+.booklist_page{
+	margin:5px;
+	padding:5px 0px;
+/*	border-top: 1px solid #9b9b9b;
+	border-bottom: 1px solid #9b9b9b;
+	background-color: #eeeeee; */
+	border-top: 2px solid #e8e8e8;
+	border-bottom: 2px solid #e8e8e8;
+	text-align: center;
+	display:flex;
+	justify-content:center;
+	align-items: center;
+}
+.paging{
+	display:flex;
+}
+.paging div{
+	width:25px;
+	margin:5px 5px 0px 5px;
+	cursor: pointer;
+}
+.direction_current{
+	font-weight: bolder;
+	font-size: 17px;
+}
+.direction_none{
+	color:#e8e8e8;
+}
+.direction_none:hover{
+	cursor: default;
+}

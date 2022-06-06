@@ -6,30 +6,33 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel='stylesheet' href='/static/css/booklist/bookdetail.css'>
+<script src="/webjars/jquery/3.6.0/jquery.min.js"></script>
+<script src='/static/js/booklist/bookdetail.js'></script>
 </head>
 <body>
-	<div class="booklist_container">
-		<div class="booklist_head">
-			<div class="head_title">
-				카테고리 별
+<div class="bookdetail_container">
+	<div class="bookdetail_content">		
+		<div class="bookdetail_content_body">
+			<!-- 책 상세 내용 -->
+			<div class="bookdetail_item">
+				<div class="bookdetail_bookimg">
+					<img src="${bookdetail.bookImg}"/>
+				</div>
+				<div class="bookdetail_bookinfo">					
+					<div class="bookdetail_bookname">
+						${bookdetail.bookName}								
+					</div>
+					<div class="bookdetail_booksubinfo">
+						${bookdetail.bookAuthor} &ensp; ${bookdetail.bookPublisher} &ensp; ${bookdetail.bookPubdate}
+					</div>
+					<input type="hidden" value="${bookdetail.bookEndpage}">
+				</div>	
 			</div>
-			<div class="head_cate_select">
-				<select name="category" id="category">
-					<option></option>
-				</select>
-			</div>
-		</div>
-		<div class="booklist_content">
-			
-			<div class="booklist_item">
-				책 제목 : ${bookdetail.bookName}
-				책 표지 : <img src="${bookdetail.bookImg}"/>
-				책 페이지수 :${bookdetail.bookEndpage}
-			</div>
-			<div class="booklist_item">
-				책list 
+			<div class="bookReview_content">
 			</div>
 		</div>
 	</div>
+</div>
 </body>
 </html>

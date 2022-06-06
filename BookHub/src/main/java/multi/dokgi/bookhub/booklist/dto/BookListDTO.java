@@ -1,11 +1,7 @@
 package multi.dokgi.bookhub.booklist.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
-@AllArgsConstructor
 @Data
 public class BookListDTO {
 	
@@ -14,7 +10,7 @@ public class BookListDTO {
 	private String bookImg; //책 표지(cover)
 	private String bookAuthor; //책 저자(author)
 	private String bookContent; //책 상품설명(description)
-	private String bookPubdate; //책 출간일(pubdate)
+	private String bookPubdate; //책 출간일(pubDate)
 	private String bookPublisher; //책 출판사(publisher)
 	
 	//부가정보

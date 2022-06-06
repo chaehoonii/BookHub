@@ -1,10 +1,14 @@
 package multi.dokgi.bookhub.booklist;
 
 import java.net.URLEncoder;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.xml.parsers.SAXParser;
@@ -31,7 +35,7 @@ public class BookListServiceImpl implements BookListService{
 	
 	//상품 리스트 API
 	@Override
-	public Map<String, Object> itemList(String start) {
+	public Map<String, Object> itemList(String SearchTarget, String start, String CategoryId) {
 		List<BookListDTO> booklist = new ArrayList<BookListDTO>();
 		int totalResults = 0; //총 결과 수
 		Map<String,Object> result = new HashMap<String, Object>();
@@ -43,9 +47,11 @@ public class BookListServiceImpl implements BookListService{
 		try {
 			hm.put("ttbkey", "ttbkjn92051341001");		
 			hm.put("QueryType", "Bestseller");
-			hm.put("MaxResults", "10");
+			hm.put("SearchTarget", SearchTarget);
 			hm.put("start", start);
-			hm.put("SearchTarget", "Book");
+			hm.put("MaxResults", "10");
+			hm.put("CategoryId", CategoryId);
+			hm.put("Cover", "MidBig");
 			hm.put("output", "xml");
 			hm.put("Version", "20131101");
 			
@@ -63,7 +69,6 @@ public class BookListServiceImpl implements BookListService{
 			
 			for(BookListDTO item : api.Items){
 				booklist.add(item);
-				System.out.println(item.getBookIsbn() + " : " + item.getBookName());
 			}
 			totalResults = api.totalResults;
 			
@@ -80,7 +85,7 @@ public class BookListServiceImpl implements BookListService{
 
 	//상품 검색 API
 	@Override
-	public Map<String,Object> itemSearch(String searchType, String searchWord, String start){
+	public Map<String,Object> itemSearch(String searchWord, String queryType, String SearchTarget, String start, String CategoryId){
 
 		List<BookListDTO> booklist = new ArrayList<BookListDTO>();
 		int totalResults = 0; //총 결과 수
@@ -93,12 +98,13 @@ public class BookListServiceImpl implements BookListService{
 		try {
 			hm.put("ttbkey", "ttbkjn92051341001");		
 			hm.put("Query", URLEncoder.encode(searchWord, "UTF-8"));
-			hm.put("QueryType", searchType);
-			hm.put("MaxResults", "25");
+			hm.put("QueryType", queryType);
+			hm.put("SearchTarget", SearchTarget);
 			hm.put("start", start);
-			hm.put("SearchTarget", "Book");
+			hm.put("MaxResults", "10");
 			hm.put("Sort", "Accuracy");
-			hm.put("CategoryId", "1");
+			//hm.put("Cover", "MidBig");
+			hm.put("CategoryId", CategoryId);
 			hm.put("output", "xml");
 			
 			StringBuffer sb = new StringBuffer();
@@ -145,6 +151,7 @@ public class BookListServiceImpl implements BookListService{
 			hm.put("ItemId", isbn);
 			hm.put("Cover", "Big");
 			hm.put("output", "xml");
+			hm.put("Version", "20131101");
 			
 			StringBuffer sb = new StringBuffer();
 			Iterator<String> iter = hm.keySet().iterator();
@@ -214,7 +221,7 @@ class AladdinOpenAPIHandler extends DefaultHandler {
 			tempValue = "";
 		} else if (localName.equals("description")) {
 			tempValue = "";
-		} else if (localName.equals("pubdate")) {
+		} else if (localName.equals("pubDate")) {
 			tempValue = "";
 		} else if (localName.equals("publisher")) {
 			tempValue = "";
@@ -250,7 +257,7 @@ class AladdinOpenAPIHandler extends DefaultHandler {
 				currentItem.setBookAuthor(tempValue);
 			} else if (localName.equals("description")) {
 				currentItem.setBookContent(tempValue);
-			} else if (localName.equals("pubdate")) {
+			} else if (localName.equals("pubDate")) {
 				currentItem.setBookPubdate(tempValue);
 			} else if (localName.equals("publisher")) {
 				currentItem.setBookPublisher(tempValue);

@@ -1,0 +1,49 @@
+@charset "UTF-8";
+/* 헤더/메인 */
+@font-face {
+    font-family: 'GowunDodum-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunDodum-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+/* 본문 */
+@font-face {
+    font-family: 'GimpoGothicRegular00';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/GimpoGothicRegular00.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+.bookdetail_container{
+	width:100%;
+	margin:100px 0px 50px 0px;
+	padding-left:20px;
+	font-family: 'GimpoGothicRegular00';	
+}
+.bookdetail_content{
+	width:1290px;
+	margin: 0 auto;
+	display:flex;
+}
+.bookdetail_content_body{
+	width:1060px;
+}
+/* 책 상세 내용 */
+.bookdetail_item{
+	display:flex;	
+}
+.bookdetail_bookimg{
+	border: 1px solid #e8e8e8;	
+}
+.bookdetail_bookinfo{
+	flex-direction: column;
+	margin:10px;
+}
+.bookdetail_bookname{	
+	font-family: 'GowunDodum-Regular';
+	font-size:25px;
+	font-weight: bolder;
+	margin:10px;
+}
+.bookdetail_booksubinfo{
+	margin:10px;
+}
