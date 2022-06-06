@@ -66,7 +66,7 @@
                             <c:if test="${!empty recentLog}">
                                 <c:forEach items="${recentLog}" var="log">
                                     <div class="recent-item">
-                                        <img class="recent-thumbnail" src="${bookInfo[log.bookISBN].get('coverSmallUrl')}">
+                                        <img class="recent-thumbnail" src="${bookInfo[log.bookISBN].get('cover')}">
                                         <div class="recent-info">
                                             <span class="recent-title" title="${bookInfo[log.bookISBN].get('title')}"><a class="recent-title-link" href="/rlog/edit?isbn=${log.bookISBN}">${bookInfo[log.bookISBN].get('title')}</a></span>
                                             <span class="recent-author">${bookInfo[log.bookISBN].get('author')}</span>

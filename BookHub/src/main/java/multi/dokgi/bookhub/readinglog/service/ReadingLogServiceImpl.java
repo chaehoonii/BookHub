@@ -8,7 +8,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
@@ -32,12 +31,13 @@ public class ReadingLogServiceImpl implements IReadingLogService {
 	// 인터파크 도서 API - ISBN으로 도서 정보 검색
 	@Override
 	public JSONObject getBookInfo(String isbn) {
-		String key = "CF7658C8375A9D83BC630FF2ED6A7BF592604291F66C55444E6C0402DF766DA8";
-		String result = null;
+		String TTBKey = "ttbkjn92051341001";
+		JSONObject out = null;
 
 		try {
-			String params = "key=" + key + "&query=" + isbn + "&queryType=isbn&output=json";
-			URL api = new URL("http://book.interpark.com/api/search.api?" + params);
+			String params = "TTBKey=" + TTBKey + "&ItemId=" + isbn
+					+ "&ItemIdType=ISBN13&Cover=Big&Output=JS&Version=20131101";
+			URL api = new URL("http://www.aladin.co.kr/ttb/api/ItemLookUp.aspx?" + params);
 			HttpURLConnection conn = (HttpURLConnection) api.openConnection();
 			int responseCode = conn.getResponseCode();
 			if (responseCode == 200) {
@@ -48,21 +48,16 @@ public class ReadingLogServiceImpl implements IReadingLogService {
 					while ((newLine = br.readLine()) != null) {
 						sb.append(newLine);
 					}
-					result = sb.toString();
+					out = new JSONObject(sb.toString()).getJSONArray("item").getJSONObject(0);
 				}
 			} else {
-				System.out.println("[ReadingLogService]: 인터파크 도서 API가 오류코드를 반환함");
+				System.out.println("[ReadingLogService]: 알라딘 도서 API가 오류코드를 반환함");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		if (result != null) {
-			JSONObject out = new JSONObject(((JSONArray) new JSONObject(result).get("item")).get(0).toString());
-			return out;
-		}
 
-		return null;
+		return out;
 	}
 
 	// 독서활동 기록하기
