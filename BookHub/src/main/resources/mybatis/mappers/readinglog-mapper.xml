@@ -17,20 +17,28 @@
 		SELECT
 			rl.*
 		FROM
-			`bookhub`.`readinglog` AS rl
+			(SELECT
+				*
+			FROM
+				`bookhub`.`readinglog`
+			WHERE
+				user_id LIKE #{userId}) AS rl
 			JOIN
-				(SELECT
-					max(read_date) AS max_read_date,
-					max(end_page) AS max_end_date
-				FROM
-					`bookhub`.`readinglog`
-				WHERE user_id LIKE #{userId}
-				GROUP BY
-					book_ISBN) AS maxrl
-			ON (rl.read_date = maxrl.max_read_date AND rl.end_page = maxrl.max_end_date)
+			(SELECT
+				user_id,
+				book_ISBN,
+				max(read_date) AS max_read_date,
+				max(end_page) AS max_end_page
+			FROM
+				`bookhub`.`readinglog`
+			WHERE
+				user_id LIKE #{userId}
+			GROUP BY
+				book_ISBN) AS maxrl
+			ON (rl.book_ISBN = maxrl.book_ISBN AND rl.read_date = maxrl.max_read_date AND rl.end_page = maxrl.max_end_page)
 		ORDER BY
 			write_date DESC
 		LIMIT
-			0, 6
+			0, 3
 	</select>
 </mapper>

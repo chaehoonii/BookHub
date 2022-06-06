@@ -4,9 +4,9 @@
 
     <head>
         <meta charset="UTF-8">
-        <title>${userId}</title>
-        <link rel="stylesheet" href="/static/css/profile/profile.css">
-        <link rel="stylesheet" href="/static/css/profile/library.css">
+        <title>BookHub :: 내 서재</title>
+        <link rel="stylesheet" href="/static/css/rlog/rlog.css">
+        <link rel="stylesheet" href="/static/css/rlog/library.css">
     </head>
 
     <body>
@@ -17,15 +17,15 @@
             <!-- Profile Head -->
             <div id="profile-head">
                 <h1 id="profile-username">
-                    ${userId}
+                    ${user.userNick}님의 독서 기록
                 </h1>
             </div>
             <!-- Profile Tab -->
             <div id="profile-tabmenu">
-                <a class="tabmenu-btn" href="/profile/${userId}">
+                <a class="tabmenu-btn" href="/rlog/summary">
                     📋 활동 요약
                 </a>
-                <a class="tabmenu-btn activetab" href="/profile/${userId}/library">
+                <a class="tabmenu-btn activetab" href="/rlog/library">
                     📚 내 서재
                 </a>
             </div>
