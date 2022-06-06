@@ -41,7 +41,7 @@
 		<div class="main_top">
 			<div class="main_user">
 				   <c:if test="${empty user}">
-   					   <a href="/oauth2/authorization/google" class="main_login"><img src="/static/img/google.png">&nbsp;&nbsp;&nbsp;&nbsp;oogle Login</a>
+   					   <a href="/oauth2/authorization/google" class="main_login"><img src="/static/img/google.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oogle Login</a>
  				  </c:if>
  				 <c:if test="${not empty user}">
  				 	<div class="main_logId"><b>${user.userNick}</b>님 환영합니다🙇‍♀️</div>
