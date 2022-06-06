@@ -39,7 +39,7 @@ public class ReadingLogController {
 		if (user != null) {
 			// 로그인 유저인 경우
 
-			// 최근에 읽은 책 (최대 3개)
+			// 최근 읽은 책 (최대 3개)
 			List<ReadingLogDTO> recentLog = rlService.getRecentReadingLog(user.getUserId());
 
 			// 인터파크 도서 API - ISBN으로 도서 정보 검색
@@ -99,15 +99,15 @@ public class ReadingLogController {
 
 	// 독서 활동 기록 (임시)
 	@PostMapping("/rlog/edit")
-	public ModelAndView readingLogEditResult(@LoginUser SessionUser user, String isbn, Integer endPage, String readDate,
-			@Nullable String readComplete, @Nullable String summary) {
+	public ModelAndView readingLogEditResult(@LoginUser SessionUser user, String isbn, Integer startPage,
+			Integer endPage, String readDate, @Nullable String readComplete, @Nullable String summary) {
 		ModelAndView mv = new ModelAndView();
 
 		if (user != null) {
 			// 로그인 유저인 경우
 
 			String userId = user.getUserId();
-			rlService.writeReadingLog(userId, isbn, endPage, summary, readDate, readComplete);
+			rlService.writeReadingLog(userId, isbn, startPage, endPage, summary, readDate, readComplete);
 
 			mv.setViewName("redirect:/rlog/edit?isbn=" + isbn);
 
