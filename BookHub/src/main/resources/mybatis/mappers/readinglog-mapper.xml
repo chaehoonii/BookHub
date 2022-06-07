@@ -37,7 +37,7 @@
 				book_ISBN) AS maxrl
 			ON (rl.book_ISBN = maxrl.book_ISBN AND rl.read_date = maxrl.max_read_date AND rl.end_page = maxrl.max_end_page)
 		ORDER BY
-			write_date DESC
+			read_date DESC
 		LIMIT
 			0, 3
 	</select>

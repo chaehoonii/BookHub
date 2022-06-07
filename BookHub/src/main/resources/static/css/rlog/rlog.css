@@ -3,8 +3,10 @@
 #profile-wrapper {
     box-sizing: border-box;
     width: 940px;
+    overflow: hidden;
     margin: 0 auto;
     margin-top: 80px;
+    margin-bottom: 50px;
 }
 
 #profile-head {

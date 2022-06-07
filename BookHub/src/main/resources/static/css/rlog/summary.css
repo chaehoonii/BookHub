@@ -81,7 +81,7 @@
 }
 
 .recent-item {
-    height: 150px;
+    height: 140px;
 }
 .no-recent-item {
     display: block;
@@ -94,20 +94,20 @@
 
 .recent-thumbnail {
     float: left;
-    width: 130px;
-    height: 130px;
+    width: 120px;
+    height: 120px;
     object-fit: contain;
     margin: 10px;
     border: 1px solid var(--bs-gray-500);
 }
-.recent-info {
+.recent-info,
+.recent-progress {
     float: left;
-    width: 289px;
-    margin: 10px;
+    width: 309px;
+    margin: 10px 0;
 }
+
 .recent-title {
-    display: block;
-    max-width: 289px;
     height: 25px;
     line-height: 25px;
     overflow: hidden;
@@ -116,13 +116,14 @@
     white-space: nowrap;
 }
 .recent-title-link {
-    max-width: 289px;
     font-weight: bold;
     text-decoration: none;
 }
-.recent-author {
-    display: block;
-    max-width: 289px;
+.recent-author,
+.recent-readpercent,
+.recent-readpage,
+.recent-readdate {
+    float: left;
     height: 20px;
     line-height: 20px;
     overflow: hidden;
@@ -132,10 +133,14 @@
     font-size: 14px;
     color: var(--bs-gray-600);
 }
+.recent-readpage {
+    float: right;
+}
+
 .progress {
     float: left;
-    width: 289px;
-    margin: 10px;
+    width: 309px;
+    height: 15px;
 }
 .progress-bar {
     background-color: var(--bs-blue);

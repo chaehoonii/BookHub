@@ -1,3 +1,6 @@
+<%@ page contentType="text/html; charset=UTF-8" language="java"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 
@@ -107,14 +110,21 @@
                                 <div class="recent-item">
                                     <img class="recent-thumbnail" src="${bookInfo[log.bookISBN].get('cover')}">
                                     <div class="recent-info">
-                                        <span class="recent-title" title="${bookInfo[log.bookISBN].get('title')}"><a
+                                        <div class="recent-title" title="${bookInfo[log.bookISBN].get('title')}"><a
                                                 class="recent-title-link"
-                                                href="/rlog/edit?isbn=${log.bookISBN}">${bookInfo[log.bookISBN].get('title')}</a></span>
-                                        <span class="recent-author">${bookInfo[log.bookISBN].get('author')}</span>
+                                                href="/rlog/edit?isbn=${log.bookISBN}">${bookInfo[log.bookISBN].get('title')}</a></div>
+                                        <div class="recent-author"><span>${bookInfo[log.bookISBN].get('author')}</span></div>
                                     </div>
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" style="width: ${log.endPage/bookInfo[log.bookISBN].get('subInfo').get('itemPage')*100}%" aria-valuenow="${log.endPage}" aria-valuemin="0" aria-valuemax="${bookInfo[log.bookISBN].get('subInfo').get('itemPage')}"></div>
-                                      </div>
+                                    <div class="recent-progress">
+                                        <fmt:formatNumber value="${log.endPage/bookInfo[log.bookISBN].get('subInfo').get('itemPage')}" type="percent" var="percentReadPage"/>
+                                        <fmt:parseDate value="${log.readDate}" pattern="yyyy-MM-dd'T'HH:mm" var="parsedReadDate" />
+                                        <div class="recent-readpercent">${percentReadPage}</div>
+                                        <div class="recent-readpage">${log.endPage}/${bookInfo[log.bookISBN].get('subInfo').get('itemPage')}</div>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: ${percentReadPage}" aria-valuenow="${log.endPage}" aria-valuemin="0" aria-valuemax="${bookInfo[log.bookISBN].get('subInfo').get('itemPage')}"></div>
+                                        </div>
+                                        <span class="recent-readdate">마지막 독서일: <fmt:formatDate pattern="yyyy년 MM월 dd일" value="${parsedReadDate}"/></span>
+                                    </div>
                                 </div>
                             </c:forEach>
                         </c:if>
