@@ -20,7 +20,7 @@ public class HomeController {
 			if (user.getUserRole() == Role.UN_USER) {
 				// 회원가입 절차중에 있는 사용자는 UN_USER
 				mav.addObject("user", user);
-				mav.setViewName("register");
+				mav.setViewName("/user/register");
 				return mav;
 			}
 		}
