@@ -38,4 +38,20 @@
 		from review 
 		where user_id like #{loginId} and book_isbn like #{isbn}
 	</select>
+	
+	<!-- 리뷰 등록 -->
+	<insert id="reviewInsert" parameterType="ReviewDTO">
+	insert into review(user_id, book_isbn, review_content) values(#{userId}, #{bookIsbn}, #{reviewContent})
+	</insert>
+	<!-- 리뷰 수정 -->
+	<update id="reviewUpdate" parameterType="ReviewDTO">
+	update review
+		set review_content = #{reviewContent}
+		where review_num = #{reviewNum}
+	</update>
+	<!-- 리뷰 삭제 -->
+	<delete id="reviewDelete" parameterType="ReviewDTO">
+	delete from review where review_num = ${reviewNum}
+	</delete>
+	
 </mapper>

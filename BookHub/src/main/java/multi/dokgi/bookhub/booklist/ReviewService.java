@@ -2,6 +2,7 @@ package multi.dokgi.bookhub.booklist;
 
 import java.util.List;
 
+import multi.dokgi.bookhub.booklist.dto.ReviewDTO;
 import multi.dokgi.bookhub.booklist.dto.ReviewJoinDTO;
 
 public interface ReviewService {
@@ -17,4 +18,10 @@ public interface ReviewService {
 	
 	//로그인한 아이디 review 테이블에 리뷰 등록했는지 조회
 	public int reviewExist(String loginId, String isbn);
+	//리뷰 등록
+	public int reviewInsert(ReviewDTO dto);
+	//리뷰 수정
+	public int reviewUpdate(ReviewDTO dto);
+	//리뷰 삭제
+	public int reviewDelete(int reviewNum);
 }

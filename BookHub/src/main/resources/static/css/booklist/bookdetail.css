@@ -1,27 +1,12 @@
 @charset "UTF-8";
-/* 헤더/메인 */
-@font-face {
-    font-family: 'GowunDodum-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunDodum-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-/* 본문 */
-@font-face {
-    font-family: 'GimpoGothicRegular00';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/GimpoGothicRegular00.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
 .bookdetail_container{
 	width:100%;
-	margin:100px 0px 50px 0px;
+	margin:120px 0px 50px 0px;
 	padding-left:20px;
 	
 }
 .bookdetail_container *{
-	font-family: 'GimpoGothicRegular00';
+	font-family: 'GowunDodum-Regular';
 }
 .bookdetail_content{
 	width:1290px;
@@ -29,48 +14,96 @@
 	display:flex;
 }
 .bookdetail_content_body{
-	width:1060px;
-	
+	width:1060px;	
+}
+/* 버튼 태그 공통 css */
+.bookdetail_container button{
+	background-color: black;
+    color: #fff;
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 5px;
 }
 /* 책 상세 내용 */
 .bookdetail_item{
 	display:flex;	
 }
 .bookdetail_bookimg{
-	border: 1px solid #e8e8e8;	
+	border: 1px solid #9b9b9b;
+	box-shadow: 3px 3px 15px -5px grey;
 }
 .bookdetail_bookinfo{
 	flex-direction: column;
-	margin:10px 20px;
+	margin:10px 30px;
 }
 .bookdetail_bookname{	
-	font-family: 'GowunDodum-Regular';
 	font-size:25px;
 	font-weight: bolder;
 	margin:10px 0px;
 }
 .bookdetail_booksubinfo{
-	margin:10px 0px;
-	font-size:18px;
+	margin:10px 5px;
+	font-size:20px;
+	color: #ABABAB;
 }
-/* 책 등록, 책 진행 상황, 리뷰 등록 */
+.bookdetail_reviewcount{
+	font-size: 20px;
+}
+/* 책 등록, 리뷰 등록 */
 .bookReview_reg{
 	margin:20px 0px;	
 }
-
+#userbook_none, #userbook_reg{
+	width:200px;
+	height:
+}
+.userbook_item_title{
+	width: 309px;
+	display:flex;
+	justify-content: space-between;
+}
+/* progress bar */
+.userbook_item_progress{
+	display:flex;
+	align-items: center;
+}
+#userbook_progressbar {
+    -webkit-appearance: none;
+    width: 309px;
+    height: 15px;
+}
+#userbook_progressbar::-webkit-progress-bar {
+	width: 309px;
+    height: 15px;
+    background:#e9ecef;
+    border-radius: 15px;
+}
+#userbook_progressbar::-webkit-progress-value {
+    border-radius: 15px;
+    background: #495057;
+}
+/* 리뷰쓰기 버튼 */
+.review_btn{
+	margin-left:20px;
+}
+#review_btn{
+	width: 80px;
+}
 /* 리뷰 */
 .bookReview_content{	
-	margin-top:10px;
+	margin-top:20px;
 	border: 1px solid #9b9b9b;
     border-radius: 5px;
     border-collapse: collapse;
 }
 .bookReview_title{
 	height:30px;
-	padding:8px 5px 0px 15px;
+	padding:0px 5px 0px 15px;
 	border-radius: 5px 5px 0px 0px;
 	border-bottom: 1px solid #9b9b9b;
 	background-color: #eeeeee;
+	font-weight: bold;
+	font-size:20px;
 }
 .bookReview_body{
 	margin:10px;
@@ -85,9 +118,22 @@
 	display: flex;
 }
 #review_txt{
-	width: 100%;
-	height: 80px;
-	resize: none;
+	width:910px;
+	height:100px;
+	resize:none;
+	font-size:16px;
+}
+#review_txt_count{
+	font-size:15px;
+}
+.reviewItem_btn{
+	width:100px;
+	margin:0px 15px;
+}
+#review_reg_btn{
+	margin-top:30px;
+	width: 100px;
+	height: 40px;
 }
 /* 리뷰 list */
 .reviewlist_item{
@@ -95,8 +141,8 @@
 	align-items: center;
 	border-bottom: 2px solid #e8e8e8;
 }
-.reviewlist_body{
-	margin:10px;
+.reviewlist_item:last-child{
+	border-bottom: 0px;
 }
 .reviewlist_userthumbnail{
 	margin:10px;
@@ -112,7 +158,9 @@
 }
 .reviewlist_reviewcontent{
 	min-height:50px;
+	display:flex;
 }
+/* 리뷰 정보 */
 .reviewlist_userinfo{
 	display:flex;
 	font-size:15px;
@@ -120,4 +168,44 @@
 }
 .reviewlist_writedate{
 	margin-left:20px;
+}
+/*리뷰 list content 부분*/
+.reviewlist_content_txt{
+	width:810px;
+}
+.reviewlist_btn{
+	width:90px;
+	margin-left:5px;
+	display:flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.reviewlist_btn button{
+	width:70px;
+	height:30px;
+	margin:10px 0;
+}
+/* 내 리뷰 */
+#myreview_content_display{
+	display:flex;
+}
+/*리뷰 수정 폼*/
+#myreview_content_edit{
+	display:none;
+}
+.myreview_content_edit{
+	display:flex;
+}
+#myreviewContent{
+	width:810px;
+	height:118px;
+	resize:none;
+	font-size:16px;
+}
+#myreviewContent_count{
+	font-size:13px;
+}
+#myreview_edit_reg{
+	width:80px;
 }

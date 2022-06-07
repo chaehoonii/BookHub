@@ -4,32 +4,34 @@
 .booklist_result{
 	margin:5px;
 	padding:5px 0px 0px 5px;
-/*	border-top: 1px solid #9b9b9b;
-	border-bottom: 1px solid #9b9b9b;
-	background-color: #eeeeee; */
-	border-top: 2px solid #e8e8e8;
-	border-bottom: 2px solid #e8e8e8;
+	border-top: 1px solid #adb5bd;
+	border-bottom: 1px solid #adb5bd;
+	border-radius: 10px 10px 0px 0px;
+}
+.booklist_result span{
+	font-weight: bolder;
 }
 /* 검색 결과 없을 경우 최소 높이*/
 .booklist_content_item{
 	min-height:100px;
+	border-bottom: 0px;
 }
 /* 페이지 번호 */
 .booklist_page{
-	margin:5px;
-	padding:5px 0px;
-/*	border-top: 1px solid #9b9b9b;
-	border-bottom: 1px solid #9b9b9b;
-	background-color: #eeeeee; */
-	border-top: 2px solid #e8e8e8;
-	border-bottom: 2px solid #e8e8e8;
+	height:40px;
+	margin:10px 0px;
+	padding-top:10px;
+	border-top: 1px solid #adb5bd;
+	border-bottom: 1px solid #adb5bd;
 	text-align: center;
 	display:flex;
 	justify-content:center;
 	align-items: center;
+	border-radius: 0px 0px 10px 10px;
 }
 .paging{
 	display:flex;
+	font-size:18px;
 }
 .paging div{
 	width:25px;
@@ -38,10 +40,9 @@
 }
 .direction_current{
 	font-weight: bolder;
-	font-size: 17px;
 }
 .direction_none{
-	color:#e8e8e8;
+	color :#dedede;
 }
 .direction_none:hover{
 	cursor: default;
