@@ -21,7 +21,7 @@ public class ReadingLogDTO {
 	private int num; // 독서활동 기록번호
 	private final String userId; // 회원 ID
 	private final String bookISBN; // 책 ISBN
-	private final int startPage; // 독서 시작페이지
+	private final int startPage; // 독서 종료페이지
 	private final int endPage; // 독서 종료페이지
 	private final String summary; // 독서활동 요약
 	private final LocalDateTime readDate; // 독서활동일
