@@ -12,6 +12,7 @@
 	--slide-3-link: #00572c;
 }
 .slider{
+	font-family: 'GowunDodum-Regular';
 	margin-top:80px;
 	position: absolute;
 	left: 0; right: 0;top: 0;bottom: 0;
