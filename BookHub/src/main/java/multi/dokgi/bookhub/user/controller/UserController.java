@@ -118,15 +118,25 @@ public class UserController {
 		return "redirect:/logout";
 	}
 
-//	@GetMapping("/main")
-//	public String goMain(Model model, @LoginUser SessionUser user) {
-//		model.addAttribute("user", user);
-//		return "main";
-//	}
-
 	@GetMapping("/err/denied-page")
 	public String accessDenied() {
 		throw new UnauthorizedException(ErrorCode.UNAUTHORIZED);
+	}
+
+	@GetMapping("/settings")
+	public String userSettings(@LoginUser SessionUser user, Model model) {
+		if (user == null) {
+			throw new UnauthorizedException(ErrorCode.UNAUTHORIZED);
+		}
+		return "/user/settings-modifyuser";
+	}
+
+	@GetMapping("/settings-deleteuser")
+	public String deleteUser(@LoginUser SessionUser user, Model model) {
+		if (user == null) {
+			throw new UnauthorizedException(ErrorCode.UNAUTHORIZED);
+		}
+		return "/user/settings-deleteuser";
 	}
 
 }
