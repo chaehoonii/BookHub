@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+/*=====부트스트랩 설정 무시=====*/
+a, a:visited, a:hover, a:active {
+    text-decoration: none !important;
+    color: black;
+}
+dl, ol, ul {
+    margin-top: 0 !important;
+    margin-bottom: 0rem !important;
+}
+ol, ul {
+    padding-left: 0rem !important;
+}
+
+section.container{
+    margin-top: 160px;
+}

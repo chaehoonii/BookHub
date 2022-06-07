@@ -31,6 +31,7 @@ CREATE TABLE IF NOT EXISTS `book_category` (
 ) ENGINE=InnoDB AUTO_INCREMENT=169512 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- 테이블 데이터 bookhub.book_category:~19,109 rows (대략적) 내보내기
+DELETE FROM `book_category`;
 /*!40000 ALTER TABLE `book_category` DISABLE KEYS */;
 INSERT INTO `book_category` (`cid`, `category_name`, `mall`, `one_depth`, `two_depth`, `three_depth`, `four_depth`, `five_depth`) VALUES
 	(1, '소설/시/희곡', '국내도서', '소설/시/희곡', '', '', '', ''),
@@ -18730,26 +18731,60 @@ CREATE TABLE IF NOT EXISTS `book_list` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- 테이블 데이터 bookhub.book_list:~0 rows (대략적) 내보내기
+DELETE FROM `book_list`;
 /*!40000 ALTER TABLE `book_list` DISABLE KEYS */;
 /*!40000 ALTER TABLE `book_list` ENABLE KEYS */;
+
+-- 테이블 bookhub.readinglog 구조 내보내기
+CREATE TABLE IF NOT EXISTS `readinglog` (
+  `num` int NOT NULL AUTO_INCREMENT COMMENT '독서활동 기록번호',
+  `user_id` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '회원 ID',
+  `book_ISBN` char(13) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '책 ISBN',
+  `start_page` int NOT NULL COMMENT '독서 시작페이지',
+  `end_page` int NOT NULL COMMENT '독서 종료페이지',
+  `summary` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '독서활동 요약',
+  `read_date` datetime NOT NULL COMMENT '독서활동일',
+  `write_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '독서활동 기록일',
+  `read_complete` tinyint DEFAULT '0' COMMENT '완독여부',
+  PRIMARY KEY (`num`) USING BTREE,
+  KEY `fk_user_calender_user1` (`user_id`),
+  KEY `book_ISBN` (`book_ISBN`),
+  CONSTRAINT `fk_user_calender_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- 테이블 데이터 bookhub.readinglog:~8 rows (대략적) 내보내기
+DELETE FROM `readinglog`;
+/*!40000 ALTER TABLE `readinglog` DISABLE KEYS */;
+INSERT INTO `readinglog` (`num`, `user_id`, `book_ISBN`, `start_page`, `end_page`, `summary`, `read_date`, `write_date`, `read_complete`) VALUES
+	(2, 'google_105109371333645175867', '9791160504439', 1, 20, '변수', '2022-05-30 00:00:00', '2022-06-03 05:19:56', 0),
+	(3, 'google_105109371333645175867', '9791160504439', 21, 32, '', '2022-06-01 00:00:00', '2022-06-03 05:31:19', 0),
+	(4, 'google_105109371333645175867', '9791160504439', 33, 40, '', '2022-06-02 00:00:00', '2022-06-03 05:32:35', 0),
+	(5, 'google_105109371333645175867', '9791160504439', 41, 60, '', '2022-06-03 00:00:00', '2022-06-03 05:33:21', 0),
+	(6, 'google_105109371333645175867', '9791160506822', 1, 800, '', '2022-06-05 00:00:00', '2022-06-03 05:34:09', 0),
+	(7, 'google_105109371333645175867', '9791188612789', 1, 200, '', '2022-06-06 00:00:00', '2022-06-03 05:35:10', 0),
+	(8, 'google_105109371333645175867', '9791160504439', 61, 90, NULL, '2022-06-04 00:00:00', '2022-06-03 15:33:21', 0),
+	(14, 'google_102592663151810141035', '9791160504439', 6, 20, '', '2022-06-05 00:00:00', '2022-06-03 16:24:15', 0),
+	(15, 'google_102592663151810141035', '9791160504439', 1, 5, '노잼', '2022-06-01 00:00:00', '2022-06-05 02:39:34', 0);
+/*!40000 ALTER TABLE `readinglog` ENABLE KEYS */;
 
 -- 테이블 bookhub.review 구조 내보내기
 CREATE TABLE IF NOT EXISTS `review` (
   `review_num` int NOT NULL AUTO_INCREMENT COMMENT '리뷰등록순서',
   `user_id` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '회원ID',
   `book_isbn` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'NaN' COMMENT '책ISBN',
-  `book_num` int NOT NULL COMMENT '책등록순서',
   `review_content` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '리뷰내용',
   `review_writedate` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '리뷰등록날짜',
   PRIMARY KEY (`review_num`),
   KEY `fk_comment_user1_idx` (`user_id`),
   KEY `FK_review_book_list` (`book_isbn`),
-  CONSTRAINT `fk_comment_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `FK_review_book_list` FOREIGN KEY (`book_isbn`) REFERENCES `book_list` (`book_isbn`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  CONSTRAINT `fk_comment_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- 테이블 데이터 bookhub.review:~0 rows (대략적) 내보내기
+DELETE FROM `review`;
 /*!40000 ALTER TABLE `review` DISABLE KEYS */;
+INSERT INTO `review` (`review_num`, `user_id`, `book_isbn`, `review_content`, `review_writedate`) VALUES
+	(1, 'google_118208386479111463146', '9791191114225', '역시 김영하작가님!! 다들 꼭 한번 읽어보세요.', '2022-06-07 10:19:11');
 /*!40000 ALTER TABLE `review` ENABLE KEYS */;
 
 -- 테이블 bookhub.review_like 구조 내보내기
@@ -18767,6 +18802,7 @@ CREATE TABLE IF NOT EXISTS `review_like` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- 테이블 데이터 bookhub.review_like:~0 rows (대략적) 내보내기
+DELETE FROM `review_like`;
 /*!40000 ALTER TABLE `review_like` DISABLE KEYS */;
 /*!40000 ALTER TABLE `review_like` ENABLE KEYS */;
 
@@ -18785,10 +18821,18 @@ CREATE TABLE IF NOT EXISTS `user` (
   `user_role` enum('UN_USER','USER','ADMIN') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'UN_USER' COMMENT '회원권한',
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `user_no` (`user_no`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- 테이블 데이터 bookhub.user:~0 rows (대략적) 내보내기
+-- 테이블 데이터 bookhub.user:~6 rows (대략적) 내보내기
+DELETE FROM `user`;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` (`user_no`, `user_id`, `user_provider`, `user_pw`, `user_nick`, `user_email`, `user_tel`, `user_private`, `user_thumbnail`, `user_regdate`, `user_role`) VALUES
+	(23, 'google_102592663151810141035', 'google', NULL, '윤성일11', 'dbs3346@gmail.com', NULL, 1, 'https://lh3.googleusercontent.com/a/AATXAJzeEvKRhm5WNrQCNApA_AOYNi3clEk_vCzOJkOn=s96-c', '2022-06-03 15:01:38', 'USER'),
+	(10, 'google_105109371333645175867', 'google', NULL, 'GhostFairy', 'ghhjkk@hanyang.ac.kr', NULL, 1, 'https://lh3.googleusercontent.com/a/AATXAJyVjJDiyXwNOne5VFxFab7ZtQxfROAoRWO1jSvd=s96-c', '2022-06-02 18:28:06', 'USER'),
+	(27, 'google_109414764425869261032', 'google', NULL, 'Kim훈훈8535', '46rlacogns@gmail.com', NULL, 1, 'https://lh3.googleusercontent.com/a-/AOh14Gibj9W69tfq_DaTGYgAjXSZEPOsGAXbavZOULzkmA=s96-c', '2022-06-06 16:11:06', 'USER'),
+	(26, 'google_111407574750602381880', 'google', NULL, '윤성일556', 'dbs1501189@gmail.com', NULL, 1, 'https://lh3.googleusercontent.com/a/AATXAJwbksAKwS932aeo7Rq4lXCuimJ80AJCpyXvtSvR=s96-c', '2022-06-05 02:41:54', 'USER'),
+	(19, 'google_114721638328309736240', 'google', NULL, '윤성일sd', 'dbs3346a@gmail.com', NULL, 1, 'https://lh3.googleusercontent.com/a/AATXAJyFb59oO0M1wlhERBk2g8VF5uYiUNL9blq3DHAn=s96-c', '2022-06-03 13:07:18', 'USER'),
+	(13, 'google_118208386479111463146', 'google', NULL, 'jeong1551', 'a24551815@gmail.com', NULL, 1, 'https://lh3.googleusercontent.com/a/AATXAJwh2dwMnhPU8VyGp6V_f-vshg1rKMcGi2lamT6a=s96-c', '2022-06-03 10:17:28', 'USER');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
 -- 테이블 bookhub.user_book 구조 내보내기
@@ -18803,36 +18847,13 @@ CREATE TABLE IF NOT EXISTS `user_book` (
   PRIMARY KEY (`user_book_id`),
   KEY `FK_user_book_user` (`user_id`),
   KEY `FK_user_book_book_list` (`book_isbn`),
-  CONSTRAINT `FK_user_book_book_list` FOREIGN KEY (`book_isbn`) REFERENCES `book_list` (`book_isbn`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_user_book_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- 테이블 데이터 bookhub.user_book:~0 rows (대략적) 내보내기
+DELETE FROM `user_book`;
 /*!40000 ALTER TABLE `user_book` DISABLE KEYS */;
 /*!40000 ALTER TABLE `user_book` ENABLE KEYS */;
-
--- 테이블 bookhub.user_calender 구조 내보내기
-CREATE TABLE IF NOT EXISTS `user_calender` (
-  `cal_num` int NOT NULL AUTO_INCREMENT COMMENT '캘린더번호',
-  `user_id` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '회원ID',
-  `book_isbn` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'NaN' COMMENT '책ISBN',
-  `cal_title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '캘린더제목',
-  `cal_content` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '캘린더설명',
-  `cal_year` int DEFAULT NULL COMMENT '캘린더년도',
-  `cal_month` int DEFAULT NULL COMMENT '캘린더월',
-  `cal_day` int DEFAULT NULL COMMENT '캘린더일',
-  `cal_combo` int DEFAULT NULL COMMENT '콤보',
-  `cal_writedata` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '캘린더등록일자',
-  PRIMARY KEY (`cal_num`) USING BTREE,
-  KEY `fk_user_calender_user1` (`user_id`),
-  KEY `FK_user_calender_book_list` (`book_isbn`),
-  CONSTRAINT `FK_user_calender_book_list` FOREIGN KEY (`book_isbn`) REFERENCES `book_list` (`book_isbn`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_user_calender_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- 테이블 데이터 bookhub.user_calender:~0 rows (대략적) 내보내기
-/*!40000 ALTER TABLE `user_calender` DISABLE KEYS */;
-/*!40000 ALTER TABLE `user_calender` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;

@@ -1,15 +1,12 @@
 @charset "UTF-8";
 
-html,
-body {
-    margin: 0;
-    padding: 0;
-}
-
 #profile-wrapper {
     box-sizing: border-box;
     width: 940px;
+    overflow: hidden;
     margin: 0 auto;
+    margin-top: 80px;
+    margin-bottom: 50px;
 }
 
 #profile-head {
@@ -17,13 +14,11 @@ body {
     width: 100%;
     height: 100px;
     padding: 20px;
-    background-color: black;
 }
 #profile-username {
     float: left;
     height: 60px;
     line-height: 60px;
-    color: white;
     font-size: 32px;
     margin: 0;
 }
@@ -32,7 +27,7 @@ body {
     box-sizing: border-box;
     width: 100%;
     height: 50px;
-    border-bottom: 1px solid #9b9b9b;
+    border-bottom: 1px solid var(--bs-gray-500);
     overflow: hidden;
 }
 
@@ -47,11 +42,11 @@ body {
 }
 .tabmenu-btn.activetab {
     font-weight: bold;
-    border-bottom: 4px solid orange;
+    border-bottom: 4px solid var(--bs-orange);
 }
 .tabmenu-btn:hover {
     cursor: pointer;
-    background-color: #eeeeee;
+    background-color: var(--bs-gray-200);
 }
 .tabmenu-btn:link,
 .tabmenu-btn:active,
@@ -69,7 +64,7 @@ body {
     box-sizing: border-box;
     width: 100%;
     margin-top: 20px;
-    border: 1px solid #9b9b9b;
+    border: 1px solid var(--bs-gray-500);
     border-radius: 5px;
     border-collapse: collapse;
     overflow: hidden;
@@ -85,6 +80,6 @@ body {
     font-size: 16px;
     margin: 0;
     padding: 10px;
-    border-bottom: 1px solid #9b9b9b;
-    background-color: #eeeeee;
+    border-bottom: 1px solid var(--bs-gray-500);
+    background-color: var(--bs-gray-200);
 }

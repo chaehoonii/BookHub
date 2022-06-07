@@ -1,0 +1,147 @@
+@charset "UTF-8";
+
+#calendar-graph {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-bottom: 1px solid var(--bs-gray-500);
+}
+.graph-content {
+    float: left;
+    text-align: center;
+    padding: 10px;
+}
+.graph-title {
+    height: 30px;
+    line-height: 30px;
+    font-size: 20px;
+    text-align: left;
+    padding-left: 5px;
+}
+.graph-dayofweek,
+.graph-main {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+.graph-dayofweek {
+    height: 20px;
+    line-height: 20px;
+    font-size: 14px;
+    color: var(--bs-gray-600);
+}
+.graph-day {
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    margin: 3.5px auto;
+    background-color: var(--bs-gray-100);
+    border-radius: 5px;
+    user-select: none;
+}
+.graph-day time {
+    font-size: 14px;
+}
+
+#calendar-stat {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    height: 110px;
+}
+.stat-content {
+    float: left;
+    height: 100%;
+    padding: 10px;
+    text-align: center;
+}
+.stat-title {
+    height: 30px;
+    line-height: 30px;
+    font-size: 20px;
+}
+.stat-value {
+    display: block;
+    height: 60px;
+    line-height: 60px;
+    font-size: 20px;
+}
+
+#summary-recent {
+    width: 100%;
+}
+#summary-recent-book {
+    float: left;
+    width: 461px;
+}
+#summary-recent-review {
+    float: right;
+    width: 461px;
+}
+
+.recent-content {
+    display: grid;
+}
+
+.recent-item {
+    height: 140px;
+}
+.no-recent-item {
+    display: block;
+    height: 100%;
+    line-height: 50px;
+    padding: 50px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.recent-thumbnail {
+    float: left;
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    margin: 10px;
+    border: 1px solid var(--bs-gray-500);
+}
+.recent-info,
+.recent-progress {
+    float: left;
+    width: 309px;
+    margin: 10px 0;
+}
+
+.recent-title {
+    height: 25px;
+    line-height: 25px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    white-space: nowrap;
+}
+.recent-title-link {
+    font-weight: bold;
+    text-decoration: none;
+}
+.recent-author,
+.recent-readpercent,
+.recent-readpage,
+.recent-readdate {
+    float: left;
+    height: 20px;
+    line-height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    white-space: nowrap;
+    font-size: 14px;
+    color: var(--bs-gray-600);
+}
+.recent-readpage {
+    float: right;
+}
+
+.progress {
+    float: left;
+    width: 309px;
+    height: 15px;
+}
+.progress-bar {
+    background-color: var(--bs-gray-700);
+}

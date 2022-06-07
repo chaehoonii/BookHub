@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="multi.dokgi.bookhub.readinglog.dao.IReadingLogDAO">
+	<!-- 독서활동 기록하기 -->
+	<insert id="writeReadingLog" parameterType="ReadingLogDTO">
+		INSERT INTO
+			`bookhub`.`readinglog`(user_id, book_isbn, start_page, end_page, summary, read_date, read_complete)
+		VALUES
+			(#{userId}, #{bookISBN}, #{startPage}, #{endPage}, #{summary}, #{readDate}, #{readComplete});
+	</insert>
+	
+	<!-- 최근 읽은 책 조회 -->
+	<select id="getRecentReadingLog" resultType="ReadingLogDTO">
+		SELECT
+			rl.*
+		FROM
+			(SELECT
+				*
+			FROM
+				`bookhub`.`readinglog`
+			WHERE
+				user_id LIKE #{userId}) AS rl
+			JOIN
+			(SELECT
+				user_id,
+				book_ISBN,
+				max(read_date) AS max_read_date,
+				max(end_page) AS max_end_page
+			FROM
+				`bookhub`.`readinglog`
+			WHERE
+				user_id LIKE #{userId}
+			GROUP BY
+				book_ISBN) AS maxrl
+			ON (rl.book_ISBN = maxrl.book_ISBN AND rl.read_date = maxrl.max_read_date AND rl.end_page = maxrl.max_end_page)
+		ORDER BY
+			read_date DESC
+		LIMIT
+			0, 3
+	</select>
+	
+	<!-- 최근 독서 활동 조회 -->
+	<select id="getRecentReadingCalendar" resultType="ReadingCalendarDTO">
+		SELECT
+			read_date,
+			SUM(end_page - start_page + 1) AS read_page
+		FROM
+			`bookhub`.`readinglog`
+		WHERE
+			user_id LIKE #{userId}
+			AND read_date BETWEEN LAST_DAY(NOW() - INTERVAL 3 MONTH) + INTERVAL 1 DAY AND NOW()
+		GROUP BY
+			read_date
+	</select>
+</mapper>

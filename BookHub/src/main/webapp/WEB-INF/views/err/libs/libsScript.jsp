@@ -7,9 +7,6 @@
 <!-- Bootstrap WebJars -->
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 
-<!-- sweetalert CDN libs -->
-<script src="/static/libs/sweetalert.min.js"></script>
-
 <!-- 공통 스크립트 -->
 
 <!-- 헤더 스크립트 -->

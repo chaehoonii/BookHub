@@ -8,7 +8,6 @@
 	<meta charset="UTF-8">
 	<title>BookHub : 로그인</title>
 	<link rel="stylesheet" href="/static/css/user/user_login.css" />
-	<jsp:include page="libs/libsStyles.jsp" flush="false" />
 </head>
 
 <body>
@@ -24,7 +23,6 @@
 			</div>
 		</div>
 	</div>
-	<jsp:include page="libs/libsScript.jsp" flush="false" />
 </body>
 
 </html>
