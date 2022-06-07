@@ -7,6 +7,7 @@
 	<!-- Bootstrap WebJars -->
 	<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
 	<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="/static/css/user/common_style.css">
 	<link rel="stylesheet" href="/static/css/user/user_register_new.css">
 </head>
 
