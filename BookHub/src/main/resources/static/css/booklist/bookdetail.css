@@ -36,14 +36,69 @@
 }
 .bookdetail_bookinfo{
 	flex-direction: column;
-	margin:10px;
+	margin:10px 20px;
 }
 .bookdetail_bookname{	
 	font-family: 'GowunDodum-Regular';
 	font-size:25px;
 	font-weight: bolder;
-	margin:10px;
+	margin:10px 0px;
 }
 .bookdetail_booksubinfo{
+	margin:10px 0px;
+	font-size:18px;
+}
+/* 책 등록, 책 진행 상황, 리뷰 등록 */
+.bookReview_reg{
+	margin:20px 0px;	
+}
+
+/* 리뷰 */
+.bookReview_content{	
+	margin-top:10px;
+	border: 1px solid #9b9b9b;
+    border-radius: 5px;
+    border-collapse: collapse;
+}
+.bookReview_title{
+	height:30px;
+	padding:8px 5px 0px 15px;
+	border-radius: 5px 5px 0px 0px;
+	border-bottom: 1px solid #9b9b9b;
+	background-color: #eeeeee;
+}
+.bookReview_body{
 	margin:10px;
+	min-height:96px;
+}
+.reviewlist_item{
+	display:flex;
+	align-items: center;
+	border-bottom: 2px solid #e8e8e8;
+}
+.reviewlist_body{
+	margin:10px;
+}
+.reviewlist_userthumbnail{
+	margin:10px;
+	width:96px;
+	height:96px;
+	align-items: center;
+}
+.reviewlist_body{
+	margin:10px;
+	display:flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+.reviewlist_reviewcontent{
+	min-height:50px;
+}
+.reviewlist_userinfo{
+	display:flex;
+	font-size:15px;
+	color: #ABABAB;
+}
+.reviewlist_writedate{
+	margin-left:20px;
 }

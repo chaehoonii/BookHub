@@ -28,8 +28,6 @@ $(document).ready(function () {
 		const queryType = $('#query_type').val();
 		const searchWord = $('#booklist_search_word').val();
 		
-		console.log('queryType == ' + queryType + '///searchword===' + searchWord);
-		//String searchWord, String queryType, String SearchTarget, String start, String CategoryId
 		location.href = '/booksearch?mall=' + mall + '&searchWord=' + searchWord
 		 + '&queryType=' + queryType + '&SearchTarget=' + searchTarget + '&CategoryId=' + categoryId;		
 	});

@@ -3,9 +3,6 @@ package multi.dokgi.bookhub.booklist;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.lang.Nullable;
-import org.springframework.web.bind.annotation.RequestParam;
-
 import multi.dokgi.bookhub.booklist.dto.BookListDTO;
 import multi.dokgi.bookhub.booklist.dto.CategoryDTO;
 
@@ -18,5 +15,6 @@ public interface BookListService {
 	public BookListDTO itemLookUp(String isbn); 
 	
 	//검색대상(mall)별 카테고리 조회
-	public List<CategoryDTO> getCategoryList(String mall);
+	public List<CategoryDTO> getCategoryList(String mall);	
+
 }
