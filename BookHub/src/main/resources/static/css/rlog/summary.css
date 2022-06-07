@@ -143,5 +143,5 @@
     height: 15px;
 }
 .progress-bar {
-    background-color: var(--bs-blue);
+    background-color: var(--bs-gray-700);
 }
