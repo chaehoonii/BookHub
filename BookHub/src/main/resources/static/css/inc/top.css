@@ -66,7 +66,7 @@ body{
 	margin-left:20px;
 	position: relative;
 	cursor: pointer;
-	width: 13%;
+	width: 10%;
 	height:80px;
  	top: 0px;
 }
@@ -80,13 +80,13 @@ body{
 	width: 15%;
 }
 .search_box #search{
-	margin-top:10%;
+	margin-top:8%;
 	width: 70%;
 	height: 45%;
 	border-radius: 15px
 }
 .search_box #search_btn{
-	margin-top:10%;
+	margin-top:8%;
 	width: 25%;
 	height: 45%;
 	border: none;
@@ -97,12 +97,13 @@ body{
 	border-radius: 15px;
 }
 .nav_menu{
-	width: 70%
+	width: 50%
 }
 .nav_list {
   	display: grid;
-	grid-template-columns: repeat(3, 7%);
- 	grid-gap: 1em;
+  	text-align: center;
+	grid-template-columns: repeat(3, 125px);
+ 	grid-gap: 0.5em;
 }
 .nav_link {
   	font-weight: bold;
@@ -110,7 +111,7 @@ body{
 }
 .main_top{
 	float: right;
-	width: 12%;
+	width: 20%;
 }
 .main_user{
 	position: relative;
@@ -124,4 +125,9 @@ body{
 }
 .main_signup{
 	margin-left: 15px;
+}
+@media screen and (min-width:1200px){
+	.header{
+
+	}
 }

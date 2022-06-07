@@ -34,7 +34,7 @@
                         
                     </li>
                     <li class="nav_item">
-                        <a href="/rlog" class="nav_link">My Log</a>
+                        <a href="/rlog" class="nav_link">My Library</a>
                     </li>
                 </ul>
 			</div>	
@@ -44,9 +44,10 @@
    					   <a href="/oauth2/authorization/google" class="main_login"><img src="/static/img/google.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oogle Login</a>
  				  </c:if>
  				 <c:if test="${not empty user}">
- 				 	<div class="main_logId"><b>${user.userNick}</b>님 환영합니다🙇‍♀️</div>
-    				<a href="/logout" class="main_login">Logout</a>
-   					<a href="#" class="main_signup">My-page</a>
+ 				 	<div class="main_logId"><b>${user.userNick}</b>님 환영합니다🙇‍♀️
+    					<a href="/logout" class="main_login">Logout</a>
+   						<a href="#" class="main_signup">Settings</a>
+   					</div>
   				 </c:if>
 			</div>
         </div>
