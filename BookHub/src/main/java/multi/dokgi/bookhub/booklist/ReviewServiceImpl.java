@@ -22,8 +22,29 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public int userbookExist(String loginId) {
-		return dao.userbookExist(loginId);
+	public int userbookExist(String loginId, String isbn) {
+		return dao.userbookExist(loginId, isbn);
+	}
+
+	@Override
+	public int getProgress(String loginId, String isbn, int bookEndpage) {
+		int progress;
+		//현재 읽은 제일 마지막 페이지
+		int nowPage = dao.getProgress(loginId, isbn);
+		//독서 진행도 계산
+		progress =(int)((double)nowPage / (double)bookEndpage * 100);		
+		//System.out.println(" sevice progress===" + progress);
+		return progress;
+	}
+	
+	@Override
+	public int readComplete(String loginId, String isbn) {
+		return dao.readComplete(loginId, isbn);
+	}
+
+	@Override
+	public int reviewExist(String loginId, String isbn) {
+		return dao.reviewExist(loginId, isbn);
 	}
 
 }

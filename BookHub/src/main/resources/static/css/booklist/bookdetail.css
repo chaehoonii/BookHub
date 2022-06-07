@@ -13,11 +13,15 @@
     font-weight: normal;
     font-style: normal;
 }
+
 .bookdetail_container{
 	width:100%;
 	margin:100px 0px 50px 0px;
 	padding-left:20px;
-	font-family: 'GimpoGothicRegular00';	
+	
+}
+.bookdetail_container *{
+	font-family: 'GimpoGothicRegular00';
 }
 .bookdetail_content{
 	width:1290px;
@@ -26,6 +30,7 @@
 }
 .bookdetail_content_body{
 	width:1060px;
+	
 }
 /* 책 상세 내용 */
 .bookdetail_item{
@@ -71,6 +76,20 @@
 	margin:10px;
 	min-height:96px;
 }
+/* 리뷰 등록 폼 */
+#reviewItem_reg_display{
+	display:none;
+	border-bottom: 1px solid #9b9b9b;
+}
+.reviewItem_body{	
+	display: flex;
+}
+#review_txt{
+	width: 100%;
+	height: 80px;
+	resize: none;
+}
+/* 리뷰 list */
 .reviewlist_item{
 	display:flex;
 	align-items: center;

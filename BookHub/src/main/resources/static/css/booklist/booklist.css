@@ -17,8 +17,9 @@
 	width:100%;
 	margin:100px 0px 50px 0px;
 	padding-left:20px;
+}
+.booklist_container *{
 	font-family: 'GimpoGothicRegular00';
-	
 }
 .booklist_content{
 	width:1290px;
@@ -112,6 +113,7 @@
 #search_target, #category_id{
 	width:100px;
 	height:25px;
+	font-family: "Noto Sans Kr", sans-serif;
 }
 .booklist_search{	
 	margin-top:10px;
@@ -132,6 +134,7 @@
 }
 #query_type{
 	height:25px;
+	font-family: "Noto Sans Kr", sans-serif;
 }
 .booklist_search_txt{
 	height:25px;

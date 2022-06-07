@@ -9,8 +9,33 @@
 		from review as r inner join user as u on r.user_id = u.user_id 
 		where book_isbn like #{isbn}
 	</select>
-	<!-- 로그인한 아이디 user_book 테이블에 책 등록 되어있는지 조회  -->
+	
+	<!-- 로그인한 아이디 reeadinglog에 책 등록 되어있는지 조회   -->
 	<select id="userbookExist" resultType="int" parameterType="String">
-		select count(*) as count from user_book where user_id like #{loginId}
+		select count(*) as count 
+		from readinglog 
+		where user_id like #{loginId} and book_ISBN like #{isbn}
+	</select>
+	<!-- 로그인한 아이디 독서 진행도 -->
+	<select id="getProgress" resultType="int" parameterType="String">
+		select end_page 
+		from readinglog
+		where user_id like #{loginId} and book_ISBN like #{isbn}
+		order by end_page desc 
+		limit 1
+	</select>
+	<!-- 완독 조회 -->
+	<select id="readComplete" resultType="int" parameterType="String">
+		select count(*) as count 
+		from readinglog
+		where user_id like #{loginId} and book_ISBN like #{isbn}
+		and read_complete = 1;
+	</select>
+	
+	<!-- 로그인한 아이디 review 테이블에 리뷰 등록했는지 조회  -->
+	<select id="reviewExist" resultType="int" parameterType="String">
+		select count(*) as count 
+		from review 
+		where user_id like #{loginId} and book_isbn like #{isbn}
 	</select>
 </mapper>
