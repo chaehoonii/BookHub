@@ -13,5 +13,11 @@ public class UserServiceImpl implements IUserService{
 
 	@Autowired
 	IUserDAO userDao;
+
+	@Override
+	public void withdraw(String userId) {
+		userDao.withdraw(userId);
+	}
+	
 	
 }

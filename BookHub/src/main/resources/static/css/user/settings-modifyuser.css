@@ -1,5 +1,23 @@
 @charset "UTF-8";
 
-section.container{
+section.container {
     margin-top: 160px;
+}
+
+
+article .container-context {
+    display: flex;
+}
+
+article .lables-nickname {
+    flex-grow: 1;
+}
+
+article .buttons-nickname {
+    display: flex;
+    flex-grow: 1;
+}
+
+article #nick_btn{
+    margin-left: 10%;
 }

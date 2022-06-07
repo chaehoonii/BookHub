@@ -18,16 +18,23 @@
 		<br>
 		<div class="container-page">
 			<form id="change_url">
-				<div class="item">닉네임 
-					<input type=text name="userNick" id="userNick" value=${user.userNick} placeholder=${user.userNick} class="memberInfo"> 
-					<input type="button" id="nick_btn" class="btn btn-primary buttons" value="중복확인">
-					<p id="nickappend"></p>
+				<!-- 닉네임 수정 (2행)-->
+				<div class="container-context container-nickname">
+					<div class="lables-nickname">
+						<h5 class="lables-text">닉네임 변경</h5>
+					</div>
+					<div class="buttons buttons-nickname">
+						<input type=text name="userNick" id="userNick" value=${user.userNick}
+							placeholder=${user.userNick} class="memberInfo">
+						<input type="button" id="nick_btn" class="btn btn-outline-dark buttons" value="중복확인">
+					</div>
 				</div>
-				<br> 
-				<input type = hidden name = "userId" id = "userId" value = ${user.userId}>
- 				<input type = hidden name = "userRole" id = "userRole" value = ${user.userRole}>
-				<div class="register-container">
-					<input type="button" id="register_btn" value="회원가입" class="btn btn-primary item buttons">
+				<p id="nickappend"></p>
+				<input type=hidden name="userId" id="userId" value=${user.userId}>
+				<input type=hidden name="userRole" id="userRole" value=${user.userRole}>
+				<!-- 변경하기 버튼 -->
+				<div class="register-container update-comlete-container">
+					<input type="button" id="register_btn" value="회원가입" class="btn btn-outline-dark item buttons">
 				</div>
 			</form>
 		</div>

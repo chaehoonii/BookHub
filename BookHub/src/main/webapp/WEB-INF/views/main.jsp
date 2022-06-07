@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link rel="stylesheet" href="static/css/home.css" type="text/css">
 <div class="slider" id="slider" >
 	<input type="radio" name="slide-radios" class="slide-radio" checked id="slide-radio-1">
@@ -34,7 +36,7 @@
 			<h2>어떤 책을 읽었나요? <br/>
 			오늘 읽은 페이지를 기록하러 가볼까요?<br/>
 			독서를 통해 마음 속 나무를 키워보아요</h2>
-			<a href="${url}/profile">책 심으러 가기</a>
+			<a href="${url}/rlog">책 심으러 가기</a>
 		</div>
 	</div>
 </div>

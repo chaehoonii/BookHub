@@ -20,4 +20,6 @@ public interface IUserDAO {
 	public void savesns(UserDTO userDto);
 	
 	public void updateRegister(UserDTO userDto);
+	
+	public int withdraw(@Param("user_id") String userId);
 }

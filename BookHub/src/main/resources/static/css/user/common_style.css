@@ -1,18 +1,82 @@
 @charset "UTF-8";
 
 /*=====부트스트랩 설정 무시=====*/
-a, a:visited, a:hover, a:active {
-    text-decoration: none !important;
-    color: black;
-}
-dl, ol, ul {
-    margin-top: 0 !important;
-    margin-bottom: 0rem !important;
-}
-ol, ul {
-    padding-left: 0rem !important;
+a,
+a:visited,
+a:hover,
+a:active {
+	text-decoration: none !important;
+	color: black;
 }
 
-section.container{
-    margin-top: 160px;
+dl,
+ol,
+ul {
+	margin-top: 0 !important;
+	margin-bottom: 0rem !important;
+}
+
+ol,
+ul {
+	padding-left: 0rem !important;
+}
+
+#nickappend>.enable {
+	color: #198754;
+}
+
+#nickappend>.disable {
+	color: #bb2d3b;
+}
+
+
+article.article-container {
+	display: block;
+	text-align: center;
+	padding: 3rem;
+	border: 1px;
+	background-color: #f9f9f9;
+	border-radius: 15px;
+	margin-bottom: 2rem;
+	min-width: 70%;
+	margin: 0 auto;
+}
+
+
+/* 부트스트랩 버튼 수정 */
+.btn-outline-dark {
+	/* background: white !important; */
+}
+
+/* .btn-primary {
+	background-color: #F9F9F9;
+	color: black;
+	border: none;
+}
+
+.btn-primary:hover {
+	background-color: #F9F9F9;
+	color: black;
+	border: none;
+}
+
+.btn-primary:active {
+	background-color: #F9F9F9 ;
+	color: black;
+	border: none;
+	outline: none;
+}
+
+.btn-primary:focus {
+	background-color: #CDF0EA;
+	color: #3387a8;
+	border: none;
+	outline: none;
+} */
+
+section.container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	margin-top: 160px;
 }

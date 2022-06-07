@@ -17,6 +17,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,6 +31,7 @@ import multi.dokgi.bookhub.config.auth.dto.SessionUser;
 import multi.dokgi.bookhub.user.dao.IUserDAO;
 import multi.dokgi.bookhub.user.dto.Role;
 import multi.dokgi.bookhub.user.dto.UserDTO;
+import multi.dokgi.bookhub.user.service.IUserService;
 
 /**
  * @author Seongil, Yoon
@@ -39,6 +41,9 @@ public class UserController {
 
 	@Autowired
 	IUserDAO userDao;
+
+	@Autowired
+	IUserService userService;
 
 	// 헤더의 로그인버튼
 //	@GetMapping("/google-login")
@@ -114,7 +119,7 @@ public class UserController {
 		model.addAttribute("user", userDto);
 		System.out.println("사용자닉 :" + user.getUserNick() + ", 현재권한 :" + user.getUserRole());
 
-		// 브라우저 쿠키까지 삭제해야 되지만 어차피 초기화면으로 이동할꺼라 /logout으로 처리
+		// 브라우저 쿠키까지 삭제해야 되지만 어차피 초기화면으로 이동할꺼라 /logout으로 처리(로그아웃하면 쿠키(세션값) 초기화)
 		return "redirect:/logout";
 	}
 
@@ -124,19 +129,29 @@ public class UserController {
 	}
 
 	@GetMapping("/settings")
-	public String userSettings(@LoginUser SessionUser user, Model model) {
+	public String userSettingsView(@LoginUser SessionUser user, Model model) {
 		if (user == null) {
 			throw new UnauthorizedException(ErrorCode.UNAUTHORIZED);
 		}
 		return "/user/settings-modifyuser";
 	}
 
-	@GetMapping("/settings-deleteuser")
-	public String deleteUser(@LoginUser SessionUser user, Model model) {
+	@GetMapping("/settings-withdraw")
+	public String withdrawView(@LoginUser SessionUser user, Model model) {
 		if (user == null) {
 			throw new UnauthorizedException(ErrorCode.UNAUTHORIZED);
 		}
-		return "/user/settings-deleteuser";
+		return "/user/settings-withdraw";
+	}
+
+	@PostMapping("/settings-withdraw")
+	public String withdraw(@LoginUser SessionUser user, Model model) {
+		if (user == null) {
+			throw new UnauthorizedException(ErrorCode.UNAUTHORIZED);
+		}
+		userService.withdraw(user.getUserId());
+
+		return "redirect:/logout";
 	}
 
 }
