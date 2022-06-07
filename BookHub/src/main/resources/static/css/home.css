@@ -12,6 +12,7 @@
 	--slide-3-link: #00572c;
 }
 .slider{
+	font-family: 'GowunDodum-Regular';
 	margin-top:80px;
 	position: absolute;
 	left: 0; right: 0;top: 0;bottom: 0;
@@ -116,7 +117,7 @@
 	line-height: 48px;
 	letter-spacing: 2px;
 	text-transform: uppercase;
-	font-weight: 900;
+	font-weight: 400;
 	margin-bottom: 30px;
 }
 .slide h2{
