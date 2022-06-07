@@ -35,7 +35,7 @@ public class SecurityConfig {
 		// 화이트리스트
 		http.authorizeRequests().antMatchers("/", "/login/**","/google-login/**", "/static/**", "/logout/**", "/err*").permitAll()
 			.antMatchers("/book**").permitAll()
-			.antMatchers("/register/**").access("hasRole('ROLE_uncerti_USER') or hasRole('ROLE_ADMIN')")
+			.antMatchers("/register/**").permitAll()
 			.anyRequest().authenticated();
 
 		// 기본 로그인 해제
