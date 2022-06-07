@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%-- <script src="/jquery-3.6.0.min.js"></script> --%>
 </head>
 <body>
 	<div class="booklist_container">
