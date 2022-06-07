@@ -42,7 +42,7 @@ public class ReadingLogController {
 			// 로그인 유저인 경우
 
 			// 최근 읽은 책 (최대 3개)
-			List<ReadingLogDTO> recentLog = rlService.getRecentReadingLog(user.getUserId());
+			List<ReadingLogDTO> recentLog = rlService.getRecentBook(user.getUserId());
 
 			// 인터파크 도서 API - ISBN으로 도서 정보 검색
 			Map<String, JSONObject> bookInfo = new HashMap<String, JSONObject>();
@@ -67,7 +67,7 @@ public class ReadingLogController {
 	@ResponseBody
 	public String summaryCalendar(@LoginUser SessionUser user) {
 		// 최근 독서 활동
-		List<ReadingCalendarDTO> recentCalendar = rlService.getRecentReadingCalendar(user.getUserId());
+		List<ReadingCalendarDTO> recentCalendar = rlService.getRecentCalendar(user.getUserId());
 		JSONObject out = new JSONObject();
 
 		out.put("recentCalendar", recentCalendar);
@@ -77,13 +77,33 @@ public class ReadingLogController {
 
 	// 내 서재 페이지 접속
 	@RequestMapping("/rlog/library")
-	public ModelAndView profileLibrary(@LoginUser SessionUser user) {
+	public ModelAndView profileLibrary(@LoginUser SessionUser user, String q, Integer page) {
 		ModelAndView mv = new ModelAndView();
 
 		if (user != null) {
 			// 로그인 유저인 경우
 
+			List<ReadingLogDTO> library = null;
+			if (q == null || q.equals("")) {
+				library = rlService.getLibrary(user.getUserId(), 1);
+			} else {
+				library = rlService.searchLibrary(user.getUserId());
+			}
+
+			// 인터파크 도서 API - ISBN으로 도서 정보 검색
+			Map<String, JSONObject> bookInfo = new HashMap<String, JSONObject>();
+			for (ReadingLogDTO dto : library) {
+				JSONObject book = rlService.getBookInfo(dto.getBookISBN());
+				bookInfo.put(dto.getBookISBN(), book);
+			}
+
+			if (q != null && !q.equals("")) {
+				library.removeIf((dto) -> (!((String) bookInfo.get(dto.getBookISBN()).get("title")).contains(q)));
+			}
+
 			mv.addObject("user", user);
+			mv.addObject("library", library);
+			mv.addObject("bookInfo", bookInfo);
 
 			mv.setViewName("rlog/library");
 		} else {

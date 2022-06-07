@@ -83,15 +83,33 @@ public class ReadingLogServiceImpl implements IReadingLogService {
 		return result;
 	}
 
-	// 최근 독서활동 조회
+	// 최근에 읽은 책 조회
 	@Override
-	public List<ReadingLogDTO> getRecentReadingLog(String userId) {
-		return rlDAO.getRecentReadingLog(userId);
+	public List<ReadingLogDTO> getRecentBook(String userId) {
+		// index 0부터 3개까지 조회
+		return rlDAO.getRecentBook(userId, 0, 3);
 	}
 
+	// 최근 독서 활동 조회
 	@Override
-	public List<ReadingCalendarDTO> getRecentReadingCalendar(String userId) {
-		return rlDAO.getRecentReadingCalendar(userId);
+	public List<ReadingCalendarDTO> getRecentCalendar(String userId) {
+		return rlDAO.getRecentCalendar(userId);
+	}
+
+	// 내 서재 조회
+	@Override
+	public List<ReadingLogDTO> getLibrary(String userId, Integer page) {
+		// 페이지 당 20개씩 조회
+		if (page == null || page < 1) {
+			page = 1;
+		}
+		return rlDAO.getRecentBook(userId, (page - 1) * 20, 20);
+	}
+
+	// 내 서재 검색
+	@Override
+	public List<ReadingLogDTO> searchLibrary(String userId) {
+		return rlDAO.getRecentBook(userId, 0, 1000);
 	}
 
 }

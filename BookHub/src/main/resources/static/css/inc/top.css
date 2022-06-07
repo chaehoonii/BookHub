@@ -21,15 +21,15 @@
 html {
   scroll-behavior: smooth;
 }
+body{
+	max-height: 100vh;
+}
 a, a:visited, a:hover, a:active{
-	text-decoration: none;
-	color: black;
+	text-decoration: none !important;
+	color: black !important;
 }
 ul {
   list-style: none;
-}
-body{
-	max-height: 100vh;
 }
 
 /*=============== HEADER ===============*/

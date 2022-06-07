@@ -16,8 +16,8 @@ public interface IReadingLogDAO {
 
 	public int writeReadingLog(ReadingLogDTO rlDTO);
 
-	public List<ReadingLogDTO> getRecentReadingLog(String userId);
+	public List<ReadingLogDTO> getRecentBook(String userId, int index, int limit);
 
-	public List<ReadingCalendarDTO> getRecentReadingCalendar(String userId);
+	public List<ReadingCalendarDTO> getRecentCalendar(String userId);
 
 }
