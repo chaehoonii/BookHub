@@ -12,8 +12,8 @@
 			(#{userId}, #{bookISBN}, #{startPage}, #{endPage}, #{summary}, #{readDate}, #{readComplete});
 	</insert>
 	
-	<!-- 최근 읽은 책 조회 -->
-	<select id="getRecentReadingLog" resultType="ReadingLogDTO">
+	<!-- 읽은 책 조회(최근 읽은 책, 내 서재) -->
+	<select id="getRecentBook" resultType="ReadingLogDTO">
 		SELECT
 			rl.*
 		FROM
@@ -39,11 +39,11 @@
 		ORDER BY
 			read_date DESC
 		LIMIT
-			0, 3
+			#{index}, #{limit}
 	</select>
 	
 	<!-- 최근 독서 활동 조회 -->
-	<select id="getRecentReadingCalendar" resultType="ReadingCalendarDTO">
+	<select id="getRecentCalendar" resultType="ReadingCalendarDTO">
 		SELECT
 			read_date,
 			SUM(end_page - start_page + 1) AS read_page

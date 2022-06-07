@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 
@@ -123,7 +123,7 @@
                                         <div class="progress">
                                             <div class="progress-bar" role="progressbar" style="width: ${percentReadPage}" aria-valuenow="${log.endPage}" aria-valuemin="0" aria-valuemax="${bookInfo[log.bookISBN].get('subInfo').get('itemPage')}"></div>
                                         </div>
-                                        <span class="recent-readdate">마지막 독서일: <fmt:formatDate pattern="yyyy년 MM월 dd일" value="${parsedReadDate}"/></span>
+                                        <span class="recent-readdate">마지막 독서일: <fmt:formatDate pattern="yyyy년 M월 d일" value="${parsedReadDate}"/></span>
                                     </div>
                                 </div>
                             </c:forEach>
