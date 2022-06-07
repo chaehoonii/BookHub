@@ -10,10 +10,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import multi.dokgi.bookhub.config.auth.LoginUser;
 import multi.dokgi.bookhub.config.auth.dto.SessionUser;
+import multi.dokgi.bookhub.readinglog.dto.ReadingCalendarDTO;
 import multi.dokgi.bookhub.readinglog.dto.ReadingLogDTO;
 import multi.dokgi.bookhub.readinglog.service.IReadingLogService;
 
@@ -39,7 +41,7 @@ public class ReadingLogController {
 		if (user != null) {
 			// 로그인 유저인 경우
 
-			// 최근에 읽은 책 (최대 3개)
+			// 최근 읽은 책 (최대 3개)
 			List<ReadingLogDTO> recentLog = rlService.getRecentReadingLog(user.getUserId());
 
 			// 인터파크 도서 API - ISBN으로 도서 정보 검색
@@ -58,6 +60,19 @@ public class ReadingLogController {
 			mv.setViewName("redirect:/oauth2/authorization/google");
 		}
 		return mv;
+	}
+
+	// API: 최근 독서 활동
+	@RequestMapping("/rlog/recentcalendar")
+	@ResponseBody
+	public String summaryCalendar(@LoginUser SessionUser user) {
+		// 최근 독서 활동
+		List<ReadingCalendarDTO> recentCalendar = rlService.getRecentReadingCalendar(user.getUserId());
+		JSONObject out = new JSONObject();
+
+		out.put("recentCalendar", recentCalendar);
+
+		return out.toString();
 	}
 
 	// 내 서재 페이지 접속
@@ -83,7 +98,7 @@ public class ReadingLogController {
 		ModelAndView mv = new ModelAndView();
 		if (user != null) {
 			// 로그인 유저인 경우
-			
+
 			JSONObject bookInfo = rlService.getBookInfo(isbn);
 
 			mv.addObject("user", user);
@@ -105,7 +120,7 @@ public class ReadingLogController {
 
 		if (user != null) {
 			// 로그인 유저인 경우
-			
+
 			String userId = user.getUserId();
 			rlService.writeReadingLog(userId, isbn, startPage, endPage, summary, readDate, readComplete);
 
