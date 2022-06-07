@@ -18,12 +18,31 @@
 	margin-bottom: 15%;
 	padding-top: 2rem;
 	padding-bottom: 2rem;
-	background-color: rgba(0, 0, 0, 0.55);
 	border-radius: 10px;
-	color: white;
+	color: black;
+	background-color: #f9f9f9;
 }
 
-body::after { /* 가상 선택자  */
+.container-context {
+	display: flex;
+}
+
+.lables-nickname {
+	flex-grow: 1;
+}
+
+.buttons-nickname {
+	display: flex;
+	flex-grow: 3;
+}
+
+#nick_btn {
+	margin-left: 10%;
+}
+
+
+body::after {
+	/* 가상 선택자  */
 	width: 100%;
 	height: 100%;
 	content: "";
@@ -45,32 +64,7 @@ body::after { /* 가상 선택자  */
 	width: 100px;
 	font-weight: 600px;
 }
-/* 부트스트랩 버튼 수정 */
-.btn-primary {
-	background-color: #CDF0EA;
-	color: #3387a8;
-	border: none;
-}
 
-.btn-primary:hover {
-	background-color: #CDF0EA;
-	color: #3387a8;
-	border: none;
-}
-
-.btn-primary:active {
-	background-color: #CDF0EA;
-	color: #3387a8;
-	border: none;
-	outline: none;
-}
-
-.btn-primary:focus {
-	background-color: #CDF0EA;
-	color: #3387a8;
-	border: none;
-	outline: none;
-}
 
 #mbEmail {
 	margin-right: 0.25rem;

@@ -46,7 +46,7 @@
  				 <c:if test="${not empty user}">
  				 	<div class="main_logId"><b>${user.userNick}</b>님 환영합니다🙇‍♀️
     					<a href="/logout" class="main_login">Logout</a>
-   						<a href="#" class="main_signup">Settings</a>
+   						<a href="/settings" class="main_signup">Settings</a>
    					</div>
   				 </c:if>
 			</div>

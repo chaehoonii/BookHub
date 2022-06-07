@@ -5,4 +5,5 @@ package multi.dokgi.bookhub.user.service;
  */
 public interface IUserService {
 	
+	public void withdraw(String userId); 
 }

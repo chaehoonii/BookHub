@@ -20,4 +20,8 @@
 		UPDATE `bookhub`.`user` SET `user_nick`=#{userNick}, `user_role`=#{userRole}
 		WHERE  `user_id`= #{userId};
 	</update>
+	
+	<delete id="withdraw" parameterType="String">
+		DELETE FROM `bookhub`.`user` WHERE  `user_id` = #{user_id};
+	</delete>
 </mapper>
