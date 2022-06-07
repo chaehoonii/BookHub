@@ -1,0 +1,166 @@
+@charset "UTF-8";
+/* 헤더/메인 */
+@font-face {
+    font-family: 'GowunDodum-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunDodum-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+/* 본문 */
+@font-face {
+    font-family: 'GimpoGothicRegular00';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/GimpoGothicRegular00.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+.booklist_container{
+	width:100%;
+	margin:100px 0px 50px 0px;
+	padding-left:20px;
+}
+.booklist_container *{
+	font-family: 'GimpoGothicRegular00';
+}
+.booklist_content{
+	width:1290px;
+	margin: 0 auto;
+	display:flex;
+}
+.booklist_content_body{
+	width:1060px;
+}
+/* 페이지명 */
+.booklist_content_title{
+	height:30px;
+	margin-bottom:15px;
+	font-size: 25px;
+	font-weight:bolder;
+	font-family: 'GowunDodum-Regular';
+}
+/* 선택된 카테고리 명 */
+.booklist_content_category{
+	margin:10px 5px;
+	font-family: 'GowunDodum-Regular';
+	font-size:20px;
+}
+/* 랭킹 순위별 조회 */
+.booklist_content_ranking{
+	margin:5px;
+	padding-top:8px;	
+/*	border-top: 1px solid #9b9b9b;
+	border-bottom: 1px solid #9b9b9b;
+	background-color: #eeeeee; */
+	border-top: 2px solid #e8e8e8;
+	border-bottom: 2px solid #e8e8e8;
+}
+.booklist_content_ranking a{
+	padding:0px 10px;
+	/*border-right: 1px solid #9b9b9b;*/
+	border-right: 2px solid #e8e8e8;
+	text-align:center;
+}
+.booklist_content_ranking a:last-child{
+	border-right: none;
+}
+.booklist_content_ranking .view{
+	font-weight: bolder;
+}
+/* 반복할 booklist */
+.booklist_content_item{
+	display:grid;
+	grid-template-columns: repeat(5, 200px);
+	gap:15px;
+	border-bottom: 2px solid #e8e8e8;	
+}
+.booklist_item{
+	display:flex;
+	/*flex-direction: column;*/	
+	margin:10px;
+}
+.booklist_item_body{
+	display:flex;	
+}
+.booklist_ranking{
+	width:30px;
+	margin-right:8px;
+}
+.booklist_ranking > p{	
+	height:35px;
+	font-family: 'GowunDodum-Regular';
+	font-size: 22px;
+	text-align: center;
+	border-bottom: 2px solid #ABABAB;	
+}
+.booklist_bookinfo{
+	margin-top:10px;
+	flex-direction: column;
+}
+.booklist_bookname{
+	font-size:15px;
+}
+.booklist_booksubinfo{
+	font-size:12px;
+	color: #ABABAB;
+}
+
+/* 카테고리 선택 */
+.booklist_category{
+	width:210px;
+	margin-top:50px;
+	margin-left:15px;
+}
+/* 검색 */
+#search_target, #category_id{
+	width:100px;
+	height:25px;
+	font-family: "Noto Sans Kr", sans-serif;
+}
+.booklist_search{	
+	margin-top:10px;
+	border: 1px solid #9b9b9b;
+    border-radius: 5px;
+    border-collapse: collapse;
+}
+.booklist_search_title{
+	height:30px;
+	padding:5px 5px 0px 5px;
+	border-radius: 5px 5px 0px 0px;
+	border-bottom: 1px solid #9b9b9b;
+	background-color: #eeeeee;
+}
+
+.booklist_search_body{
+	margin:5px;
+}
+#query_type{
+	height:25px;
+	font-family: "Noto Sans Kr", sans-serif;
+}
+.booklist_search_txt{
+	height:25px;
+	margin:5px 1px;
+	display:flex;
+	align-items: center;
+	
+}
+#booklist_search_word{
+	width:150px;
+	height:25px;
+	margin-right:3px;
+	font-family: 'GimpoGothicRegular00';
+	padding-top:5px;
+	padding-left:3px;
+}
+#booklist_search_btn{
+	width:40px;
+	height:25px;
+	border: none;
+    background-color: black;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'GimpoGothicRegular00';
+    font-size:13px;
+    text-align: center;
+    padding:5px;
+}

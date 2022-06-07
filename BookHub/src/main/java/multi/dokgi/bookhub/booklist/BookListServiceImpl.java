@@ -1,27 +1,41 @@
 package multi.dokgi.bookhub.booklist;
 
 import java.net.URLEncoder;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.helpers.ParserAdapter;
 
+import multi.dokgi.bookhub.booklist.dao.CategoryDAO;
+import multi.dokgi.bookhub.booklist.dto.BookListDTO;
+import multi.dokgi.bookhub.booklist.dto.CategoryDTO;
+
 @Service("booklistservice")
 public class BookListServiceImpl implements BookListService{
 	
+	@Autowired
+	@Qualifier("categorydao")
+	CategoryDAO dao;
+	
 	//상품 리스트 API
 	@Override
-	public Map<String, Object> itemList(String start) {
+	public Map<String, Object> itemList(String SearchTarget, String start, String CategoryId) {
 		List<BookListDTO> booklist = new ArrayList<BookListDTO>();
 		int totalResults = 0; //총 결과 수
 		Map<String,Object> result = new HashMap<String, Object>();
@@ -33,9 +47,11 @@ public class BookListServiceImpl implements BookListService{
 		try {
 			hm.put("ttbkey", "ttbkjn92051341001");		
 			hm.put("QueryType", "Bestseller");
-			hm.put("MaxResults", "10");
+			hm.put("SearchTarget", SearchTarget);
 			hm.put("start", start);
-			hm.put("SearchTarget", "Book");
+			hm.put("MaxResults", "10");
+			hm.put("CategoryId", CategoryId);
+			hm.put("Cover", "MidBig");
 			hm.put("output", "xml");
 			hm.put("Version", "20131101");
 			
@@ -53,7 +69,6 @@ public class BookListServiceImpl implements BookListService{
 			
 			for(BookListDTO item : api.Items){
 				booklist.add(item);
-				System.out.println(item.bookIsbn + " : " + item.bookName);
 			}
 			totalResults = api.totalResults;
 			
@@ -70,7 +85,7 @@ public class BookListServiceImpl implements BookListService{
 
 	//상품 검색 API
 	@Override
-	public Map<String,Object> itemSearch(String searchType, String searchWord, String start){
+	public Map<String,Object> itemSearch(String searchWord, String queryType, String SearchTarget, String start, String CategoryId){
 
 		List<BookListDTO> booklist = new ArrayList<BookListDTO>();
 		int totalResults = 0; //총 결과 수
@@ -83,11 +98,13 @@ public class BookListServiceImpl implements BookListService{
 		try {
 			hm.put("ttbkey", "ttbkjn92051341001");		
 			hm.put("Query", URLEncoder.encode(searchWord, "UTF-8"));
-			hm.put("QueryType", searchType);
-			hm.put("MaxResults", "25");
+			hm.put("QueryType", queryType);
+			hm.put("SearchTarget", SearchTarget);
 			hm.put("start", start);
-			hm.put("SearchTarget", "Book");
+			hm.put("MaxResults", "10");
 			hm.put("Sort", "Accuracy");
+			//hm.put("Cover", "MidBig");
+			hm.put("CategoryId", CategoryId);
 			hm.put("output", "xml");
 			
 			StringBuffer sb = new StringBuffer();
@@ -104,7 +121,7 @@ public class BookListServiceImpl implements BookListService{
 			
 			for(BookListDTO item : api.Items){
 				booklist.add(item);
-				System.out.println(item.bookIsbn + " : " + item.bookName);
+				System.out.println(item.getBookIsbn() + " : " + item.getBookName());
 			}
 			totalResults = api.totalResults;
 			
@@ -134,6 +151,7 @@ public class BookListServiceImpl implements BookListService{
 			hm.put("ItemId", isbn);
 			hm.put("Cover", "Big");
 			hm.put("output", "xml");
+			hm.put("Version", "20131101");
 			
 			StringBuffer sb = new StringBuffer();
 			Iterator<String> iter = hm.keySet().iterator();
@@ -151,7 +169,7 @@ public class BookListServiceImpl implements BookListService{
 			
 			for(BookListDTO item : api.Items){
 				booklist.add(item);
-				System.out.println(item.bookIsbn + " : " + item.bookName);
+				System.out.println(item.getBookIsbn() + " : " + item.getBookName());
 			}
 			bookdetail = booklist.get(0);
 			
@@ -163,8 +181,16 @@ public class BookListServiceImpl implements BookListService{
 		return bookdetail;
 	}
 
+	//검색대상(mall)별 카테고리 조회
+	@Override
+	public List<CategoryDTO> getCategoryList(String mall) {
+		return dao.getCategoryList(mall);
+	}
+
 }
 
+
+//알라딘 API
 class AladdinOpenAPIHandler extends DefaultHandler {
 	public List<BookListDTO> Items;
 	private BookListDTO currentItem;
@@ -195,7 +221,7 @@ class AladdinOpenAPIHandler extends DefaultHandler {
 			tempValue = "";
 		} else if (localName.equals("description")) {
 			tempValue = "";
-		} else if (localName.equals("pubdate")) {
+		} else if (localName.equals("pubDate")) {
 			tempValue = "";
 		} else if (localName.equals("publisher")) {
 			tempValue = "";
@@ -222,21 +248,21 @@ class AladdinOpenAPIHandler extends DefaultHandler {
 				currentItem = null;
 				inItemElement = false;
 			} else if (localName.equals("isbn13")) {
-				currentItem.bookIsbn = tempValue;
+				currentItem.setBookIsbn(tempValue);
 			} else if (localName.equals("title")) {
-				currentItem.bookName = tempValue;
+				currentItem.setBookName(tempValue);
 			} else if (localName.equals("cover")) {
-				currentItem.bookImg = tempValue;
+				currentItem.setBookImg(tempValue);
 			} else if (localName.equals("author")) {
-				currentItem.bookAuthor = tempValue;
+				currentItem.setBookAuthor(tempValue);
 			} else if (localName.equals("description")) {
-				currentItem.bookContent = tempValue;
-			} else if (localName.equals("pubdate")) {
-				currentItem.bookPubdate = tempValue;
+				currentItem.setBookContent(tempValue);
+			} else if (localName.equals("pubDate")) {
+				currentItem.setBookPubdate(tempValue);
 			} else if (localName.equals("publisher")) {
-				currentItem.bookPublisher = tempValue;
+				currentItem.setBookPublisher(tempValue);
 			} else if (localName.equals("itemPage")) {
-				currentItem.bookEndpage = Integer.parseInt(tempValue);
+				currentItem.setBookEndpage(Integer.parseInt(tempValue));
 			}
 		}
 	}

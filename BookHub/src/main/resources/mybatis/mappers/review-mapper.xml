@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="multi.dokgi.bookhub.booklist.dao.ReviewDAO">
+	<!-- 리뷰 조회 -->
+	<select id="getReviewList" resultType="ReviewJoinDTO" parameterType="String">
+		select review_num, r.user_id, book_isbn, review_content, review_writedate, user_thumbnail, user_nick
+		from review as r inner join user as u on r.user_id = u.user_id 
+		where book_isbn like #{isbn}
+	</select>
+	
+	<!-- 로그인한 아이디 reeadinglog에 책 등록 되어있는지 조회   -->
+	<select id="userbookExist" resultType="int" parameterType="String">
+		select count(*) as count 
+		from readinglog 
+		where user_id like #{loginId} and book_ISBN like #{isbn}
+	</select>
+	<!-- 로그인한 아이디 독서 진행도 -->
+	<select id="getProgress" resultType="int" parameterType="String">
+		select end_page 
+		from readinglog
+		where user_id like #{loginId} and book_ISBN like #{isbn}
+		order by end_page desc 
+		limit 1
+	</select>
+	<!-- 완독 조회 -->
+	<select id="readComplete" resultType="int" parameterType="String">
+		select count(*) as count 
+		from readinglog
+		where user_id like #{loginId} and book_ISBN like #{isbn}
+		and read_complete = 1;
+	</select>
+	
+	<!-- 로그인한 아이디 review 테이블에 리뷰 등록했는지 조회  -->
+	<select id="reviewExist" resultType="int" parameterType="String">
+		select count(*) as count 
+		from review 
+		where user_id like #{loginId} and book_isbn like #{isbn}
+	</select>
+</mapper>
