@@ -1,11 +1,22 @@
 @charset "UTF-8";
 @import url(https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap);
+@font-face {
+    font-family: 'GowunDodum-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunDodum-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'GimpoGothicRegular00';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/GimpoGothicRegular00.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 /*=====기본 설정=====*/
 *{
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "Noto Sans Kr", sans-serif;
 }
 html {
   scroll-behavior: smooth;
@@ -23,6 +34,7 @@ body{
 
 /*=============== HEADER ===============*/
 .header{
+	font-family: 'GowunDodum-Regular';
 	width: 100%;
   	height: 80px;
   	position: absolute;
