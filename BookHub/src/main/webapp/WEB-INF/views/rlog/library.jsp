@@ -19,7 +19,7 @@
         <!-- Profile Head -->
         <div id="profile-head">
             <h1 id="profile-username">
-                ${user.userNick}님의 독서 기록
+                ${user.userNick}님의 독서 기록장
             </h1>
         </div>
         <!-- Profile Tab -->
@@ -51,7 +51,7 @@
                                                     href="/rlog/edit?isbn=${book.bookISBN}">${bookInfo[book.bookISBN].get('title')}</a></div>
                                             <div class="library-author"><span>${bookInfo[book.bookISBN].get('author')}</span></div>
                                         </div>
-                                        <div class="library-summary">${book.summary}</div>
+                                        <div class="library-summary"><c:if test="${!empty book.summary}">NOTE: ${book.summary}</c:if></div>
                                         <div class="library-progress">
                                             <fmt:formatNumber value="${book.readPage/bookInfo[book.bookISBN].get('subInfo').get('itemPage')}" type="percent" var="percentReadPage"/>
                                             <fmt:parseDate value="${book.readDate}" pattern="yyyy-MM-dd'T'HH:mm" var="parsedReadDate" />

@@ -17,6 +17,7 @@ import multi.dokgi.bookhub.config.auth.LoginUser;
 import multi.dokgi.bookhub.config.auth.dto.SessionUser;
 import multi.dokgi.bookhub.readinglog.dto.ReadingCalendarDTO;
 import multi.dokgi.bookhub.readinglog.dto.ReadingLogDTO;
+import multi.dokgi.bookhub.readinglog.dto.ReadingStreakDTO;
 import multi.dokgi.bookhub.readinglog.service.IReadingLogService;
 
 /**
@@ -40,9 +41,10 @@ public class ReadingLogController {
 
 		if (user != null) {
 			// 로그인 유저인 경우
+			String userId = user.getUserId();
 
 			// 최근 읽은 책 (최대 3개)
-			List<ReadingLogDTO> recentLog = rlService.getRecentBook(user.getUserId());
+			List<ReadingLogDTO> recentLog = rlService.getRecentBook(userId);
 
 			// 인터파크 도서 API - ISBN으로 도서 정보 검색
 			Map<String, JSONObject> bookInfo = new HashMap<String, JSONObject>();
@@ -50,10 +52,18 @@ public class ReadingLogController {
 				JSONObject book = rlService.getBookInfo(dto.getBookISBN());
 				bookInfo.put(dto.getBookISBN(), book);
 			}
+			
+			// 누적 독서 페이지
+			int accReadPages = rlService.getAccReadPages(userId);
+			
+			// 연속 독서일
+			Map<String, ReadingStreakDTO> streak = rlService.getStreak(userId);
 
 			mv.addObject("user", user);
 			mv.addObject("recentLog", recentLog);
 			mv.addObject("bookInfo", bookInfo);
+			mv.addObject("accReadPages", accReadPages);
+			mv.addObject("streak", streak);
 
 			mv.setViewName("rlog/summary");
 		} else {
@@ -66,8 +76,10 @@ public class ReadingLogController {
 	@RequestMapping("/rlog/recentcalendar")
 	@ResponseBody
 	public String summaryCalendar(@LoginUser SessionUser user) {
+		String userId = user.getUserId();
+		
 		// 최근 독서 활동
-		List<ReadingCalendarDTO> recentCalendar = rlService.getRecentCalendar(user.getUserId());
+		List<ReadingCalendarDTO> recentCalendar = rlService.getRecentCalendar(userId);
 		JSONObject out = new JSONObject();
 
 		out.put("recentCalendar", recentCalendar);
@@ -82,12 +94,13 @@ public class ReadingLogController {
 
 		if (user != null) {
 			// 로그인 유저인 경우
+			String userId = user.getUserId();
 
 			List<ReadingLogDTO> library = null;
 			if (q == null || q.equals("")) {
-				library = rlService.getLibrary(user.getUserId(), 1);
+				library = rlService.getLibrary(userId, 1);
 			} else {
-				library = rlService.searchLibrary(user.getUserId());
+				library = rlService.searchLibrary(userId);
 			}
 
 			// 인터파크 도서 API - ISBN으로 도서 정보 검색
@@ -140,8 +153,8 @@ public class ReadingLogController {
 
 		if (user != null) {
 			// 로그인 유저인 경우
-
 			String userId = user.getUserId();
+			
 			rlService.writeReadingLog(userId, isbn, readPage, summary, readDate, readComplete);
 
 			mv.setViewName("redirect:/rlog/edit?isbn=" + isbn);
