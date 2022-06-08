@@ -120,9 +120,7 @@
                                         <fmt:parseDate value="${log.readDate}" pattern="yyyy-MM-dd'T'HH:mm" var="parsedReadDate" />
                                         <div class="recent-readpercent">${percentReadPage}</div>
                                         <div class="recent-readpage">${log.readPage}/${bookInfo[log.bookISBN].get('subInfo').get('itemPage')}</div>
-                                        <div class="progress">
-                                            <div class="progress-bar" role="progressbar" style="width: ${percentReadPage}" aria-valuenow="${log.readPage}" aria-valuemin="0" aria-valuemax="${bookInfo[log.bookISBN].get('subInfo').get('itemPage')}"></div>
-                                        </div>
+                                        <progress class="recent-progressbar" value="${log.readPage}" max="${bookInfo[log.bookISBN].get('subInfo').get('itemPage')}"></progress>
                                         <span class="recent-readdate">마지막 독서일: <fmt:formatDate pattern="yyyy년 M월 d일" value="${parsedReadDate}"/></span>
                                     </div>
                                 </div>
