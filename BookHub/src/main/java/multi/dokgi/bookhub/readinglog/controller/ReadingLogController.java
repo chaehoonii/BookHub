@@ -7,8 +7,8 @@ import java.util.Map;
 import org.json.JSONObject;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -139,28 +139,32 @@ public class ReadingLogController {
 		return mv;
 	}
 
-	// 독서활동 기록 페이지 접속(임시)
-	@GetMapping("/rlog/edit")
-	public ModelAndView readingLogEdit(@LoginUser SessionUser user, String isbn) {
+	// 독서활동 기록 페이지 접속
+	@RequestMapping("/rlog/book")
+	public ModelAndView readingLogBook(@LoginUser SessionUser user, String isbn) {
 		ModelAndView mv = new ModelAndView();
 		if (user != null) {
 			// 로그인 유저인 경우
+			String userId = user.getUserId();
 
+			List<ReadingLogDTO> readingLog = rlService.getReadingLog(userId, isbn);
+			Integer readingLogSum = rlService.getReadingLogSum(userId, isbn);
 			JSONObject bookInfo = rlService.getBookInfo(isbn);
 
 			mv.addObject("user", user);
+			mv.addObject("readingLogSum", readingLogSum);
+			mv.addObject("readingLog", readingLog);
 			mv.addObject("bookInfo", bookInfo);
 
-			mv.setViewName("rlog/edit");
-
+			mv.setViewName("rlog/book");
 		}
 		return mv;
 	}
 
-	// 독서활동 기록 (임시)
-	@PostMapping("/rlog/edit")
-	public ModelAndView readingLogEditResult(@LoginUser SessionUser user, String isbn, Integer readPage,
-			String readDate, @Nullable String readComplete, @Nullable String summary) {
+	// 독서활동 기록
+	@PostMapping("/rlog/book/edit")
+	public ModelAndView readingLogEdit(@LoginUser SessionUser user, String isbn, Integer readPage, String readDate,
+			@Nullable String readComplete, @Nullable String summary) {
 		ModelAndView mv = new ModelAndView();
 
 		if (user != null) {
@@ -169,10 +173,46 @@ public class ReadingLogController {
 
 			rlService.writeReadingLog(userId, isbn, readPage, summary, readDate, readComplete);
 
-			mv.setViewName("redirect:/rlog/edit?isbn=" + isbn);
-
+			mv.setViewName("redirect:/rlog/book?isbn=" + isbn);
 		}
 		return mv;
+	}
+
+	// 독서활동 삭제
+	@PostMapping("/rlog/book/delete")
+	@ResponseBody
+	public String readingLogDelete(@LoginUser SessionUser user, @RequestBody String data) {
+		JSONObject json = new JSONObject(data);
+		String bookISBN = (String) json.get("bookISBN");
+		Integer num = Integer.parseInt((String) json.get("num"));
+
+		if (user != null) {
+			// 로그인 유저인 경우
+			String userId = user.getUserId();
+
+			if (rlService.deleteReadingLog(userId, bookISBN, num)) {
+				return "success";
+			}
+		}
+		return "fail";
+	}
+
+	// 모든 독서활동 삭제
+	@PostMapping("/rlog/book/alldelete")
+	@ResponseBody
+	public String readingLogAllDelete(@LoginUser SessionUser user, @RequestBody String data) {
+		JSONObject json = new JSONObject(data);
+		String bookISBN = (String) json.get("bookISBN");
+
+		if (user != null) {
+			// 로그인 유저인 경우
+			String userId = user.getUserId();
+
+			if (rlService.deleteAllReadingLog(userId, bookISBN)) {
+				return "success";
+			}
+		}
+		return "fail";
 	}
 
 }

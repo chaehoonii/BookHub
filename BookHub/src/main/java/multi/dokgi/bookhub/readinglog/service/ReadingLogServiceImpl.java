@@ -68,7 +68,19 @@ public class ReadingLogServiceImpl implements IReadingLogService {
 		return out;
 	}
 
-	// 독서활동 기록하기
+	// 독서기록 조회
+	@Override
+	public List<ReadingLogDTO> getReadingLog(String userId, String bookISBN) {
+		return rlDAO.getReadingLog(userId, bookISBN);
+	}
+
+	// 읽은 페이지 합계 조회
+	@Override
+	public Integer getReadingLogSum(String userId, String bookISBN) {
+		return rlDAO.getReadingLogSum(userId, bookISBN);
+	}
+
+	// 독서활동 기록
 	@Override
 	public int writeReadingLog(String userId, String bookISBN, int readPage, String summary, String readDate,
 			String readComplete) {
@@ -88,6 +100,28 @@ public class ReadingLogServiceImpl implements IReadingLogService {
 
 		// 입력 결과 반환(1행 입력이므로 정상 결과값 1)
 		return result;
+	}
+
+	@Override
+	public boolean deleteReadingLog(String userId, String bookISBN, Integer num) {
+		if (num == null || bookISBN == null || bookISBN.equals("")) {
+			return false;
+		} else {
+			rlDAO.deleteReadingLog(userId, num);
+			rlDAO.uncheckReadComplete(userId, bookISBN);
+			return true;
+		}
+	}
+
+	@Override
+	public boolean deleteAllReadingLog(String userId, String bookISBN) {
+		if (bookISBN == null || bookISBN.equals("")) {
+			return false;
+		} else {
+			rlDAO.deleteAllReadingLog(userId, bookISBN);
+			return true;
+		}
+
 	}
 
 	// 최근에 읽은 책 조회

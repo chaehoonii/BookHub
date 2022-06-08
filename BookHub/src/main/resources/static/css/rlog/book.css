@@ -1,0 +1,202 @@
+@charset "UTF-8";
+
+:root {
+    --bs-blue: #0d6efd;
+    --bs-indigo: #6610f2;
+    --bs-purple: #6f42c1;
+    --bs-pink: #d63384;
+    --bs-red: #dc3545;
+    --bs-orange: #fd7e14;
+    --bs-yellow: #ffc107;
+    --bs-green: #198754;
+    --bs-teal: #20c997;
+    --bs-cyan: #0dcaf0;
+    --bs-black: #000;
+    --bs-white: #fff;
+    --bs-gray: #6c757d;
+    --bs-gray-dark: #343a40;
+    --bs-gray-100: #f8f9fa;
+    --bs-gray-200: #e9ecef;
+    --bs-gray-300: #dee2e6;
+    --bs-gray-400: #ced4da;
+    --bs-gray-500: #adb5bd;
+    --bs-gray-600: #6c757d;
+    --bs-gray-700: #495057;
+    --bs-gray-800: #343a40;
+    --bs-gray-900: #212529;
+    --bs-primary: #0d6efd;
+    --bs-secondary: #6c757d;
+    --bs-success: #198754;
+    --bs-info: #0dcaf0;
+    --bs-warning: #ffc107;
+    --bs-danger: #dc3545;
+    --bs-light: #f8f9fa;
+    --bs-dark: #212529;
+}
+
+#readinglog-wrapper {
+    min-height: 82vh;
+    overflow: hidden;
+    margin: 0 auto;
+    margin-top: 80px;
+    margin-bottom: 30px;
+}
+
+#readinglog-head-wrapper {
+    height: 170px;
+    padding: 0 10px;
+    background-color: var(--bs-gray-100);
+    box-shadow: 0 2px 5px -1px #e1e1e1;
+}
+#readinglog-head {
+    width: 940px;
+    overflow: hidden;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+#book-buttons {
+    float: left;
+    width: 920px;
+    height: 40px;
+    margin-bottom: 10px;
+}
+.book-menubtn,
+.book-optionbtn {
+    height: 40px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid var(--bs-gray-500);
+    background-color: var(--bs-gray-200);
+}
+.book-menubtn:hover,
+.book-optionbtn:hover {
+    cursor: pointer;
+    background-color: var(--bs-gray-300);
+}
+.book-menubtn:focus,
+.book-optionbtn:focus {
+    border: 2px solid black;
+}
+#book-librarybtn {
+    float: left;
+    width: 100px;
+}
+.book-menubtn {
+    float: right;
+    width: 150px;
+}
+#book-writebtn {
+    margin-left: 5px;
+}
+#book-alldeletebtn {
+    margin-right: 5px;
+}
+.book-optionbtn {
+    float: right;
+    width: 70px;
+}
+.book-editbtn {
+    margin-right: 5px;
+}
+.book-deletebtn {
+    margin-left: 5px;
+}
+
+#book-thumbnail {
+    float: left;
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    border: 1px solid var(--bs-gray-500);
+    margin-right: 10px;
+}
+#book-title {
+    float: left;
+    display: -webkit-box;
+    width: 810px;
+    height: 60px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    font-size: 20px;
+    font-weight: bold;
+}
+#book-progress {
+    float: left;
+    width: 810px;
+    height: 30px;
+    margin: 10px 0;
+}
+#book-progresslabel {
+    display: grid;
+    height: 20px;
+    grid-template-columns: repeat(3, 1fr);
+}
+#progress-readpercent,
+#progress-readlabel,
+#progress-readpage {
+    height: 20px;
+    line-height: 20px;
+    color: var(--bs-gray-600);
+    font-size: 14px;
+}
+#progress-readpercent {
+    text-align: left;
+}
+#progress-readpage {
+    text-align: right;
+}
+#progress-readlabel {
+    text-align: center;
+}
+#book-progressbar {
+    -webkit-appearance: none;
+    float: left;
+    width: 810px;
+    height: 10px;
+}
+#book-progressbar::-webkit-progress-bar {
+    border-radius: 5px;
+    background-color: var(--bs-gray-200);
+}
+#book-progressbar::-webkit-progress-value {
+    border-radius: 5px;
+    background-color: var(--bs-gray-700);
+}
+
+#readinglog-body {
+    width: 940px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+#book-content {
+    display: grid;
+    padding: 10px;
+}
+.book-item {
+    padding: 15px 0;
+    border-bottom: 1px solid var(--bs-gray-500);
+}
+.book-readdate,
+.book-readpage {
+    float: left;
+    height: 40px;
+    line-height: 40px;
+}
+.book-readdate {
+    width: 150px;
+    font-weight: bold;
+}
+.book-readpage {
+    width: 620px;
+}
+.book-summary {
+    float: left;
+    width: 920px;
+    margin-top: 10px;
+    padding-left: 150px;
+    word-break: break-all;
+}

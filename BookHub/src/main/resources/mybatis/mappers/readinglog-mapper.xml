@@ -4,13 +4,66 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="multi.dokgi.bookhub.readinglog.dao.IReadingLogDAO">
-	<!-- 독서활동 기록하기 -->
+	<!-- 독서기록 조회 -->
+	<select id="getReadingLog" resultType="ReadingLogDTO">
+		SELECT
+			*
+		FROM
+			`bookhub`.`readinglog`
+		WHERE
+			user_id LIKE #{userId}
+			AND book_ISBN LIKE #{bookISBN}
+		ORDER BY
+			read_date DESC
+	</select>
+	
+	<!-- 읽은 페이지 합계 조회 -->
+	<select id="getReadingLogSum" resultType="Integer">
+		SELECT
+			SUM(read_page) AS read_page
+		FROM
+			`bookhub`.`readinglog`
+		WHERE
+			user_id LIKE #{userId}
+			AND book_ISBN LIKE #{bookISBN}
+	</select>
+
+	<!-- 독서활동 기록 -->
 	<insert id="writeReadingLog" parameterType="ReadingLogDTO">
 		INSERT INTO
 			`bookhub`.`readinglog`(user_id, book_isbn, read_page, summary, read_date, read_complete)
 		VALUES
 			(#{userId}, #{bookISBN}, #{readPage}, #{summary}, #{readDate}, #{readComplete});
 	</insert>
+	
+	<!-- 독서기록 삭제 -->
+	<delete id="deleteReadingLog">
+		DELETE FROM
+			`bookhub`.`readinglog`
+		WHERE
+			user_id LIKE #{userId}
+			AND num = #{num}
+	</delete>
+	
+	<!-- 독서기록 삭제 -->
+	<delete id="deleteAllReadingLog">
+		DELETE FROM
+			`bookhub`.`readinglog`
+		WHERE
+			user_id LIKE #{userId}
+			AND book_ISBN LIKE #{bookISBN}
+	</delete>
+	
+	<!-- 완독표시 해제 -->
+	<update id="uncheckReadComplete">
+		UPDATE
+			`bookhub`.`readinglog`
+		SET
+			read_complete = 0
+		WHERE
+			user_id LIKE #{userId}
+			AND book_ISBN LIKE #{bookISBN}
+	</update>
 	
 	<!-- 읽은 책 조회(최근 읽은 책, 내 서재) -->
 	<select id="getRecentBook" resultType="ReadingLogDTO">
