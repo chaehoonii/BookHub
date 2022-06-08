@@ -29,11 +29,14 @@ function calendarInitializer() {
 
         // 1일의 요일 지정
         endDate.setDate(1);
+
         calendarMain.innerHTML +=
             `<div class="graph-day" style="grid-column: ` +
             (endDate.getDay() + 1) +
             `"><time datetime="` +
-            endDate.toISOString().split("T")[0] +
+            new Date(endDate.getTime() - endDate.getTimezoneOffset() * 60000)
+                .toISOString()
+                .split("T")[0] +
             `">1</time></div>`;
 
         // 마지막날까지의 항목(일) 생성
@@ -41,7 +44,11 @@ function calendarInitializer() {
             endDate.setDate(i);
             calendarMain.innerHTML +=
                 `<div class="graph-day"><time datetime="` +
-                endDate.toISOString().split("T")[0] +
+                new Date(
+                    endDate.getTime() - endDate.getTimezoneOffset() * 60000
+                )
+                    .toISOString()
+                    .split("T")[0] +
                 `">` +
                 i +
                 `</time></div>`;
@@ -49,7 +56,12 @@ function calendarInitializer() {
     }
 
     async function setCalendar() {
-        const colorSet = ["var(--bs-gray-500)", "var(--bs-gray-600)", "var(--bs-gray-700)", "var(--bs-gray-900)"];
+        const colorSet = [
+            "var(--bs-gray-500)",
+            "var(--bs-gray-600)",
+            "var(--bs-gray-700)",
+            "var(--bs-gray-900)",
+        ];
 
         // 최근 활동 기록 조회
         const recentCalendar = await fetch("/rlog/recentcalendar")
