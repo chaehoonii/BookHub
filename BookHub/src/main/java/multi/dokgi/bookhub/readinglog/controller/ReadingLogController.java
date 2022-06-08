@@ -54,7 +54,7 @@ public class ReadingLogController {
 			}
 			
 			// 누적 독서 페이지
-			int accReadPages = rlService.getAccReadPages(userId);
+			Integer accReadPages = rlService.getAccReadPages(userId);
 			
 			// 연속 독서일
 			Map<String, ReadingStreakDTO> streak = rlService.getStreak(userId);

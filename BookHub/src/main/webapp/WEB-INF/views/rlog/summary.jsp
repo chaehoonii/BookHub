@@ -83,10 +83,17 @@
                     <div class="stat-content">
                         <h3 class="stat-title">누적 독서 페이지</h3>
                         <span class="stat-value">
-                            <fmt:formatNumber type="number" value="${accReadPages}" maxFractionDigits="3" />
+                            <c:choose>
+                            <c:when test="${empty streak['max'].streakCount}">
+                                0
+                            </c:when>
+                            <c:otherwise>
+                                <fmt:formatNumber type="number" value="${accReadPages}" maxFractionDigits="3" />
+                            </c:otherwise>
+                        </c:choose>
                             p.
                         </span>
-                        <span class="stat-subvalue">차곡차곡 쌓아온</span>
+                        <span class="stat-subvalue">차곡차곡 쌓아올린</span>
                     </div>
                     <div class="stat-content">
                         <h3 class="stat-title">최대 연속 독서일</h3>

@@ -104,7 +104,7 @@ public class ReadingLogServiceImpl implements IReadingLogService {
 
 	// 누적 독서 페이지 조회
 	@Override
-	public int getAccReadPages(String userId) {
+	public Integer getAccReadPages(String userId) {
 		return rlDAO.getAccReadPages(userId);
 	}
 

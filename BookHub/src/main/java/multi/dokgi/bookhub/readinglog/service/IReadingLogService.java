@@ -28,7 +28,7 @@ public interface IReadingLogService {
 
 	public List<ReadingLogDTO> searchLibrary(String userId);
 	
-	public int getAccReadPages(String userId);
+	public Integer getAccReadPages(String userId);
 	
 	public Map<String, ReadingStreakDTO> getStreak(String userId);
 
