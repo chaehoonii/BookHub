@@ -34,6 +34,10 @@
     --bs-dark: #212529;
 }
 
+.swal-modal .swal-text {
+    text-align: center;
+}
+
 #readinglog-wrapper {
     min-height: 82vh;
     overflow: hidden;
@@ -43,7 +47,7 @@
 }
 
 #readinglog-head-wrapper {
-    height: 170px;
+    height: 120px;
     padding: 0 10px;
     background-color: var(--bs-gray-100);
     box-shadow: 0 2px 5px -1px #e1e1e1;
@@ -55,11 +59,12 @@
     padding: 10px;
 }
 
-#book-buttons {
-    float: left;
-    width: 920px;
-    height: 40px;
-    margin-bottom: 10px;
+#readinglog-buttons {
+    width: 940px;
+    overflow: hidden;
+    margin: 0 auto;
+    padding: 15px 10px;
+    border-bottom: 1px solid var(--bs-gray-500);
 }
 .book-menubtn,
 .book-optionbtn {
@@ -96,11 +101,9 @@
     float: right;
     width: 70px;
 }
-.book-editbtn {
-    margin-right: 5px;
-}
-.book-deletebtn {
-    margin-left: 5px;
+.book-editbtn,
+.book-reviewbtn {
+    margin-right: 10px;
 }
 
 #book-thumbnail {
@@ -109,6 +112,7 @@
     height: 100px;
     object-fit: contain;
     border: 1px solid var(--bs-gray-500);
+    background-color: white;
     margin-right: 10px;
 }
 #book-title {
@@ -123,6 +127,9 @@
     -webkit-box-orient: vertical;
     font-size: 20px;
     font-weight: bold;
+}
+#book-title a:hover {
+    text-decoration: underline !important;
 }
 #book-progress {
     float: left;
@@ -174,7 +181,7 @@
 }
 #book-content {
     display: grid;
-    padding: 10px;
+    padding: 0 10px;
 }
 .book-item {
     padding: 15px 0;
@@ -191,7 +198,7 @@
     font-weight: bold;
 }
 .book-readpage {
-    width: 620px;
+    width: 500px;
 }
 .book-summary {
     float: left;

@@ -111,6 +111,7 @@
     object-fit: contain;
     margin: 10px;
     border: 1px solid var(--bs-gray-500);
+    background-color: white;
 }
 .recent-info,
 .recent-progress {

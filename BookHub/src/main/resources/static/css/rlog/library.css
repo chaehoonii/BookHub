@@ -79,6 +79,7 @@
     margin: 10px;
     object-fit: contain;
     border: 1px solid var(--bs-gray-500);
+    background-color: white;
 }
 
 .library-title {
