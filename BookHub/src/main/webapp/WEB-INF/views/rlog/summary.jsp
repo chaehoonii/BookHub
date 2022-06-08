@@ -1,6 +1,6 @@
-<%@ page contentType="text/html; charset=UTF-8" language="java"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 
@@ -84,13 +84,14 @@
                         <h3 class="stat-title">누적 독서 페이지</h3>
                         <span class="stat-value">
                             <c:choose>
-                            <c:when test="${empty streak['max'].streakCount}">
-                                0
-                            </c:when>
-                            <c:otherwise>
-                                <fmt:formatNumber type="number" value="${accReadPages}" maxFractionDigits="3" />
-                            </c:otherwise>
-                        </c:choose>
+                                <c:when test="${empty streak['max'].streakCount}">
+                                    0
+                                </c:when>
+                                <c:otherwise>
+                                    <fmt:formatNumber type="number" value="${accReadPages}"
+                                        maxFractionDigits="3" />
+                                </c:otherwise>
+                            </c:choose>
                             p.
                         </span>
                         <span class="stat-subvalue">차곡차곡 쌓아올린</span>
@@ -104,32 +105,46 @@
                             </c:when>
                             <c:otherwise>
                                 <span class="stat-value">
-                                    <fmt:formatNumber type="number" value="${streak['max'].streakCount}" maxFractionDigits="3" />
+                                    <fmt:formatNumber type="number" value="${streak['max'].streakCount}"
+                                        maxFractionDigits="3" />
                                     일
                                 </span>
-                                <fmt:parseDate value="${streak['max'].streakStartDate}" pattern="yyyy-MM-dd'T'HH:mm" var="parsedStreakStartDate" />
-                                <fmt:parseDate value="${streak['max'].streakEndDate}" pattern="yyyy-MM-dd'T'HH:mm" var="parsedStreakEndDate" />
-                                <span class="stat-subvalue"><fmt:formatDate pattern="yyyy년 M월 d일" value="${parsedStreakStartDate}"/> - <fmt:formatDate pattern="yyyy년 M월 d일" value="${parsedStreakEndDate}"/></span>
+                                <fmt:parseDate value="${streak['max'].streakStartDate}"
+                                    pattern="yyyy-MM-dd'T'HH:mm" var="parsedStreakStartDate" />
+                                <fmt:parseDate value="${streak['max'].streakEndDate}"
+                                    pattern="yyyy-MM-dd'T'HH:mm" var="parsedStreakEndDate" />
+                                <span class="stat-subvalue">
+                                    <fmt:formatDate pattern="yyyy년 M월 d일"
+                                        value="${parsedStreakStartDate}" /> -
+                                    <fmt:formatDate pattern="yyyy년 M월 d일" value="${parsedStreakEndDate}" />
+                                </span>
                             </c:otherwise>
                         </c:choose>
                     </div>
                     <div class="stat-content">
                         <h3 class="stat-title">현재 연속 독서일</h3>
-                            <c:choose>
-                                <c:when test="${empty streak['current'].streakCount}">
-                                    <span class="stat-value">0 일</span>
-                                    <span class="stat-subvalue">시작하기 좋은 날</span>
-                                </c:when>
-                                <c:otherwise>
-                                    <span class="stat-value">
-                                        <fmt:formatNumber type="number" value="${streak['current'].streakCount}" maxFractionDigits="3" />
-                                        일
-                                    </span>
-                                    <fmt:parseDate value="${streak['current'].streakStartDate}" pattern="yyyy-MM-dd'T'HH:mm" var="parsedStreakStartDate" />
-                                    <fmt:parseDate value="${streak['current'].streakEndDate}" pattern="yyyy-MM-dd'T'HH:mm" var="parsedStreakEndDate" />
-                                    <span class="stat-subvalue"><fmt:formatDate pattern="yyyy년 M월 d일" value="${parsedStreakStartDate}"/> - <fmt:formatDate pattern="yyyy년 M월 d일" value="${parsedStreakEndDate}"/></span>
-                                </c:otherwise>
-                            </c:choose>
+                        <c:choose>
+                            <c:when test="${empty streak['current'].streakCount}">
+                                <span class="stat-value">0 일</span>
+                                <span class="stat-subvalue">시작하기 좋은 날</span>
+                            </c:when>
+                            <c:otherwise>
+                                <span class="stat-value">
+                                    <fmt:formatNumber type="number" value="${streak['current'].streakCount}"
+                                        maxFractionDigits="3" />
+                                    일
+                                </span>
+                                <fmt:parseDate value="${streak['current'].streakStartDate}"
+                                    pattern="yyyy-MM-dd'T'HH:mm" var="parsedStreakStartDate" />
+                                <fmt:parseDate value="${streak['current'].streakEndDate}"
+                                    pattern="yyyy-MM-dd'T'HH:mm" var="parsedStreakEndDate" />
+                                <span class="stat-subvalue">
+                                    <fmt:formatDate pattern="yyyy년 M월 d일"
+                                        value="${parsedStreakStartDate}" /> -
+                                    <fmt:formatDate pattern="yyyy년 M월 d일" value="${parsedStreakEndDate}" />
+                                </span>
+                            </c:otherwise>
+                        </c:choose>
                         </span>
                     </div>
                 </div>
@@ -148,20 +163,33 @@
                         <c:if test="${!empty recentLog}">
                             <c:forEach items="${recentLog}" var="log">
                                 <div class="recent-item">
-                                    <img class="recent-thumbnail" src="${bookInfo[log.bookISBN].get('cover')}">
+                                    <img class="recent-thumbnail"
+                                        src="${bookInfo[log.bookISBN].get('cover')}">
                                     <div class="recent-info">
-                                        <div class="recent-title" title="${bookInfo[log.bookISBN].get('title')}"><a
+                                        <div class="recent-title"
+                                            title="${bookInfo[log.bookISBN].get('title')}"><a
                                                 class="recent-title-link"
-                                                href="/rlog/edit?isbn=${log.bookISBN}">${bookInfo[log.bookISBN].get('title')}</a></div>
-                                        <div class="recent-author"><span>${bookInfo[log.bookISBN].get('author')}</span></div>
+                                                href="/rlog/edit?isbn=${log.bookISBN}">${bookInfo[log.bookISBN].get('title')}</a>
+                                        </div>
+                                        <div class="recent-author">
+                                            <span>${bookInfo[log.bookISBN].get('author')}</span></div>
                                     </div>
                                     <div class="recent-progress">
-                                        <fmt:formatNumber value="${log.readPage/bookInfo[log.bookISBN].get('subInfo').get('itemPage')}" type="percent" var="percentReadPage"/>
-                                        <fmt:parseDate value="${log.readDate}" pattern="yyyy-MM-dd'T'HH:mm" var="parsedReadDate" />
+                                        <fmt:formatNumber
+                                            value="${log.readPage/bookInfo[log.bookISBN].get('subInfo').get('itemPage')}"
+                                            type="percent" var="percentReadPage" />
+                                        <fmt:parseDate value="${log.readDate}" pattern="yyyy-MM-dd'T'HH:mm"
+                                            var="parsedReadDate" />
                                         <div class="recent-readpercent">${percentReadPage}</div>
-                                        <div class="recent-readpage">${log.readPage}/${bookInfo[log.bookISBN].get('subInfo').get('itemPage')}</div>
-                                        <progress class="recent-progressbar" value="${log.readPage}" max="${bookInfo[log.bookISBN].get('subInfo').get('itemPage')}"></progress>
-                                        <span class="recent-readdate">마지막 독서일: <fmt:formatDate pattern="yyyy년 M월 d일" value="${parsedReadDate}"/></span>
+                                        <div class="recent-readpage">
+                                            ${log.readPage}/${bookInfo[log.bookISBN].get('subInfo').get('itemPage')}
+                                        </div>
+                                        <progress class="recent-progressbar" value="${log.readPage}"
+                                            max="${bookInfo[log.bookISBN].get('subInfo').get('itemPage')}"></progress>
+                                        <span class="recent-readdate">마지막 독서일:
+                                            <fmt:formatDate pattern="yyyy년 M월 d일"
+                                                value="${parsedReadDate}" />
+                                        </span>
                                     </div>
                                 </div>
                             </c:forEach>
