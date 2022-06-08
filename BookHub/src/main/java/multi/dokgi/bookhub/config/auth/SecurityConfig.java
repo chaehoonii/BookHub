@@ -36,6 +36,8 @@ public class SecurityConfig {
 		http.authorizeRequests().antMatchers("/", "/login/**","/google-login/**", "/static/**", "/logout/**", "/err*").permitAll()
 			.antMatchers("/book**").permitAll()
 			.antMatchers("/register/**").permitAll()
+			.antMatchers("/settings**").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+			.antMatchers("/rlog**").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
 			.anyRequest().authenticated();
 
 		// 기본 로그인 해제
