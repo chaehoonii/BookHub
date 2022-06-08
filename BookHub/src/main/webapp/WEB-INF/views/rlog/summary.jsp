@@ -15,15 +15,15 @@
     <!-- Header -->
 
     <!-- ReadingLog -->
-    <div id="profile-wrapper">
+    <div id="readinglog-wrapper">
         <!-- ReadingLog Head -->
-        <div id="profile-head">
-            <h1 id="profile-username">
+        <div id="readinglog-head">
+            <h1 id="readinglog-username">
                 ${user.userNick}님의 독서기록
             </h1>
         </div>
         <!-- ReadingLog Tab -->
-        <div id="profile-tabmenu">
+        <div id="readinglog-tabmenu">
             <a class="tabmenu-btn activetab" href="/rlog/summary">
                 📋 활동 요약
             </a>
@@ -33,9 +33,9 @@
         </div>
 
         <!-- ReadingLog Summary -->
-        <div id="profile-body">
-            <div id="summary-calendar" class="profile-section">
-                <h2 class="profile-section-title">
+        <div id="readinglog-body">
+            <div id="summary-calendar" class="readinglog-section">
+                <h2 class="readinglog-section-title">
                     최근 독서활동
                 </h2>
                 <div id="calendar-graph">
@@ -135,8 +135,8 @@
                 </div>
             </div>
             <div id="summary-recent">
-                <div id="summary-recent-book" class="profile-section">
-                    <h2 class="profile-section-title">
+                <div id="summary-recent-book" class="readinglog-section">
+                    <h2 class="readinglog-section-title">
                         최근 읽은 책
                     </h2>
                     <div class="recent-content">
@@ -168,8 +168,8 @@
                         </c:if>
                     </div>
                 </div>
-                <div id="summary-recent-review" class="profile-section">
-                    <h2 class="profile-section-title">
+                <div id="summary-recent-review" class="readinglog-section">
+                    <h2 class="readinglog-section-title">
                         최근 작성한 리뷰
                     </h2>
                     <div class="recent-content">

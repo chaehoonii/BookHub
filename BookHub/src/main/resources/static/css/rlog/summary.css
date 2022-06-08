@@ -17,6 +17,7 @@
     font-weight: bold;
     text-align: left;
     padding-left: 5px;
+    margin-bottom: 10px;
 }
 .graph-dayofweek,
 .graph-main {
@@ -96,9 +97,10 @@
 .no-recent-item {
     display: block;
     height: 100%;
-    line-height: 50px;
+    line-height: 40px;
     padding: 50px;
     text-align: center;
+    font-size: 18px;
     font-weight: bold;
 }
 

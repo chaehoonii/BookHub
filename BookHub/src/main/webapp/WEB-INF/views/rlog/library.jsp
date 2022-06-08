@@ -15,15 +15,15 @@
     <!-- Header -->
 
     <!-- ReadingLog -->
-    <div id="profile-wrapper">
+    <div id="readinglog-wrapper">
         <!-- Library Head -->
-        <div id="profile-head">
-            <h1 id="profile-username">
+        <div id="readinglog-head">
+            <h1 id="readinglog-username">
                 ${user.userNick}님의 독서기록
             </h1>
         </div>
         <!-- ReadingLog Tab -->
-        <div id="profile-tabmenu">
+        <div id="readinglog-tabmenu">
             <a class="tabmenu-btn" href="/rlog/summary">
                 📋 활동 요약
             </a>
@@ -33,7 +33,7 @@
         </div>
 
         <!-- ReadingLog Library -->
-        <div id="profile-body">
+        <div id="readinglog-body">
             <div id="library-searchmenu">
                 <form action="/rlog/library" method="GET">
                     <input id="searchmenu-searchbar" class="searchmenu" type="search" name="q" placeholder="책 제목 검색">
