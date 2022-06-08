@@ -33,7 +33,7 @@ public class ReviewServiceImpl implements IReviewService {
 		//현재 읽은 제일 마지막 페이지
 		int nowPage = dao.getProgress(loginId, isbn);
 		//독서 진행도 계산
-		progress =(int)((double)nowPage / (double)bookEndpage * 100);		
+		progress =(int)(Math.round((double)nowPage / (double)bookEndpage * 100));		
 		//System.out.println(" sevice progress===" + progress);
 		return progress;
 	}
