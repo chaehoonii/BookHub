@@ -6,7 +6,7 @@ $(document).ready(function () {
 	});
 	//비로그인 내 책으로 등록하기 버튼 클릭 시 로그인 페이지로 이동
 	$('#userbook_none').on('click', function(){
-		location.replace('/oauth2/authorization/google');
+		location.href = '/rlog/edit?isbn=' + $('#bookisbn').val();
 	});
 	
 	//리뷰 쓰기 클릭시 리뷰 작성 폼 띄우기

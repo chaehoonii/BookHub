@@ -1,0 +1,70 @@
+.introduction{
+	margin-top: 80px;
+}
+.first_intro h1{
+	font-size: 46px;
+}
+.first_intro{
+	padding:80px;
+	text-align: center;
+}
+
+.first_intro p{
+	padding: 30px;
+	font-size: 20px;
+	line-height: 35px;
+}
+
+.second_intro{
+	width:80%;
+	margin-left: 10%;
+}
+.second_intro h1{
+	font-size: 32px;
+}
+.second_intro h3{
+	font-size: 25px;
+}
+.second_intro p{
+	margin-top:20px;
+	margin-bottom: 20px;
+	font-size: 18px;
+}
+.second_intro #step1{
+	margin-top:30px;
+	box-shadow: 10px 10px 5px #c0c0c0;
+	border:1px outset #c0c0c0;
+	border-radius:15px;
+	padding:30px;
+	width: 55%;
+}
+.second_intro #step1 img{
+	width: 100%;
+}
+.second_intro #step2{
+	margin-top:8%;
+	box-shadow: 10px 10px 5px #c0c0c0;
+	border:1px outset #c0c0c0;
+	border-radius:15px;
+	padding:30px;
+	margin-left: 40%;
+}
+.second_intro #step3{
+	margin-top:8%;
+	box-shadow: 10px 10px 5px #c0c0c0;
+	border:1px outset #c0c0c0;
+	border-radius:15px;
+	padding:30px;
+	width: 55%;
+}
+.third_intro{
+	margin-top:5%;
+	margin-left: 10%;
+}
+.third_intro h1{
+	font-size: 32px;
+}
+.third_intro p{
+	padding: 30px;
+	font-size: 18px;
+}

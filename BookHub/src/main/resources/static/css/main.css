@@ -103,15 +103,19 @@
 	opacity: 1;
 }
 .slide-content-1{
-	margin-top: 10%;
+	margin-top: 7%;
 }
 .slide-content-2{
 	margin-top: 3%;
+	padding:3px;
+	background-color: #ffffff;
+	opacity: 0.9;
 }
 .slide-content-3{
 	float:right;
 	margin-top: 8%;
 	margin-right: 10%;
+	color: white;
 }
 .slide h1{
 	font-size: 40px;
@@ -160,5 +164,13 @@
 		justify-content: space-between;
 		text-align: left;
 		padding: 0 0 0 10rem;
+	}
+	.slide-content-2{
+		color: black;
+		background: none;
+		opacity: 1.0;
+	}
+	.slide-content-3{
+		color: black;
 	}
 }
