@@ -1,11 +1,13 @@
 package multi.dokgi.bookhub.readinglog.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.json.JSONObject;
 
 import multi.dokgi.bookhub.readinglog.dto.ReadingCalendarDTO;
 import multi.dokgi.bookhub.readinglog.dto.ReadingLogDTO;
+import multi.dokgi.bookhub.readinglog.dto.ReadingStreakDTO;
 
 /**
  * @author GhostFairy
@@ -27,5 +29,7 @@ public interface IReadingLogService {
 	public List<ReadingLogDTO> searchLibrary(String userId);
 	
 	public int getAccReadPages(String userId);
+	
+	public Map<String, ReadingStreakDTO> getStreak(String userId);
 
 }

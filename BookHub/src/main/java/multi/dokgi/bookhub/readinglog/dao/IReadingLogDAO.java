@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import multi.dokgi.bookhub.readinglog.dto.ReadingCalendarDTO;
 import multi.dokgi.bookhub.readinglog.dto.ReadingLogDTO;
+import multi.dokgi.bookhub.readinglog.dto.ReadingStreakDTO;
 
 /**
  * @author GhostFairy
@@ -21,5 +22,7 @@ public interface IReadingLogDAO {
 	public List<ReadingCalendarDTO> getRecentCalendar(String userId);
 	
 	public int getAccReadPages(String userId);
+	
+	public List<ReadingStreakDTO> getStreak(String userid);
 
 }

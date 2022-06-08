@@ -82,15 +82,48 @@
                 <div id="calendar-stat">
                     <div class="stat-content">
                         <h3 class="stat-title">누적 독서 페이지</h3>
-                        <span class="stat-value"><fmt:formatNumber type="number" value="${accReadPages}" maxFractionDigits="3" /> p.</span>
+                        <span class="stat-value">
+                            <fmt:formatNumber type="number" value="${accReadPages}" maxFractionDigits="3" />
+                            p.
+                        </span>
+                        <span class="stat-subvalue">차곡차곡 쌓아온</span>
                     </div>
                     <div class="stat-content">
                         <h3 class="stat-title">최대 연속 독서일</h3>
-                        <span class="stat-value"></span>
+                        <c:choose>
+                            <c:when test="${empty streak['max'].streakCount}">
+                                <span class="stat-value">0 일</span>
+                                <span class="stat-subvalue">조금씩 꾸준히</span>
+                            </c:when>
+                            <c:otherwise>
+                                <span class="stat-value">
+                                    <fmt:formatNumber type="number" value="${streak['max'].streakCount}" maxFractionDigits="3" />
+                                    일
+                                </span>
+                                <fmt:parseDate value="${streak['max'].streakStartDate}" pattern="yyyy-MM-dd'T'HH:mm" var="parsedStreakStartDate" />
+                                <fmt:parseDate value="${streak['max'].streakEndDate}" pattern="yyyy-MM-dd'T'HH:mm" var="parsedStreakEndDate" />
+                                <span class="stat-subvalue"><fmt:formatDate pattern="yyyy년 M월 d일" value="${parsedStreakStartDate}"/> - <fmt:formatDate pattern="yyyy년 M월 d일" value="${parsedStreakEndDate}"/></span>
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                     <div class="stat-content">
                         <h3 class="stat-title">현재 연속 독서일</h3>
-                        <span class="stat-value"></span>
+                            <c:choose>
+                                <c:when test="${empty streak['current'].streakCount}">
+                                    <span class="stat-value">0 일</span>
+                                    <span class="stat-subvalue">시작하기 좋은 날</span>
+                                </c:when>
+                                <c:otherwise>
+                                    <span class="stat-value">
+                                        <fmt:formatNumber type="number" value="${streak['current'].streakCount}" maxFractionDigits="3" />
+                                        일
+                                    </span>
+                                    <fmt:parseDate value="${streak['current'].streakStartDate}" pattern="yyyy-MM-dd'T'HH:mm" var="parsedStreakStartDate" />
+                                    <fmt:parseDate value="${streak['current'].streakEndDate}" pattern="yyyy-MM-dd'T'HH:mm" var="parsedStreakEndDate" />
+                                    <span class="stat-subvalue"><fmt:formatDate pattern="yyyy년 M월 d일" value="${parsedStreakStartDate}"/> - <fmt:formatDate pattern="yyyy년 M월 d일" value="${parsedStreakEndDate}"/></span>
+                                </c:otherwise>
+                            </c:choose>
+                        </span>
                     </div>
                 </div>
             </div>

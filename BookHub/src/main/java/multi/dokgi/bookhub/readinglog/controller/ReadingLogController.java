@@ -17,6 +17,7 @@ import multi.dokgi.bookhub.config.auth.LoginUser;
 import multi.dokgi.bookhub.config.auth.dto.SessionUser;
 import multi.dokgi.bookhub.readinglog.dto.ReadingCalendarDTO;
 import multi.dokgi.bookhub.readinglog.dto.ReadingLogDTO;
+import multi.dokgi.bookhub.readinglog.dto.ReadingStreakDTO;
 import multi.dokgi.bookhub.readinglog.service.IReadingLogService;
 
 /**
@@ -52,12 +53,17 @@ public class ReadingLogController {
 				bookInfo.put(dto.getBookISBN(), book);
 			}
 			
+			// 누적 독서 페이지
 			int accReadPages = rlService.getAccReadPages(userId);
+			
+			// 연속 독서일
+			Map<String, ReadingStreakDTO> streak = rlService.getStreak(userId);
 
 			mv.addObject("user", user);
 			mv.addObject("recentLog", recentLog);
 			mv.addObject("bookInfo", bookInfo);
 			mv.addObject("accReadPages", accReadPages);
+			mv.addObject("streak", streak);
 
 			mv.setViewName("rlog/summary");
 		} else {

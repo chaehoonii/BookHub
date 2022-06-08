@@ -6,7 +6,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,6 +17,7 @@ import org.springframework.stereotype.Service;
 import multi.dokgi.bookhub.readinglog.dao.IReadingLogDAO;
 import multi.dokgi.bookhub.readinglog.dto.ReadingCalendarDTO;
 import multi.dokgi.bookhub.readinglog.dto.ReadingLogDTO;
+import multi.dokgi.bookhub.readinglog.dto.ReadingStreakDTO;
 
 /**
  * @author GhostFairy
@@ -103,6 +106,34 @@ public class ReadingLogServiceImpl implements IReadingLogService {
 	@Override
 	public int getAccReadPages(String userId) {
 		return rlDAO.getAccReadPages(userId);
+	}
+
+	// 연속 독서일 조회
+	@Override
+	public Map<String, ReadingStreakDTO> getStreak(String userId) {
+		List<ReadingStreakDTO> streak = rlDAO.getStreak(userId);
+		Map<String, ReadingStreakDTO> streakMap = new HashMap<String, ReadingStreakDTO>();
+
+		ReadingStreakDTO max = null;
+		ReadingStreakDTO current = null;
+
+		for (ReadingStreakDTO dto : streak) {
+			if (max == null) {
+				max = dto;
+			} else if (dto.getStreakCount() > max.getStreakCount()) {
+				max = dto;
+			}
+
+			if (LocalDate.now().compareTo(dto.getStreakEndDate().toLocalDate()) <= 0
+					&& LocalDate.now().compareTo(dto.getStreakStartDate().toLocalDate()) >= 0) {
+				current = dto;
+			}
+		}
+
+		streakMap.put("max", max);
+		streakMap.put("current", current);
+
+		return streakMap;
 	}
 
 	// 내 서재 조회

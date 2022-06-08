@@ -67,4 +67,24 @@
 		WHERE
 			user_id LIKE #{userId}
 	</select>
+	
+	<!-- 연속 독서 정보 조회 -->
+	<select id="getStreak" resultType="ReadingStreakDTO">
+		SELECT
+			MIN(read_date) AS streak_start_date,
+			MAX(read_date) AS streak_end_date,
+			COUNT(*) AS streak_count
+		FROM
+			(SELECT
+				read_date,
+				read_date - INTERVAL ROW_NUMBER() OVER(ORDER BY read_date) DAY AS streak_date
+			FROM
+				`bookhub`.`readinglog`
+			WHERE
+				user_id LIKE #{userId}
+			GROUP BY
+				read_date) AS streak_calc
+		GROUP BY
+			streak_date
+	</select>
 </mapper>
