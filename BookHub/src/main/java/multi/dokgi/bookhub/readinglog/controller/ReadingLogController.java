@@ -66,8 +66,6 @@ public class ReadingLogController {
 			mv.addObject("streak", streak);
 
 			mv.setViewName("rlog/summary");
-		} else {
-			mv.setViewName("redirect:/oauth2/authorization/google");
 		}
 		return mv;
 	}
@@ -77,7 +75,7 @@ public class ReadingLogController {
 	@ResponseBody
 	public String summaryCalendar(@LoginUser SessionUser user) {
 		String userId = user.getUserId();
-		
+
 		// 최근 독서활동
 		List<ReadingCalendarDTO> recentCalendar = rlService.getRecentCalendar(userId);
 		JSONObject out = new JSONObject();
@@ -89,7 +87,7 @@ public class ReadingLogController {
 
 	// 내 서재 페이지 접속
 	@RequestMapping("/rlog/library")
-	public ModelAndView profileLibrary(@LoginUser SessionUser user, String q, Integer page) {
+	public ModelAndView profileLibrary(@LoginUser SessionUser user, String q, String read, Integer page) {
 		ModelAndView mv = new ModelAndView();
 
 		if (user != null) {
@@ -98,7 +96,7 @@ public class ReadingLogController {
 
 			List<ReadingLogDTO> library = null;
 			if (q == null || q.equals("")) {
-				library = rlService.getLibrary(userId, 1);
+				library = rlService.getLibrary(userId, page);
 			} else {
 				library = rlService.searchLibrary(userId);
 			}
@@ -113,14 +111,19 @@ public class ReadingLogController {
 			if (q != null && !q.equals("")) {
 				library.removeIf((dto) -> (!((String) bookInfo.get(dto.getBookISBN()).get("title")).contains(q)));
 			}
+			if (read != null) {
+				if (read.equals("progress")) {
+					library.removeIf((dto) -> (dto.isReadComplete()));
+				} else if (read.equals("complete")) {
+					library.removeIf((dto) -> (!dto.isReadComplete()));
+				}
+			}
 
 			mv.addObject("user", user);
 			mv.addObject("library", library);
 			mv.addObject("bookInfo", bookInfo);
 
 			mv.setViewName("rlog/library");
-		} else {
-			mv.setViewName("redirect:/oauth2/authorization/google");
 		}
 		return mv;
 	}
@@ -139,8 +142,6 @@ public class ReadingLogController {
 
 			mv.setViewName("rlog/edit");
 
-		} else {
-			mv.setViewName("redirect:/oauth2/authorization/google");
 		}
 		return mv;
 	}
@@ -154,13 +155,11 @@ public class ReadingLogController {
 		if (user != null) {
 			// 로그인 유저인 경우
 			String userId = user.getUserId();
-			
+
 			rlService.writeReadingLog(userId, isbn, readPage, summary, readDate, readComplete);
 
 			mv.setViewName("redirect:/rlog/edit?isbn=" + isbn);
 
-		} else {
-			mv.setViewName("redirect:/oauth2/authorization/google");
 		}
 		return mv;
 	}

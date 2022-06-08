@@ -35,9 +35,28 @@
         <!-- ReadingLog Library -->
         <div id="readinglog-body">
             <div id="library-searchmenu">
-                <form action="/rlog/library" method="GET">
+                <form id="searchmenu-searchform" action="/rlog/library" method="GET">
                     <input id="searchmenu-searchbar" class="searchmenu" type="search" name="q"
-                        placeholder="책 제목 검색">
+                        placeholder="책 제목 검색" value="${param.q}">
+                    <select id="searchmenu-readoption" class="searchmenu" name="read">
+                        <c:choose>
+                            <c:when test="${param.read eq 'progress'}">
+                                <option value="all">전체</option>
+                                <option value="progress" selected>읽고 있는 책</option>
+                                <option value="complete">읽은 책</option>
+                            </c:when>
+                            <c:when test="${param.read eq 'complete'}">
+                                <option value="all">전체</option>
+                                <option value="progress">읽고 있는 책</option>
+                                <option value="complete" selected>읽은 책</option>
+                            </c:when>
+                            <c:otherwise>
+                                <option value="all" selected>전체</option>
+                                <option value="progress">읽고 있는 책</option>
+                                <option value="complete">읽은 책</option>
+                            </c:otherwise>
+                        </c:choose>
+                    </select>
                 </form>
             </div>
             <div id="library-content">
@@ -75,8 +94,8 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="library-itemoption">
-                                
+                            <div class="library-option">
+                                <a href="/bookdetail?isbn=${book.bookISBN}"><input class="library-optionbtn" type="button" value="도서 상세 정보"></a>
                             </div>
                         </div>
                     </c:forEach>
@@ -90,7 +109,7 @@
         </div>
     </div>
 
-
+    <script src="/static/js/rlog/library.js"></script>
 </body>
 
 </html>
