@@ -14,15 +14,15 @@
 <body>
     <!-- Header -->
 
-    <!-- Profile -->
+    <!-- ReadingLog -->
     <div id="profile-wrapper">
-        <!-- Profile Head -->
+        <!-- ReadingLog Head -->
         <div id="profile-head">
             <h1 id="profile-username">
-                ${user.userNick}님의 독서 기록장
+                ${user.userNick}님의 독서기록
             </h1>
         </div>
-        <!-- Profile Tab -->
+        <!-- ReadingLog Tab -->
         <div id="profile-tabmenu">
             <a class="tabmenu-btn activetab" href="/rlog/summary">
                 📋 활동 요약
@@ -32,11 +32,11 @@
             </a>
         </div>
 
-        <!-- Profile Summary -->
+        <!-- ReadingLog Summary -->
         <div id="profile-body">
             <div id="summary-calendar" class="profile-section">
                 <h2 class="profile-section-title">
-                    최근 독서 활동
+                    최근 독서활동
                 </h2>
                 <div id="calendar-graph">
                     <div id="graph-content-left" class="graph-content">

@@ -44,7 +44,7 @@
 			#{index}, #{limit}
 	</select>
 	
-	<!-- 최근 독서 활동 조회 -->
+	<!-- 최근 독서활동 조회 -->
 	<select id="getRecentCalendar" resultType="ReadingCalendarDTO">
 		SELECT
 			read_date,

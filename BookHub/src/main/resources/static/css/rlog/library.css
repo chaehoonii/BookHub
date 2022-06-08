@@ -23,17 +23,21 @@
     font-weight: normal;
 }
 
-#library-main {
+#library-content {
     display: grid;
 }
-
-.library-content {
+.library-item {
+    height: 200px;
     border-bottom: 1px solid var(--bs-gray-500);
 }
-
-.library-item {
-    width: 740px;
-    height: 200px;
+.no-library-item {
+    display: block;
+    height: 100%;
+    line-height: 100px;
+    padding: 50px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .library-info,
