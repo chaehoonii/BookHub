@@ -7,8 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>BOOKS - 도서 검색</title>
-<link rel='stylesheet' href='/static/css/booklist/booksearch.css'>
 <link rel='stylesheet' href='/static/css/booklist/booklist.css'>
+<link rel='stylesheet' href='/static/css/booklist/booksearch.css'>
 <script src="/webjars/jquery/3.6.0/jquery.min.js"></script>
 <script src='/static/js/booklist/booksearch.js'></script>
 </head>
@@ -26,13 +26,13 @@
 				<%-- booklist 없는 경우 --%>
 				<c:when test="${fn:length(booklist) == 0}">
 					<div class="booklist_result">
-						"${param.searchWord}"에 대한 검색 결과가 없습니다.
+						<span>"${param.searchWord}"</span>에 대한 검색 결과가 없습니다.
 					</div>
 					<div class="booklist_content_item"></div>
 				</c:when>
 				<c:otherwise>
 					<div class="booklist_result">
-						"${param.searchWord}"에 대한 ${totalResults}개의 상품이 검색되었습니다.
+						<span>"${param.searchWord}"</span>에 대한 ${totalResults}개의 상품이 검색되었습니다.
 					</div>
 					<div class="booklist_content_item">
 					<%-- 반복할 booklist --%>					
