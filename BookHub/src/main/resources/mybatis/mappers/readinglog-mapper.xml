@@ -7,35 +7,37 @@
 	<!-- 독서활동 기록하기 -->
 	<insert id="writeReadingLog" parameterType="ReadingLogDTO">
 		INSERT INTO
-			`bookhub`.`readinglog`(user_id, book_isbn, start_page, end_page, summary, read_date, read_complete)
+			`bookhub`.`readinglog`(user_id, book_isbn, read_page, summary, read_date, read_complete)
 		VALUES
-			(#{userId}, #{bookISBN}, #{startPage}, #{endPage}, #{summary}, #{readDate}, #{readComplete});
+			(#{userId}, #{bookISBN}, #{readPage}, #{summary}, #{readDate}, #{readComplete});
 	</insert>
 	
 	<!-- 읽은 책 조회(최근 읽은 책, 내 서재) -->
 	<select id="getRecentBook" resultType="ReadingLogDTO">
 		SELECT
-			rl.*
+			rl.num,
+			rl.user_id,
+			rl.book_ISBN,
+			maxrl.read_page,
+			rl.summary,
+			rl.read_date,
+			rl.write_date,
+			rl.read_complete
 		FROM
-			(SELECT
-				*
-			FROM
-				`bookhub`.`readinglog`
-			WHERE
-				user_id LIKE #{userId}) AS rl
+			`bookhub`.`readinglog` AS rl
 			JOIN
-			(SELECT
-				user_id,
-				book_ISBN,
-				max(read_date) AS max_read_date,
-				max(end_page) AS max_end_page
-			FROM
-				`bookhub`.`readinglog`
-			WHERE
-				user_id LIKE #{userId}
-			GROUP BY
-				book_ISBN) AS maxrl
-			ON (rl.book_ISBN = maxrl.book_ISBN AND rl.read_date = maxrl.max_read_date AND rl.end_page = maxrl.max_end_page)
+				(SELECT
+					book_ISBN,
+					sum(read_page) as read_page,
+					max(read_date) as last_read_date
+				FROM
+					`bookhub`.`readinglog`
+				WHERE
+					user_id LIKE #{userId}
+				GROUP BY
+					book_ISBN) AS maxrl
+			ON
+				(rl.book_ISBN = maxrl.book_ISBN AND rl.read_date = maxrl.last_read_date)
 		ORDER BY
 			read_date DESC
 		LIMIT
@@ -46,7 +48,7 @@
 	<select id="getRecentCalendar" resultType="ReadingCalendarDTO">
 		SELECT
 			read_date,
-			SUM(end_page - start_page + 1) AS read_page
+			SUM(read_page) AS read_page
 		FROM
 			`bookhub`.`readinglog`
 		WHERE
