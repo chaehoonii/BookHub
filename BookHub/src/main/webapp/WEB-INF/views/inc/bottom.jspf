@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="/static/css/inc/bottom.css" type="text/css">
 <div style="clear:both"></div>
 <footer class="bottom">
-	<b><a href="https://github.com/chaehoonii/BookHub" target="_blank">BookHub</a></b> by <b>독기</b><br/>
+	<b><a href="https://github.com/chaehoonii/BookHub" target="_blank">BookHub</a></b> by <b>독기</b> |
 	<a href="https://github.com/chaehoonii" target="_blank">김채훈</a>
 	<a href="https://github.com/Seongil-Yoon" target="_blank">윤성일<a>
 	<a href="https://github.com/corjeong" target="_blank">김정년</a>
