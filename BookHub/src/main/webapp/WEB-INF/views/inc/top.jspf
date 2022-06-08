@@ -6,16 +6,13 @@
 <html>
 	<head>
 		<title>BookHub</title>
-		<link rel="shortcut icon" type="image/jpg" href="img/fav_logo.jpg">
-		<link rel="stylesheet" href="/static/css/inc/top.css" type="text/css">
 		<!-- jQuery WebJars -->
 		<script src="/webjars/jquery/jquery.min.js"></script>
-		<!-- Bootstrap WebJars -->
-		<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
-		<script src="/webjars/bootstrap/js/bootstrap.bundle.min.js"></script>
 		<!-- sweetalert CDN libs -->
 		<link rel="stylesheet" href="/static/libs/sweetalert.min.css" />
 		<script src="/static/libs/sweetalert.min.js"></script>
+		<link rel="shortcut icon" type="image/jpg" href="img/fav_logo.jpg">
+		<link rel="stylesheet" href="/static/css/inc/top.css" type="text/css">
 	</head>
 <body>
 	  <header class="header" id="header">
@@ -24,9 +21,10 @@
                 <a href="/"><img src="/static/img/BookHub.jpg"></a>
             </div>
             <div class="search_box">
-            	<input type="search" id="search" placeholder=" 책을 검색해보세요."/>
+            	<input type="search" id="main_search_word" name="searchWord" onkeyup="enterkey()" placeholder=" 책을 검색해보세요."/>
             	<input type="submit" value="검색" id="search_btn"/>
             </div>
+            <script src='/static/js/mainsearch.js'></script>
             <div class="nav_menu" id="nav-menu">
                 <ul class="nav_list">
                     <li class="nav_item">

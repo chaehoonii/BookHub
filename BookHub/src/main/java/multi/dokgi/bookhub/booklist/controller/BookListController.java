@@ -1,4 +1,4 @@
-package multi.dokgi.bookhub.booklist;
+package multi.dokgi.bookhub.booklist.controller;
 
 import java.util.List;
 import java.util.Map;
@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import multi.dokgi.bookhub.booklist.dto.BookListDTO;
@@ -17,6 +18,8 @@ import multi.dokgi.bookhub.booklist.dto.BookListPageDTO;
 import multi.dokgi.bookhub.booklist.dto.CategoryDTO;
 import multi.dokgi.bookhub.booklist.dto.ReviewDTO;
 import multi.dokgi.bookhub.booklist.dto.ReviewJoinDTO;
+import multi.dokgi.bookhub.booklist.service.IBookListService;
+import multi.dokgi.bookhub.booklist.service.IReviewService;
 import multi.dokgi.bookhub.config.auth.LoginUser;
 import multi.dokgi.bookhub.config.auth.dto.SessionUser;
 
@@ -25,11 +28,11 @@ public class BookListController {
 
 	@Autowired
 	@Qualifier("booklistservice")
-	BookListService bookservice;
+	IBookListService bookservice;
 	
 	@Autowired
 	@Qualifier("reviewservice")
-	ReviewService reviewservice;
+	IReviewService reviewservice;
 
 	//상품 리스트 API - 베스트셀러
 	@SuppressWarnings("unchecked")
@@ -116,25 +119,22 @@ public class BookListController {
 		//로그인한 아이디 reeadinglog에 책 등록 되어있는지 조회 
 		if (user != null) {
 			
-			//userbookExixt = 0 => 책 등록 안된 경우
+			//userbookExist = 0 => 책 등록 안된 경우
 			userbookExist = reviewservice.userbookExist(user.getUserId(), isbn);
 			
-			//등록되어있으면 진행도 확인 100%이면 리뷰 등록했는지 확인 리뷰 등록
+			//등록되어있으면 진행도 확인, 완독이면 리뷰 등록했는지 확인 후 리뷰 등록
 			//read_complete = 1이면 완독
 			if(userbookExist != 0) {				
-				//progress = 100;
 				progress = reviewservice.getProgress(user.getUserId(), isbn, bookdetail.getBookEndpage());
 				//책 완독했는지 조회
 				int readComplete = reviewservice.readComplete(user.getUserId(), isbn);
 				
-				//if(progress == 100) {
 				if(readComplete == 1) {
 					reviewExist = reviewservice.reviewExist(user.getUserId(), isbn); //0이면 리뷰 없음		 			
 				}
-			}
-			
+			}			
 		}
-		System.out.println("progress ====== " +progress);
+		
 		mv.addObject("bookdetail", bookdetail);
 		mv.addObject("reviewCount", reviewCount);
 		mv.addObject("reviewlist", reviewlist);
@@ -146,9 +146,24 @@ public class BookListController {
 	}
 	
 	//리뷰 등록하기
+	@ResponseBody
 	@PostMapping("/reviewinsert")
-	public int bookReview(ReviewDTO dto) {
-		int result = 0;
+	public int bookReviewInsert(ReviewDTO dto) {
+		int result = reviewservice.reviewInsert(dto);
+		return result;
+	}
+	//리뷰 수정하기
+	@ResponseBody
+	@PostMapping("/reviewedit")
+	public int bookReviewEdit(ReviewDTO dto) {
+		int result = reviewservice.reviewUpdate(dto);
+		return result;
+	}
+	//리뷰 삭제하기
+	@ResponseBody
+	@PostMapping("/reviewdelete")
+	public int bookReviewDelete(int reviewNum) {
+		int result = reviewservice.reviewDelete(reviewNum);		
 		return result;
 	}
 

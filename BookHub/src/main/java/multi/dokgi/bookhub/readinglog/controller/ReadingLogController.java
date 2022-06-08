@@ -134,15 +134,15 @@ public class ReadingLogController {
 
 	// 독서 활동 기록 (임시)
 	@PostMapping("/rlog/edit")
-	public ModelAndView readingLogEditResult(@LoginUser SessionUser user, String isbn, Integer startPage,
-			Integer endPage, String readDate, @Nullable String readComplete, @Nullable String summary) {
+	public ModelAndView readingLogEditResult(@LoginUser SessionUser user, String isbn, Integer readPage,
+			String readDate, @Nullable String readComplete, @Nullable String summary) {
 		ModelAndView mv = new ModelAndView();
 
 		if (user != null) {
 			// 로그인 유저인 경우
 
 			String userId = user.getUserId();
-			rlService.writeReadingLog(userId, isbn, startPage, endPage, summary, readDate, readComplete);
+			rlService.writeReadingLog(userId, isbn, readPage, summary, readDate, readComplete);
 
 			mv.setViewName("redirect:/rlog/edit?isbn=" + isbn);
 

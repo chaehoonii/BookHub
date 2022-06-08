@@ -26,7 +26,7 @@ body{
 }
 a, a:visited, a:hover, a:active{
 	text-decoration: none !important;
-	color: black !important;
+	color: black;
 }
 ul {
   list-style: none;
@@ -80,22 +80,26 @@ ul {
 	.search_box{
 		width: 15%;
 	}
-	.search_box #search{
-		margin-top:8%;
-		width: 70%;
-		height: 48%;
-		border-radius: 15px
+	.search_box #main_search_word{
+		position:absolute;
+		top: 20px;
+		left:12%; 
+		width: 170px;
+		height: 40px;
+		border-radius: 15px;
 	}
 	.search_box #search_btn{
-		margin-top:8%;
-		width: 25%;
-		height: 48%;
+		position:absolute;
+		top: 20px;
+		left:22.1%;
+		width: 50px; 
+		height: 40px;
 		border: none;
 		background-color: black;
 		color: #fff;
 		font-weight: bold;
-		font-size: 13px;
 		border-radius: 15px;
+		line-height: 10px;
 	}
 	.nav_menu{
 		width: 50%

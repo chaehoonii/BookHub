@@ -15,15 +15,15 @@ public interface IReadingLogService {
 
 	public JSONObject getBookInfo(String isbn);
 
-	public int writeReadingLog(String userId, String bookISBN, int startPage, int endPage, String summary,
-			String readDate, String readComplete);
+	public int writeReadingLog(String userId, String bookISBN, int readPage, String summary, String readDate,
+			String readComplete);
 
 	public List<ReadingLogDTO> getRecentBook(String userId);
 
 	public List<ReadingCalendarDTO> getRecentCalendar(String userId);
-	
+
 	public List<ReadingLogDTO> getLibrary(String userId, Integer page);
-	
+
 	public List<ReadingLogDTO> searchLibrary(String userId);
 
 }
