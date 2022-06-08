@@ -142,7 +142,7 @@
                     <div class="recent-content">
                         <c:if test="${empty recentLog}">
                             <div class="recent-item">
-                                <span class="no-recent-item">아직 독서 활동을 기록하지 않았습니다.</span>
+                                <span class="no-recent-item">아직 독서활동을 기록하지 않았습니다.</span>
                             </div>
                         </c:if>
                         <c:if test="${!empty recentLog}">

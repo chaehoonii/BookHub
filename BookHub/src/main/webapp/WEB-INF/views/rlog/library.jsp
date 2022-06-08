@@ -64,7 +64,7 @@
                 </c:if>
                 <c:if test="${empty library}">
                     <div class="library-item">
-                        <span class="no-library-item">아직 독서 활동을 기록하지 않았습니다.</span>
+                        <span class="no-library-item">독서기록을 찾을 수 없습니다.</span>
                     </div>
                 </c:if>
             </div>
