@@ -17,7 +17,7 @@
 			<h1>Book Hub</h1>
 			<h2>"한 인간의 존재를 결정 짓는 것은 그가 읽은 책과 그가 쓴 글이다"<br/><br/>
 			-도스토예프스키</h2>
-			<a href="#">소개 바로가기</a>
+			<a href="/introduction">소개 바로가기</a>
 		</div>
 		<img src="">
 	</div>
