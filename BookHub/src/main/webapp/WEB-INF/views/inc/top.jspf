@@ -24,7 +24,7 @@
                 <a href="/"><img src="/static/img/BookHub.jpg"></a>
             </div>
             <div class="search_box">
-            	<input type="search" id="main_search_word" name="searchWord" placeholder=" 책을 검색해보세요."/>
+            	<input type="search" id="main_search_word" name="searchWord" onkeyup="enterkey()" placeholder=" 책을 검색해보세요."/>
             	<input type="submit" value="검색" id="search_btn"/>
             </div>
             <script src='/static/js/mainsearch.js'></script>
