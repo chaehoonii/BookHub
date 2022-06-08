@@ -54,7 +54,7 @@ public class ReadingLogController {
 			}
 			
 			// 누적 독서 페이지
-			int accReadPages = rlService.getAccReadPages(userId);
+			Integer accReadPages = rlService.getAccReadPages(userId);
 			
 			// 연속 독서일
 			Map<String, ReadingStreakDTO> streak = rlService.getStreak(userId);
@@ -72,13 +72,13 @@ public class ReadingLogController {
 		return mv;
 	}
 
-	// API: 최근 독서 활동
+	// API: 최근 독서활동
 	@RequestMapping("/rlog/recentcalendar")
 	@ResponseBody
 	public String summaryCalendar(@LoginUser SessionUser user) {
 		String userId = user.getUserId();
 		
-		// 최근 독서 활동
+		// 최근 독서활동
 		List<ReadingCalendarDTO> recentCalendar = rlService.getRecentCalendar(userId);
 		JSONObject out = new JSONObject();
 
@@ -125,7 +125,7 @@ public class ReadingLogController {
 		return mv;
 	}
 
-	// 독서 활동 기록 페이지 접속(임시)
+	// 독서활동 기록 페이지 접속(임시)
 	@GetMapping("/rlog/edit")
 	public ModelAndView readingLogEdit(@LoginUser SessionUser user, String isbn) {
 		ModelAndView mv = new ModelAndView();
@@ -145,7 +145,7 @@ public class ReadingLogController {
 		return mv;
 	}
 
-	// 독서 활동 기록 (임시)
+	// 독서활동 기록 (임시)
 	@PostMapping("/rlog/edit")
 	public ModelAndView readingLogEditResult(@LoginUser SessionUser user, String isbn, Integer readPage,
 			String readDate, @Nullable String readComplete, @Nullable String summary) {
