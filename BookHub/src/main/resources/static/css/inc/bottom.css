@@ -1,4 +1,5 @@
 .bottom{
+	margin-top:10px;
 	display:inline-block;
 	padding:5px;
 	height:10vh;
@@ -6,6 +7,6 @@
 	background-color: #eeeeee;
 	opacity:0.9;
 	text-align: center;
-	font-size: 13px;
+	font-size: 15px;
 	box-shadow: 0 0px 11px 1px #e1e1e1;
 }
