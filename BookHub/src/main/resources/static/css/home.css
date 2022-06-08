@@ -34,14 +34,17 @@
 #slide-1 {
 	color:#fff;
 	background-image:var(--slide-1-bgi);
+	background-size: cover;
 	left:0;
 }
 #slide-2 {
 	background-image:var(--slide-2-bgi);
+	background-size: cover;
 	left:100%;
 }
 #slide-3 {
 	background-image:var(--slide-3-bgi);
+	background-size: cover;
 	left:200%;
 }
 
