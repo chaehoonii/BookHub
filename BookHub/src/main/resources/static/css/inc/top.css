@@ -80,13 +80,13 @@ ul {
 	.search_box{
 		width: 15%;
 	}
-	.search_box #search{
+	.search_box #main_search_word{
 		position:absolute;
 		top: 20px;
 		left:12%; 
 		width: 170px;
 		height: 40px;
-		border-radius: 15px
+		border-radius: 15px;
 	}
 	.search_box #search_btn{
 		position:absolute;
