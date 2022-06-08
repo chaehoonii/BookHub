@@ -96,7 +96,7 @@ public class ReadingLogServiceImpl implements IReadingLogService {
 		return rlDAO.getRecentBook(userId, 0, 3);
 	}
 
-	// 최근 독서 활동 조회
+	// 최근 독서활동 조회
 	@Override
 	public List<ReadingCalendarDTO> getRecentCalendar(String userId) {
 		return rlDAO.getRecentCalendar(userId);
@@ -104,7 +104,7 @@ public class ReadingLogServiceImpl implements IReadingLogService {
 
 	// 누적 독서 페이지 조회
 	@Override
-	public int getAccReadPages(String userId) {
+	public Integer getAccReadPages(String userId) {
 		return rlDAO.getAccReadPages(userId);
 	}
 

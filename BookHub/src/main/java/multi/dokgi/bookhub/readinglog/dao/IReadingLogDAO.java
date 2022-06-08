@@ -21,7 +21,7 @@ public interface IReadingLogDAO {
 
 	public List<ReadingCalendarDTO> getRecentCalendar(String userId);
 	
-	public int getAccReadPages(String userId);
+	public Integer getAccReadPages(String userId);
 	
 	public List<ReadingStreakDTO> getStreak(String userid);
 
