@@ -19,7 +19,7 @@
         <!-- Profile Head -->
         <div id="profile-head">
             <h1 id="profile-username">
-                ${user.userNick}님의 독서 기록
+                ${user.userNick}님의 독서 기록장
             </h1>
         </div>
         <!-- Profile Tab -->
@@ -82,7 +82,7 @@
                 <div id="calendar-stat">
                     <div class="stat-content">
                         <h3 class="stat-title">누적 독서 페이지</h3>
-                        <span class="stat-value"></span>
+                        <span class="stat-value"><fmt:formatNumber type="number" value="${accReadPages}" maxFractionDigits="3" /> p.</span>
                     </div>
                     <div class="stat-content">
                         <h3 class="stat-title">최대 연속 독서일</h3>

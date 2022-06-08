@@ -28,8 +28,8 @@
 			JOIN
 				(SELECT
 					book_ISBN,
-					sum(read_page) as read_page,
-					max(read_date) as last_read_date
+					SUM(read_page) AS read_page,
+					MAX(read_date) AS last_read_date
 				FROM
 					`bookhub`.`readinglog`
 				WHERE
@@ -56,5 +56,15 @@
 			AND read_date BETWEEN LAST_DAY(NOW() - INTERVAL 3 MONTH) + INTERVAL 1 DAY AND NOW()
 		GROUP BY
 			read_date
+	</select>
+	
+	<!-- 누적 독서 페이지 조회 -->
+	<select id="getAccReadPages" resultType="int">
+		SELECT
+			SUM(read_page)
+		FROM
+			`bookhub`.`readinglog`
+		WHERE
+			user_id LIKE #{userId}
 	</select>
 </mapper>

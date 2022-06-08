@@ -99,6 +99,12 @@ public class ReadingLogServiceImpl implements IReadingLogService {
 		return rlDAO.getRecentCalendar(userId);
 	}
 
+	// 누적 독서 페이지 조회
+	@Override
+	public int getAccReadPages(String userId) {
+		return rlDAO.getAccReadPages(userId);
+	}
+
 	// 내 서재 조회
 	@Override
 	public List<ReadingLogDTO> getLibrary(String userId, Integer page) {

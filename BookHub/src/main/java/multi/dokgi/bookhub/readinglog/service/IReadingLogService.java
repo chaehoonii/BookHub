@@ -25,5 +25,7 @@ public interface IReadingLogService {
 	public List<ReadingLogDTO> getLibrary(String userId, Integer page);
 
 	public List<ReadingLogDTO> searchLibrary(String userId);
+	
+	public int getAccReadPages(String userId);
 
 }

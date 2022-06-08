@@ -19,5 +19,7 @@ public interface IReadingLogDAO {
 	public List<ReadingLogDTO> getRecentBook(String userId, int index, int limit);
 
 	public List<ReadingCalendarDTO> getRecentCalendar(String userId);
+	
+	public int getAccReadPages(String userId);
 
 }
