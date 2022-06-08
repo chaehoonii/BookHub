@@ -11,16 +11,19 @@
 	<h1>"독서 기록을 쌓아 놓을 수 있는 나만의 공간"</h1>
 		<div id="step1">
 			<h3>Step 1</h3>
+			<hr/>
 			<p>내 책으로 등록하기</p>
 			<img id="intro_s1" alt="내 책으로 등록" src="/static/img/intro/bookregister.png">
 		</div>
 		<div id="step2">
-		<h3>Step 2</h3>
+			<h3>Step 2</h3>
+			<hr/>
 			<p>매일 읽은 페이지 수 기록하기</p>
 			<img id="intro_s2" alt="독서 기록" src="#">
 		</div>
 		<div id="step3">
 			<h3>Step 3</h3>
+			<hr/>
 			<p>페이지 수에 따른 색깔 차이와 달력에 채워지는 색들로 독서 기록 확인하기</p>		
 			<img id="intro_s3" alt="독서 기록 달력" src="#">
 		</div>

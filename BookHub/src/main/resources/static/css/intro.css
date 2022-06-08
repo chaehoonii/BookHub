@@ -21,9 +21,12 @@
 }
 .second_intro h1{
 	font-size: 32px;
+	margin-bottom: 5%;
 }
 .second_intro h3{
 	font-size: 25px;
+	margin-bottom: 25px;
+	text-transform: uppercase;
 }
 .second_intro p{
 	margin-top:20px;
