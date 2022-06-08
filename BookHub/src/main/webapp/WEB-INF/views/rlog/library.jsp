@@ -74,7 +74,9 @@
                                     </div>
                                 </div>
                                 <div class="library-summary">
-                                    <c:if test="${!empty book.summary}">NOTE: ${book.summary}</c:if>
+                                    <c:if test="${!empty book.summary}">
+                                        📑 ${book.summary}
+                                    </c:if>
                                 </div>
                                 <div class="library-progress">
                                     <div class="library-progresslabel">
@@ -97,8 +99,10 @@
                                 </div>
                             </div>
                             <div class="library-option">
+                                <a href="/rlog/book?isbn=${book.bookISBN}"><input class="library-optionbtn"
+                                    type="button" value="독서기록 보기"></a>
                                 <a href="/bookdetail?isbn=${book.bookISBN}"><input class="library-optionbtn"
-                                        type="button" value="도서 상세 정보"></a>
+                                        type="button" value="도서 상세정보"></a>
                             </div>
                         </div>
                     </c:forEach>

@@ -90,7 +90,7 @@
                                         maxFractionDigits="3" />
                                 </c:otherwise>
                             </c:choose>
-                            p.
+                            페이지
                         </span>
                         <span class="stat-subvalue">차곡차곡 쌓아올린</span>
                     </div>

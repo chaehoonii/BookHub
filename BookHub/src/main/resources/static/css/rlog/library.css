@@ -70,7 +70,6 @@
     word-break: break-all;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
-    color: var(--bs-gray-800);
 }
 
 .library-thumbnail {
@@ -148,9 +147,8 @@
     float: left;
     width: 200px;
     height: 200px;
-    padding: 70px 0;
+    padding: 40px 0;
 }
-
 .library-optionbtn {
     float: right;
     width: 130px;
