@@ -6,6 +6,9 @@
 <html>
 	<head>
 		<title>BookHub</title>
+		<link rel="shortcut icon" type="image/jpg" href="static/img/fav_logo.jpg">
+		<link rel="stylesheet" href="/static/css/inc/top.css" type="text/css">
+		<link rel="stylesheet" href="/static/css/inc/bottom.css" type="text/css">
 		<!-- jQuery WebJars -->
 		<script src="/webjars/jquery/jquery.min.js"></script>
 		<!-- sweetalert CDN libs -->
@@ -28,7 +31,7 @@
             <div class="nav_menu" id="nav-menu">
                 <ul class="nav_list">
                     <li class="nav_item">
-                        <a href="#" class="nav_link">About</a>
+                        <a href="/introduction" class="nav_link">About</a>
                     </li>
                     <li class="nav_item">
                         <a href="/booklist" class="nav_link">Books</a>
