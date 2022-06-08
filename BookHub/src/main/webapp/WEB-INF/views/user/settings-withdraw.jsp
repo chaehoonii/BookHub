@@ -7,6 +7,9 @@
 <head>
 	<meta charset="UTF-8">
 	<title>BookHub | Settings</title>
+	<!-- Bootstrap WebJars -->
+	<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+	<script src="/webjars/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<link rel="stylesheet" href="/static/css/user/common_style.css">
 	<link rel="stylesheet" href="/static/css/user/settings-withdraw.css" />
 	<link rel="stylesheet" href="/static/css/user/settings-asidebar.css" />

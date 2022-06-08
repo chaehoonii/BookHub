@@ -40,6 +40,7 @@ article.article-container {
 	margin-bottom: 2rem;
 	min-width: 70%;
 	margin: 0 auto;
+	height: max-content;
 }
 
 
@@ -79,4 +80,5 @@ section.container {
 	flex-direction: row;
 	flex-wrap: nowrap;
 	margin-top: 160px;
+	min-height: 900px;
 }

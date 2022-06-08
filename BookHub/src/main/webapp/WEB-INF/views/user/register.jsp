@@ -4,6 +4,9 @@
 <head>
 	<meta charset="UTF-8">
 	<title>BookHub : 회원가입</title>
+	<!-- Bootstrap WebJars -->
+	<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+	<script src="/webjars/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<link rel="stylesheet" href="/static/css/user/common_style.css">
 	<link rel="stylesheet" href="/static/css/user/user_register_new.css">
 </head>
