@@ -5,18 +5,13 @@
     font-weight: normal;
     font-style: normal;
 }
-@font-face {
-    font-family: 'GimpoGothicRegular00';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/GimpoGothicRegular00.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
 /*=====기본 설정=====*/
 *{
   font-family: 'GowunDodum-Regular';
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: 'GowunDodum-Regular';
 }
 html {
   scroll-behavior: smooth;

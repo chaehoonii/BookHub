@@ -5,9 +5,6 @@
 	margin:110px 0px 50px 0px;
 	padding-left:20px;
 }
-.booklist_container *{
-	font-family: 'GowunDodum-Regular';
-}
 .booklist_content{
 	width:1290px;
 	margin: 0 auto;
@@ -79,6 +76,9 @@
 .booklist_bookname{
 	margin-top:2px;
 	font-size:16px;
+}
+.booklist_bookname a{
+	color:black;
 }
 .booklist_booksubinfo{
 	font-size:12px;

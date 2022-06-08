@@ -151,11 +151,17 @@
     float: right;
 }
 
-.progress {
+.recent-progressbar {
+    -webkit-appearance: none;
     float: left;
     width: 309px;
     height: 10px;
 }
-.progress-bar {
+.recent-progressbar::-webkit-progress-bar {
+    border-radius: 5px;
+    background-color: var(--bs-gray-200);
+}
+.recent-progressbar::-webkit-progress-value {
+    border-radius: 5px;
     background-color: var(--bs-gray-700);
 }

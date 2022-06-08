@@ -9,6 +9,6 @@ import multi.dokgi.bookhub.booklist.dto.CategoryDTO;
 
 @Mapper
 @Repository("categorydao")
-public interface CategoryDAO {
+public interface ICategoryDAO {
 	public List<CategoryDTO> getCategoryList(String mall);
 }

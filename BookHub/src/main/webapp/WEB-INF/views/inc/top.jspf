@@ -11,12 +11,11 @@
 		<link rel="stylesheet" href="/static/css/inc/bottom.css" type="text/css">
 		<!-- jQuery WebJars -->
 		<script src="/webjars/jquery/jquery.min.js"></script>
-		<!-- Bootstrap WebJars -->
-		<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
-        <script src="/webjars/bootstrap/js/bootstrap.bundle.min.js"></script>
 		<!-- sweetalert CDN libs -->
 		<link rel="stylesheet" href="/static/libs/sweetalert.min.css" />
 		<script src="/static/libs/sweetalert.min.js"></script>
+		<link rel="shortcut icon" type="image/jpg" href="img/fav_logo.jpg">
+		<link rel="stylesheet" href="/static/css/inc/top.css" type="text/css">
 	</head>
 <body>
 	  <header class="header" id="header">
