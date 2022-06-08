@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="multi.dokgi.bookhub.booklist.dao.ReviewDAO">
+<mapper namespace="multi.dokgi.bookhub.booklist.dao.IReviewDAO">
 	<!-- 리뷰 조회 -->
 	<select id="getReviewList" resultType="ReviewJoinDTO" parameterType="String">
 		select review_num, r.user_id, book_isbn, review_content, review_writedate, user_thumbnail, user_nick
@@ -18,10 +18,10 @@
 	</select>
 	<!-- 로그인한 아이디 독서 진행도 -->
 	<select id="getProgress" resultType="int" parameterType="String">
-		select end_page 
+		select sum(read_page)
 		from readinglog
 		where user_id like #{loginId} and book_ISBN like #{isbn}
-		order by end_page desc 
+		group by book_ISBN
 		limit 1
 	</select>
 	<!-- 완독 조회 -->

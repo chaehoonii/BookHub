@@ -11,7 +11,7 @@ import multi.dokgi.bookhub.booklist.dto.ReviewJoinDTO;
 
 @Mapper
 @Repository("reviewdao")
-public interface ReviewDAO {
+public interface IReviewDAO {
 	//리뷰 내역
 	public List<ReviewJoinDTO> getReviewList(String isbn);
 	

@@ -1,4 +1,4 @@
-package multi.dokgi.bookhub.booklist;
+package multi.dokgi.bookhub.booklist.service;
 
 import java.net.URLEncoder;
 import java.text.ParseException;
@@ -16,22 +16,26 @@ import javax.xml.parsers.SAXParserFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.helpers.ParserAdapter;
 
-import multi.dokgi.bookhub.booklist.dao.CategoryDAO;
+import multi.dokgi.bookhub.booklist.dao.ICategoryDAO;
 import multi.dokgi.bookhub.booklist.dto.BookListDTO;
 import multi.dokgi.bookhub.booklist.dto.CategoryDTO;
 
 @Service("booklistservice")
-public class BookListServiceImpl implements BookListService{
+public class BookListServiceImpl implements IBookListService{
 	
 	@Autowired
 	@Qualifier("categorydao")
-	CategoryDAO dao;
+	ICategoryDAO dao;
+	
+	@Value("${ttbkey.KJN}")
+	private String TTBKey;
 	
 	//상품 리스트 API
 	@Override
@@ -45,7 +49,7 @@ public class BookListServiceImpl implements BookListService{
 		Map<String,String> hm = new HashMap<String,String>();
 		
 		try {
-			hm.put("ttbkey", "ttbkjn92051341001");		
+			hm.put("ttbkey", TTBKey);		
 			hm.put("QueryType", "Bestseller");
 			hm.put("SearchTarget", SearchTarget);
 			hm.put("start", start);
@@ -96,7 +100,7 @@ public class BookListServiceImpl implements BookListService{
 		Map<String,String> hm = new HashMap<String,String>();
 		
 		try {
-			hm.put("ttbkey", "ttbkjn92051341001");		
+			hm.put("ttbkey", TTBKey);		
 			hm.put("Query", URLEncoder.encode(searchWord, "UTF-8"));
 			hm.put("QueryType", queryType);
 			hm.put("SearchTarget", SearchTarget);
@@ -146,7 +150,7 @@ public class BookListServiceImpl implements BookListService{
 		Map<String,String> hm = new HashMap<String,String>();
 		
 		try {
-			hm.put("ttbkey", "ttbkjn92051341001");		
+			hm.put("ttbkey", TTBKey);		
 			hm.put("ItemIdType", "ISBN13");
 			hm.put("ItemId", isbn);
 			hm.put("Cover", "Big");

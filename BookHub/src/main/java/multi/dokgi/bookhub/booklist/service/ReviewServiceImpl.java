@@ -1,4 +1,4 @@
-package multi.dokgi.bookhub.booklist;
+package multi.dokgi.bookhub.booklist.service;
 
 import java.util.List;
 
@@ -6,16 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import multi.dokgi.bookhub.booklist.dao.ReviewDAO;
+import multi.dokgi.bookhub.booklist.dao.IReviewDAO;
 import multi.dokgi.bookhub.booklist.dto.ReviewDTO;
 import multi.dokgi.bookhub.booklist.dto.ReviewJoinDTO;
 
 @Service("reviewservice")
-public class ReviewServiceImpl implements ReviewService {
+public class ReviewServiceImpl implements IReviewService {
 
 	@Autowired
 	@Qualifier("reviewdao")
-	ReviewDAO dao;
+	IReviewDAO dao;
 
 	@Override
 	public List<ReviewJoinDTO> getReviewList(String isbn) {
