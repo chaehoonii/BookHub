@@ -54,16 +54,24 @@
     text-align: center;
 }
 .stat-title {
-    height: 30px;
-    line-height: 30px;
+    height: 35px;
+    line-height: 35px;
     font-size: 20px;
-    font-weight: bold;
+    font-weight: normal;
 }
 .stat-value {
     display: block;
-    height: 60px;
-    line-height: 60px;
+    height: 35px;
+    line-height: 35px;
     font-size: 20px;
+    font-weight: bold;
+}
+.stat-subvalue {
+    display: block;
+    height: 20px;
+    line-height: 20px;
+    font-size: 14px;
+    color: var(--bs-gray-600);
 }
 
 #summary-recent {

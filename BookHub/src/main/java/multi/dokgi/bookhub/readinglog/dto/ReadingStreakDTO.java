@@ -10,9 +10,10 @@ import lombok.Getter;
  */
 
 @Getter
-public class ReadingCalendarDTO {
+public class ReadingStreakDTO {
 
-	private LocalDateTime readDate; // 독서활동일
-	private int readPage; // 독서 페이지
+	private LocalDateTime streakStartDate;
+	private LocalDateTime streakEndDate;
+	private int streakCount;
 
 }
