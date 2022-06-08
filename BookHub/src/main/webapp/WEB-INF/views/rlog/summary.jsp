@@ -12,8 +12,6 @@
 </head>
 
 <body>
-    <!-- Header -->
-
     <!-- ReadingLog -->
     <div id="readinglog-wrapper">
         <!-- ReadingLog Head -->
@@ -169,24 +167,27 @@
                                         <div class="recent-title"
                                             title="${bookInfo[log.bookISBN].get('title')}"><a
                                                 class="recent-title-link"
-                                                href="/rlog/edit?isbn=${log.bookISBN}">${bookInfo[log.bookISBN].get('title')}</a>
+                                                href="/rlog/book?isbn=${log.bookISBN}">${bookInfo[log.bookISBN].get('title')}</a>
                                         </div>
                                         <div class="recent-author">
                                             <span>${bookInfo[log.bookISBN].get('author')}</span>
                                         </div>
                                     </div>
                                     <div class="recent-progress">
-                                        <fmt:formatNumber
-                                            value="${log.readPage/bookInfo[log.bookISBN].get('subInfo').get('itemPage')}"
-                                            type="percent" var="percentReadPage" />
-                                        <fmt:parseDate value="${log.readDate}" pattern="yyyy-MM-dd'T'HH:mm"
-                                            var="parsedReadDate" />
-                                        <div class="recent-readpercent">${percentReadPage}</div>
-                                        <div class="recent-readpage">
-                                            ${log.readPage}/${bookInfo[log.bookISBN].get('subInfo').get('itemPage')}
+                                        <div class="recent-progresslabel">
+                                            <fmt:formatNumber
+                                                value="${log.readPage/bookInfo[log.bookISBN].get('subInfo').get('itemPage')}"
+                                                type="percent" var="percentReadPage" />
+                                            <div class="recent-readpercent">${percentReadPage}</div>
+                                            <div class="recent-readlabel">독서 진행도</div>
+                                            <div class="recent-readpage">
+                                                ${log.readPage}/${bookInfo[log.bookISBN].get('subInfo').get('itemPage')}
+                                            </div>
                                         </div>
                                         <progress class="recent-progressbar" value="${log.readPage}"
                                             max="${bookInfo[log.bookISBN].get('subInfo').get('itemPage')}"></progress>
+                                        <fmt:parseDate value="${log.readDate}" pattern="yyyy-MM-dd'T'HH:mm"
+                                            var="parsedReadDate" />
                                         <span class="recent-readdate">마지막 독서일:
                                             <fmt:formatDate pattern="yyyy년 M월 d일"
                                                 value="${parsedReadDate}" />

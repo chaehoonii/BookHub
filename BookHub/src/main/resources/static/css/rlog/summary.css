@@ -148,17 +148,24 @@
     font-size: 14px;
     color: var(--bs-gray-600);
 }
+.recent-progresslabel {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
 .recent-readpercent,
 .recent-readdate,
+.recent-readlabel,
 .recent-readpage {
-    float: left;
     height: 20px;
     line-height: 20px;
     font-size: 14px;
     color: var(--bs-gray-600);
 }
+.recent-readlabel {
+    text-align: center;
+}
 .recent-readpage {
-    float: right;
+    text-align: right;
 }
 
 .recent-progressbar {

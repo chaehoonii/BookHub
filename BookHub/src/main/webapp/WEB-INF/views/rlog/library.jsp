@@ -12,11 +12,9 @@
 </head>
 
 <body>
-    <!-- Header -->
-
     <!-- ReadingLog -->
     <div id="readinglog-wrapper">
-        <!-- Library Head -->
+        <!-- ReadingLog Head -->
         <div id="readinglog-head">
             <h1 id="readinglog-username">
                 ${user.userNick}님의 독서기록
@@ -69,33 +67,38 @@
                                     <div class="library-title"
                                         title="${bookInfo[book.bookISBN].get('title')}"><a
                                             class="library-title-link"
-                                            href="/rlog/edit?isbn=${book.bookISBN}">${bookInfo[book.bookISBN].get('title')}</a>
+                                            href="/rlog/book?isbn=${book.bookISBN}">${bookInfo[book.bookISBN].get('title')}</a>
                                     </div>
                                     <div class="library-author">
-                                        <span>${bookInfo[book.bookISBN].get('author')}</span></div>
+                                        <span>${bookInfo[book.bookISBN].get('author')}</span>
+                                    </div>
                                 </div>
                                 <div class="library-summary">
                                     <c:if test="${!empty book.summary}">NOTE: ${book.summary}</c:if>
                                 </div>
                                 <div class="library-progress">
-                                    <fmt:formatNumber
-                                        value="${book.readPage/bookInfo[book.bookISBN].get('subInfo').get('itemPage')}"
-                                        type="percent" var="percentReadPage" />
-                                    <fmt:parseDate value="${book.readDate}" pattern="yyyy-MM-dd'T'HH:mm"
-                                        var="parsedReadDate" />
-                                    <div class="library-readpercent">${percentReadPage}</div>
-                                    <div class="library-readpage">
-                                        ${book.readPage}/${bookInfo[book.bookISBN].get('subInfo').get('itemPage')}
+                                    <div class="library-progresslabel">
+                                        <fmt:formatNumber
+                                            value="${book.readPage/bookInfo[book.bookISBN].get('subInfo').get('itemPage')}"
+                                            type="percent" var="percentReadPage" />
+                                        <div class="library-readpercent">${percentReadPage}</div>
+                                        <div class="library-readlabel">독서 진행도</div>
+                                        <div class="library-readpage">
+                                            ${book.readPage}/${bookInfo[book.bookISBN].get('subInfo').get('itemPage')}
+                                        </div>
                                     </div>
                                     <progress class="library-progressbar" value="${book.readPage}"
                                         max="${bookInfo[book.bookISBN].get('subInfo').get('itemPage')}"></progress>
+                                    <fmt:parseDate value="${book.readDate}" pattern="yyyy-MM-dd'T'HH:mm"
+                                        var="parsedReadDate" />
                                     <span class="library-readdate">마지막 독서일:
                                         <fmt:formatDate pattern="yyyy년 M월 d일" value="${parsedReadDate}" />
                                     </span>
                                 </div>
                             </div>
                             <div class="library-option">
-                                <a href="/bookdetail?isbn=${book.bookISBN}"><input class="library-optionbtn" type="button" value="도서 상세 정보"></a>
+                                <a href="/bookdetail?isbn=${book.bookISBN}"><input class="library-optionbtn"
+                                        type="button" value="도서 상세 정보"></a>
                             </div>
                         </div>
                     </c:forEach>

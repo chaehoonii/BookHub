@@ -78,8 +78,6 @@
     width: 180px;
     height: 180px;
     margin: 10px;
-}
-.library-thumbnail {
     object-fit: contain;
     border: 1px solid var(--bs-gray-500);
 }
@@ -109,17 +107,26 @@
     font-size: 16px;
     color: var(--bs-gray-600);
 }
+
+.library-progresslabel {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
 .library-readpercent,
 .library-readdate,
+.library-readlabel,
 .library-readpage {
-    float: left;
     height: 25px;
     line-height: 25px;
     font-size: 16px;
     color: var(--bs-gray-600);
 }
+.library-readlabel {
+    text-align: center;
+}
 .library-readpage {
-    float: right;
+    text-align: right;
 }
 
 .library-progressbar {
