@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import multi.dokgi.bookhub.readinglog.dao.IReadingLogDAO;
 import multi.dokgi.bookhub.readinglog.dto.ReadingCalendarDTO;
 import multi.dokgi.bookhub.readinglog.dto.ReadingLogDTO;
+import multi.dokgi.bookhub.readinglog.dto.ReadingReviewDTO;
 import multi.dokgi.bookhub.readinglog.dto.ReadingStreakDTO;
 
 /**
@@ -94,6 +95,12 @@ public class ReadingLogServiceImpl implements IReadingLogService {
 	public List<ReadingLogDTO> getRecentBook(String userId) {
 		// index 0부터 3개까지 조회
 		return rlDAO.getRecentBook(userId, 0, 3);
+	}
+
+	// 최근 작성한 리뷰 조회
+	@Override
+	public List<ReadingReviewDTO> getRecentReview(String userId) {
+		return rlDAO.getRecentReview(userId, 0, 3);
 	}
 
 	// 최근 독서활동 조회

@@ -7,6 +7,7 @@ import org.json.JSONObject;
 
 import multi.dokgi.bookhub.readinglog.dto.ReadingCalendarDTO;
 import multi.dokgi.bookhub.readinglog.dto.ReadingLogDTO;
+import multi.dokgi.bookhub.readinglog.dto.ReadingReviewDTO;
 import multi.dokgi.bookhub.readinglog.dto.ReadingStreakDTO;
 
 /**
@@ -21,6 +22,8 @@ public interface IReadingLogService {
 			String readComplete);
 
 	public List<ReadingLogDTO> getRecentBook(String userId);
+	
+	public List<ReadingReviewDTO> getRecentReview(String userId);
 
 	public List<ReadingCalendarDTO> getRecentCalendar(String userId);
 

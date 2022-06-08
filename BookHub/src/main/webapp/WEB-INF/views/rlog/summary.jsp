@@ -172,7 +172,8 @@
                                                 href="/rlog/edit?isbn=${log.bookISBN}">${bookInfo[log.bookISBN].get('title')}</a>
                                         </div>
                                         <div class="recent-author">
-                                            <span>${bookInfo[log.bookISBN].get('author')}</span></div>
+                                            <span>${bookInfo[log.bookISBN].get('author')}</span>
+                                        </div>
                                     </div>
                                     <div class="recent-progress">
                                         <fmt:formatNumber
@@ -209,7 +210,27 @@
                         <c:if test="${!empty recentReview}">
                             <c:forEach items="${recentReview}" var="review">
                                 <div class="recent-item">
-
+                                    <img class="recent-thumbnail"
+                                        src="${bookInfo[review.bookISBN].get('cover')}">
+                                    <div class="recent-info">
+                                        <div class="recent-title"
+                                            title="${bookInfo[review.bookISBN].get('title')}"><a
+                                                class="recent-title-link"
+                                                href="/bookdetail?isbn=${review.bookISBN}">${bookInfo[review.bookISBN].get('title')}</a>
+                                        </div>
+                                        <div class="recent-author">
+                                            <span>${bookInfo[review.bookISBN].get('author')}</span>
+                                        </div>
+                                        <div class="recent-reviewcontent">
+                                            <span>${review.reviewContent}</span>
+                                        </div>
+                                        <fmt:parseDate value="${review.reviewWritedate}"
+                                            pattern="yyyy-MM-dd'T'HH:mm" var="parsedReviewWriteDate" />
+                                        <span class="recent-readdate">리뷰 작성일:
+                                            <fmt:formatDate pattern="yyyy년 M월 d일"
+                                                value="${parsedReviewWriteDate}" />
+                                        </span>
+                                    </div>
                                 </div>
                             </c:forEach>
                         </c:if>
@@ -219,9 +240,6 @@
         </div>
     </div>
 
-    <script>
-        const recentCalendar = "${recentCalendar}";
-    </script>
     <script src="/static/js/rlog/summary.js"></script>
 </body>
 

@@ -44,6 +44,24 @@
 			#{index}, #{limit}
 	</select>
 	
+	<!-- 최근 작성한 리뷰 조회 -->
+	<select id="getRecentReview" resultType="ReadingReviewDTO">
+		SELECT
+			review_num,
+			user_id,
+			book_isbn AS book_ISBN,
+			review_content,
+			review_writedate
+		FROM
+			`bookhub`.`review`
+		WHERE
+			user_id LIKE #{userId}
+		ORDER BY
+			review_writedate DESC
+		LIMIT
+			#{index}, #{limit}
+	</select>
+	
 	<!-- 최근 독서활동 조회 -->
 	<select id="getRecentCalendar" resultType="ReadingCalendarDTO">
 		SELECT

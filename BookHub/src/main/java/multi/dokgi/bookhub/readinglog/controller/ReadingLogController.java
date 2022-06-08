@@ -17,6 +17,7 @@ import multi.dokgi.bookhub.config.auth.LoginUser;
 import multi.dokgi.bookhub.config.auth.dto.SessionUser;
 import multi.dokgi.bookhub.readinglog.dto.ReadingCalendarDTO;
 import multi.dokgi.bookhub.readinglog.dto.ReadingLogDTO;
+import multi.dokgi.bookhub.readinglog.dto.ReadingReviewDTO;
 import multi.dokgi.bookhub.readinglog.dto.ReadingStreakDTO;
 import multi.dokgi.bookhub.readinglog.service.IReadingLogService;
 
@@ -46,21 +47,31 @@ public class ReadingLogController {
 			// 최근 읽은 책 (최대 3개)
 			List<ReadingLogDTO> recentLog = rlService.getRecentBook(userId);
 
+			// 최근 작성한 리뷰 (최대 3개)
+			List<ReadingReviewDTO> recentReview = rlService.getRecentReview(userId);
+
 			// 인터파크 도서 API - ISBN으로 도서 정보 검색
 			Map<String, JSONObject> bookInfo = new HashMap<String, JSONObject>();
 			for (ReadingLogDTO dto : recentLog) {
 				JSONObject book = rlService.getBookInfo(dto.getBookISBN());
 				bookInfo.put(dto.getBookISBN(), book);
 			}
-			
+			for (ReadingReviewDTO dto : recentReview) {
+				if (!bookInfo.containsKey(dto.getBookISBN())) {
+					JSONObject book = rlService.getBookInfo(dto.getBookISBN());
+					bookInfo.put(dto.getBookISBN(), book);
+				}
+			}
+
 			// 누적 독서 페이지
 			Integer accReadPages = rlService.getAccReadPages(userId);
-			
+
 			// 연속 독서일
 			Map<String, ReadingStreakDTO> streak = rlService.getStreak(userId);
 
 			mv.addObject("user", user);
 			mv.addObject("recentLog", recentLog);
+			mv.addObject("recentReview", recentReview);
 			mv.addObject("bookInfo", bookInfo);
 			mv.addObject("accReadPages", accReadPages);
 			mv.addObject("streak", streak);
