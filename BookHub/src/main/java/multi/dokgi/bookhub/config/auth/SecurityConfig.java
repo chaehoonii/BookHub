@@ -33,7 +33,7 @@ public class SecurityConfig {
 				.exceptionHandling().accessDeniedPage("/err/denied-page"); // 접근 불가 페이지
 
 		// 화이트리스트
-		http.authorizeRequests().antMatchers("/", "/login/**","/google-login/**", "/static/**", "/logout/**", "/err*").permitAll()
+		http.authorizeRequests().antMatchers("/", "/login/**","/google-login/**", "/static/**", "/logout/**", "/err*", "/introduction").permitAll()
 			.antMatchers("/book**").permitAll()
 			.antMatchers("/register/**").permitAll()
 			.antMatchers("/settings**").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
