@@ -1,4 +1,4 @@
-package multi.dokgi.bookhub.booklist;
+package multi.dokgi.bookhub.booklist.controller;
 
 import java.util.List;
 import java.util.Map;
@@ -18,6 +18,8 @@ import multi.dokgi.bookhub.booklist.dto.BookListPageDTO;
 import multi.dokgi.bookhub.booklist.dto.CategoryDTO;
 import multi.dokgi.bookhub.booklist.dto.ReviewDTO;
 import multi.dokgi.bookhub.booklist.dto.ReviewJoinDTO;
+import multi.dokgi.bookhub.booklist.service.IBookListService;
+import multi.dokgi.bookhub.booklist.service.IReviewService;
 import multi.dokgi.bookhub.config.auth.LoginUser;
 import multi.dokgi.bookhub.config.auth.dto.SessionUser;
 
@@ -26,11 +28,11 @@ public class BookListController {
 
 	@Autowired
 	@Qualifier("booklistservice")
-	BookListService bookservice;
+	IBookListService bookservice;
 	
 	@Autowired
 	@Qualifier("reviewservice")
-	ReviewService reviewservice;
+	IReviewService reviewservice;
 
 	//상품 리스트 API - 베스트셀러
 	@SuppressWarnings("unchecked")

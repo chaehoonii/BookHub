@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import multi.dokgi.bookhub.readinglog.dao.IReadingLogDAO;
@@ -22,7 +23,10 @@ import multi.dokgi.bookhub.readinglog.dto.ReadingLogDTO;
 @Service("ReadingLogService")
 public class ReadingLogServiceImpl implements IReadingLogService {
 
-	IReadingLogDAO rlDAO;
+	@Value("${ttbkey.GhostFairy}")
+	private String TTBKey;
+
+	private IReadingLogDAO rlDAO;
 
 	// 생성자 주입
 	public ReadingLogServiceImpl(IReadingLogDAO rlDAO) {
@@ -32,7 +36,6 @@ public class ReadingLogServiceImpl implements IReadingLogService {
 	// 인터파크 도서 API - ISBN으로 도서 정보 검색
 	@Override
 	public JSONObject getBookInfo(String isbn) {
-		String TTBKey = "ttbkjn92051341001";
 		JSONObject out = null;
 
 		try {
@@ -63,8 +66,8 @@ public class ReadingLogServiceImpl implements IReadingLogService {
 
 	// 독서활동 기록하기
 	@Override
-	public int writeReadingLog(String userId, String bookISBN, int startPage, int endPage, String summary,
-			String readDate, String readComplete) {
+	public int writeReadingLog(String userId, String bookISBN, int readPage, String summary, String readDate,
+			String readComplete) {
 		// 입력된 연-월-일 문자열을 parse
 		LocalDateTime readDateParsed = LocalDate.parse(readDate).atStartOfDay();
 		// 완독여부 체크박스가 체크되지 않았으면 null이므로 false, 체크되어 null이 아니면 true
@@ -74,7 +77,7 @@ public class ReadingLogServiceImpl implements IReadingLogService {
 		}
 
 		// DTO 생성
-		ReadingLogDTO rlDTO = new ReadingLogDTO(userId, bookISBN, startPage, endPage, summary, readDateParsed,
+		ReadingLogDTO rlDTO = new ReadingLogDTO(userId, bookISBN, readPage, summary, readDateParsed,
 				readCompleteParsed);
 		// DB에 입력
 		int result = rlDAO.writeReadingLog(rlDTO);

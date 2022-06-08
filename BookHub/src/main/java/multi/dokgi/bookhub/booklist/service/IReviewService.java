@@ -1,11 +1,11 @@
-package multi.dokgi.bookhub.booklist;
+package multi.dokgi.bookhub.booklist.service;
 
 import java.util.List;
 
 import multi.dokgi.bookhub.booklist.dto.ReviewDTO;
 import multi.dokgi.bookhub.booklist.dto.ReviewJoinDTO;
 
-public interface ReviewService {
+public interface IReviewService {
 	//리뷰 내역
 	public List<ReviewJoinDTO> getReviewList(String isbn);
 	
