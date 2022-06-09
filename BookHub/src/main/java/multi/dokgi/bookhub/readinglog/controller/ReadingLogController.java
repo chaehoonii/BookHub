@@ -163,8 +163,8 @@ public class ReadingLogController {
 
 	// 독서활동 기록
 	@PostMapping("/rlog/book/edit")
-	public ModelAndView readingLogEdit(@LoginUser SessionUser user, String isbn, Integer readPage, String readDate,
-			@Nullable String readComplete, @Nullable String summary) {
+	public ModelAndView readingLogEdit(@LoginUser SessionUser user, String readDate, Integer readPage,
+			@Nullable String readComplete, @Nullable String summary, String isbn) {
 		ModelAndView mv = new ModelAndView();
 
 		if (user != null) {
