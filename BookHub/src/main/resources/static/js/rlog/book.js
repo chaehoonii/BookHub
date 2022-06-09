@@ -1,3 +1,24 @@
+document.querySelector("#edit-readdate").max = new Date(
+    new Date().getTime() - new Date().getTimezoneOffset() * 60000
+)
+    .toISOString()
+    .split("T")[0];
+
+document
+    .querySelector("#edit-summary")
+    .addEventListener("keypress", function (e) {
+        if (e.keyCode == 13) {
+            e.preventDefault();
+        }
+    });
+
+document.querySelector("#edit-form").addEventListener("submit", function (e) {
+    const readPageDOM = document.querySelector("#edit-readpage");
+    if (readPageDOM.value == readPageDOM.max) {
+        document.querySelector("#edit-readcomplete").value = "true";
+    }
+});
+
 function deleteReadingLog(bookISBN, num) {
     swal({
         title: "독서기록 삭제",
