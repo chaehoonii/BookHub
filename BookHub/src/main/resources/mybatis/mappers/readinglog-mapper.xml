@@ -102,6 +102,8 @@
 					book_ISBN) AS maxrl
 			ON
 				(rl.book_ISBN = maxrl.book_ISBN AND rl.read_date = maxrl.last_read_date)
+		WHERE
+			user_id LIKE #{userId}
 		ORDER BY
 			read_date DESC
 		LIMIT
