@@ -2,11 +2,11 @@ $(document).ready(function () {
 	//내 책으로 등록하기 버튼 클릭
 	$('#userbook_reg').on('click', function(){
 		//console.log($('#bookisbn').val());
-		location.href = '/rlog/edit?isbn=' + $('#bookisbn').val();
+		location.href = '/rlog/book?isbn=' + $('#bookisbn').val();
 	});
 	//비로그인 내 책으로 등록하기 버튼 클릭 시 로그인 페이지로 이동
 	$('#userbook_none').on('click', function(){
-		location.href = '/rlog/edit?isbn=' + $('#bookisbn').val();
+		location.href = '/rlog/book?isbn=' + $('#bookisbn').val();
 	});
 	
 	//리뷰 쓰기 클릭시 리뷰 작성 폼 띄우기

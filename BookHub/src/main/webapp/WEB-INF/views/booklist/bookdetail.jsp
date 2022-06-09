@@ -36,11 +36,11 @@
 						<c:choose>
 							<%-- 로그인 안한 경우 --%>
 							<c:when test="${userbookExist == -1}">
-								<button id="userbook_none">내 책으로 등록하기</button>
+								<button id="userbook_none">새 독서기록 작성</button>
 							</c:when>
 							<%-- 책 등록 안한 경우 --%>
 							<c:when test="${userbookExist == 0}">
-								<button id="userbook_reg">내 책으로 등록하기</button>
+								<button id="userbook_reg">새 독서기록 작성</button>
 							</c:when>
 							<%-- 읽고 있는 책인 경우 --%>
 							<c:otherwise>
