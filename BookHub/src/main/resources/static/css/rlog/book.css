@@ -47,7 +47,7 @@
 }
 
 #readinglog-head-wrapper {
-    height: 171px;
+    height: 191px;
     padding: 0 10px;
     background-color: var(--bs-gray-100);
     border-bottom: 1px solid var(--bs-gray-500);
@@ -133,7 +133,7 @@
 }
 #book-librarybtn {
     float: left;
-    width: 100px;
+    width: 120px;
 }
 .book-menubtn {
     float: right;
@@ -141,7 +141,7 @@
 }
 .book-optionbtn {
     float: right;
-    width: 70px;
+    width: 150px;
 }
 .book-editbtn {
     margin-right: 10px;
@@ -153,22 +153,22 @@
 
 #book-thumbnail {
     float: left;
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     object-fit: contain;
     border: 1px solid var(--bs-gray-500);
     background-color: white;
-    margin-right: 10px;
+    margin-right: 30px;
 }
 #book-title {
     float: left;
     display: -webkit-box;
-    width: 810px;
-    height: 60px;
+    width: 770px;
+    height: 90px;
     overflow: hidden;
     text-overflow: ellipsis;
     word-break: break-all;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     font-size: 20px;
     font-weight: bold;
@@ -178,9 +178,8 @@
 }
 #book-progress {
     float: left;
-    width: 810px;
+    width: 770px;
     height: 30px;
-    margin: 10px 0;
 }
 #book-progresslabel {
     display: grid;
@@ -207,7 +206,7 @@
 #book-progressbar {
     -webkit-appearance: none;
     float: left;
-    width: 810px;
+    width: 770px;
     height: 10px;
 }
 #book-progressbar::-webkit-progress-bar {

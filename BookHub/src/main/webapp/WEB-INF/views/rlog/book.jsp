@@ -77,8 +77,8 @@
                     <c:forEach items="${readingLog}" var="log">
                         <div class="book-item">
                             <input class="book-optionbtn book-deletebtn" type="button"
-                                onclick="deleteReadingLog('${log.bookISBN}', '${log.num}')" value="✖️ 삭제">
-                            <input class="book-optionbtn book-editbtn" type="button" value="✏️ 수정">
+                                onclick="deleteReadingLog('${log.bookISBN}', '${log.num}')" value="✖️ 독서기록 삭제">
+                            <!-- <input class="book-optionbtn book-editbtn" type="button" value="✏️ 수정"> -->
                             <fmt:parseDate value="${log.readDate}" pattern="yyyy-MM-dd'T'HH:mm"
                                 var="parsedReadDate" />
                             <span class="book-readdate">
