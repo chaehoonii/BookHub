@@ -12,8 +12,6 @@
 </head>
 
 <body>
-    <!-- Header -->
-
     <!-- ReadingLog -->
     <div id="readinglog-wrapper">
         <!-- ReadingLog Head -->
@@ -92,7 +90,7 @@
                                         maxFractionDigits="3" />
                                 </c:otherwise>
                             </c:choose>
-                            p.
+                            페이지
                         </span>
                         <span class="stat-subvalue">차곡차곡 쌓아올린</span>
                     </div>
@@ -169,23 +167,27 @@
                                         <div class="recent-title"
                                             title="${bookInfo[log.bookISBN].get('title')}"><a
                                                 class="recent-title-link"
-                                                href="/rlog/edit?isbn=${log.bookISBN}">${bookInfo[log.bookISBN].get('title')}</a>
+                                                href="/rlog/book?isbn=${log.bookISBN}">${bookInfo[log.bookISBN].get('title')}</a>
                                         </div>
                                         <div class="recent-author">
-                                            <span>${bookInfo[log.bookISBN].get('author')}</span></div>
+                                            <span>${bookInfo[log.bookISBN].get('author')}</span>
+                                        </div>
                                     </div>
                                     <div class="recent-progress">
-                                        <fmt:formatNumber
-                                            value="${log.readPage/bookInfo[log.bookISBN].get('subInfo').get('itemPage')}"
-                                            type="percent" var="percentReadPage" />
-                                        <fmt:parseDate value="${log.readDate}" pattern="yyyy-MM-dd'T'HH:mm"
-                                            var="parsedReadDate" />
-                                        <div class="recent-readpercent">${percentReadPage}</div>
-                                        <div class="recent-readpage">
-                                            ${log.readPage}/${bookInfo[log.bookISBN].get('subInfo').get('itemPage')}
+                                        <div class="recent-progresslabel">
+                                            <fmt:formatNumber
+                                                value="${log.readPage/bookInfo[log.bookISBN].get('subInfo').get('itemPage')}"
+                                                type="percent" var="percentReadPage" />
+                                            <div class="recent-readpercent">${percentReadPage}</div>
+                                            <div class="recent-readlabel">독서 진행도</div>
+                                            <div class="recent-readpage">
+                                                ${log.readPage}/${bookInfo[log.bookISBN].get('subInfo').get('itemPage')}
+                                            </div>
                                         </div>
                                         <progress class="recent-progressbar" value="${log.readPage}"
                                             max="${bookInfo[log.bookISBN].get('subInfo').get('itemPage')}"></progress>
+                                        <fmt:parseDate value="${log.readDate}" pattern="yyyy-MM-dd'T'HH:mm"
+                                            var="parsedReadDate" />
                                         <span class="recent-readdate">마지막 독서일:
                                             <fmt:formatDate pattern="yyyy년 M월 d일"
                                                 value="${parsedReadDate}" />
@@ -209,7 +211,27 @@
                         <c:if test="${!empty recentReview}">
                             <c:forEach items="${recentReview}" var="review">
                                 <div class="recent-item">
-
+                                    <img class="recent-thumbnail"
+                                        src="${bookInfo[review.bookISBN].get('cover')}">
+                                    <div class="recent-info">
+                                        <div class="recent-title"
+                                            title="${bookInfo[review.bookISBN].get('title')}"><a
+                                                class="recent-title-link"
+                                                href="/bookdetail?isbn=${review.bookISBN}">${bookInfo[review.bookISBN].get('title')}</a>
+                                        </div>
+                                        <div class="recent-author">
+                                            <span>${bookInfo[review.bookISBN].get('author')}</span>
+                                        </div>
+                                        <div class="recent-reviewcontent">
+                                            <span>${review.reviewContent}</span>
+                                        </div>
+                                        <fmt:parseDate value="${review.reviewWritedate}"
+                                            pattern="yyyy-MM-dd'T'HH:mm" var="parsedReviewWriteDate" />
+                                        <span class="recent-readdate">리뷰 작성일:
+                                            <fmt:formatDate pattern="yyyy년 M월 d일"
+                                                value="${parsedReviewWriteDate}" />
+                                        </span>
+                                    </div>
                                 </div>
                             </c:forEach>
                         </c:if>
@@ -219,9 +241,6 @@
         </div>
     </div>
 
-    <script>
-        const recentCalendar = "${recentCalendar}";
-    </script>
     <script src="/static/js/rlog/summary.js"></script>
 </body>
 

@@ -7,6 +7,7 @@
 }
 .bookdetail_content{
 	width:1290px;
+	min-height: 76vh;
 	margin: 0 auto;
 	display:flex;
 }
