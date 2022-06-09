@@ -129,7 +129,7 @@ public class BookListController {
 				//책 완독했는지 조회
 				int readComplete = reviewservice.readComplete(user.getUserId(), isbn);
 				
-				if(readComplete == 1) {
+				if(readComplete >= 1) {
 					reviewExist = reviewservice.reviewExist(user.getUserId(), isbn); //0이면 리뷰 없음		 			
 				}
 			}			
