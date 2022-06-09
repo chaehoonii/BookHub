@@ -26,6 +26,8 @@ public interface IReadingLogDAO {
 	
 	public int deleteAllReadingLog(String userId, String bookISBN);
 	
+	public int checkReadComplete(String userId, String bookISBN);
+	
 	public int uncheckReadComplete(String userId, String bookISBN);
 
 	public List<ReadingLogDTO> getRecentBook(String userId, int index, int limit);

@@ -31,9 +31,9 @@
 	<!-- 독서활동 기록 -->
 	<insert id="writeReadingLog" parameterType="ReadingLogDTO">
 		INSERT INTO
-			`bookhub`.`readinglog`(user_id, book_isbn, read_page, summary, read_date, read_complete)
+			`bookhub`.`readinglog`(user_id, book_isbn, read_page, summary, read_date)
 		VALUES
-			(#{userId}, #{bookISBN}, #{readPage}, #{summary}, #{readDate}, #{readComplete});
+			(#{userId}, #{bookISBN}, #{readPage}, #{summary}, #{readDate});
 	</insert>
 	
 	<!-- 독서기록 삭제 -->
@@ -53,6 +53,17 @@
 			user_id LIKE #{userId}
 			AND book_ISBN LIKE #{bookISBN}
 	</delete>
+	
+	<!-- 완독표시 설정 -->
+	<update id="checkReadComplete">
+		UPDATE
+			`bookhub`.`readinglog`
+		SET
+			read_complete = 1
+		WHERE
+			user_id LIKE #{userId}
+			AND book_ISBN LIKE #{bookISBN}
+	</update>
 	
 	<!-- 완독표시 해제 -->
 	<update id="uncheckReadComplete">
@@ -91,6 +102,8 @@
 					book_ISBN) AS maxrl
 			ON
 				(rl.book_ISBN = maxrl.book_ISBN AND rl.read_date = maxrl.last_read_date)
+		WHERE
+			user_id LIKE #{userId}
 		ORDER BY
 			read_date DESC
 		LIMIT

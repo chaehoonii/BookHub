@@ -81,30 +81,37 @@
     font-size: 16px;
 }
 #edit-readdate {
-    width: 125px;
-    margin-right: 25px;
+    width: 120px;
+    margin-right: 30px;
     text-align: center;
 }
 #edit-readpage {
     width: 120px;
     margin-right: 5px;
-    padding-left: 10px;
+    padding: 0 10px;
+    text-align: center;
 }
-#edit-readcomplete {
-    margin-right: 5px;
+#edit-readpage::-webkit-inner-spin-button,
+#edit-readpage::-webkit-outer-spin-button {
+    -webkit-appearance: none;
 }
 #edit-readpage-label {
     border: none;
     margin-right: 15px;
 }
-#edit-readcomplete-label {
-    border: none;
-}
 #edit-summary {
+    float: left;
     width: 595px;
+    height: 80px;
+    line-height: 25px;
     margin-top: 10px;
     margin-left: 150px;
     padding: 0 10px;
+    resize: none;
+    overflow: hidden;
+    border-radius: 5px;
+    border: 1px solid var(--bs-gray-500);
+    font-size: 16px;
 }
 
 .book-menubtn,
@@ -245,7 +252,7 @@
     font-weight: bold;
 }
 .book-readpage {
-    width: 460px;
+    width: 595px;
 }
 .book-summary {
     float: left;

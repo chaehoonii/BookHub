@@ -21,6 +21,11 @@
                             value="📚 내 서재"></a>
                     <input id="book-alldeletebtn" class="book-menubtn" type="button"
                         onclick="deleteAllReadingLog('${param.isbn}')" value="모든 독서기록 삭제">
+                    <c:if test="${readingLogSum eq bookInfo.get('subInfo').get('itemPage')}">
+                        <a href="/bookdetail?isbn=${param.isbn}">
+                            <input class="book-optionbtn book-reviewbtn" type="button" value="리뷰 작성하기">
+                        </a>
+                    </c:if>
                 </div>
                 <img id="book-thumbnail" src="${bookInfo.get('cover')}">
                 <div id="book-title">
@@ -44,13 +49,18 @@
         </div>
         <!-- ReadingLog Button -->
         <div id="readinglog-edit">
-            <form action="/rlog/book/edit" method="POST">
-                <input id="edit-readdate" class="edit-input" name="readDate" type="date" pattern="\d{4}-\d{2}-\d{2}" required>
-                <label id="edit-readpage-label" class="edit-input"><input id="edit-readpage" class="edit-input" name="readPage" type="number" required>페이지</label>
-                <label id="edit-readcomplete-label" class="edit-input"><input id="edit-readcomplete" class="edit-input" name="readComplete" value="true" type="checkbox">완독</label>
+            <form id="edit-form" action="/rlog/book/edit" method="POST">
+                <input id="edit-readdate" class="edit-input" name="readDate" type="date"
+                    pattern="\d{4}-\d{2}-\d{2}" required>
+                <label id="edit-readpage-label" class="edit-input"><input id="edit-readpage"
+                        class="edit-input" name="readPage" type="number"
+                        max="${bookInfo.get('subInfo').get('itemPage')-readingLogSum}"
+                        placeholder="읽은 페이지 수" required>페이지</label>
                 <input id="book-writebtn" class="book-menubtn" type="submit" value="📝 독서기록 작성">
-                <input id="edit-summary" class="edit-input" name="summary" type="text">
+                <textarea id="edit-summary" name="summary" maxlength="100"
+                    placeholder="읽은 내용 요약 또는 메모 (선택, 최대 100자)"></textarea>
                 <input type="hidden" name="isbn" value="${param.isbn}">
+                <input id="edit-readcomplete" type="hidden" name="readComplete" value="false">
             </form>
         </div>
 
@@ -69,12 +79,6 @@
                             <input class="book-optionbtn book-deletebtn" type="button"
                                 onclick="deleteReadingLog('${log.bookISBN}', '${log.num}')" value="✖️ 삭제">
                             <input class="book-optionbtn book-editbtn" type="button" value="✏️ 수정">
-                            <c:if test="${log.readComplete}">
-                                <a href="/bookdetail?isbn=${param.isbn}">
-                                    <input class="book-optionbtn book-reviewbtn" type="button"
-                                        value="리뷰 작성하기">
-                                </a>
-                            </c:if>
                             <fmt:parseDate value="${log.readDate}" pattern="yyyy-MM-dd'T'HH:mm"
                                 var="parsedReadDate" />
                             <span class="book-readdate">
