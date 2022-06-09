@@ -47,10 +47,10 @@
 }
 
 #readinglog-head-wrapper {
-    height: 120px;
+    height: 171px;
     padding: 0 10px;
     background-color: var(--bs-gray-100);
-    box-shadow: 0 2px 5px -1px #e1e1e1;
+    border-bottom: 1px solid var(--bs-gray-500);
 }
 #readinglog-head {
     width: 940px;
@@ -58,14 +58,55 @@
     margin: 0 auto;
     padding: 10px;
 }
+#readinglog-headbtns {
+    float: left;
+    width: 920px;
+    height: 40px;
+    margin-bottom: 10px;
+}
 
-#readinglog-buttons {
+#readinglog-edit {
     width: 940px;
     overflow: hidden;
     margin: 0 auto;
-    padding: 15px 10px;
+    padding: 10px 10px;
     border-bottom: 1px solid var(--bs-gray-500);
 }
+.edit-input {
+    float: left;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 5px;
+    border: 1px solid var(--bs-gray-500);
+    font-size: 16px;
+}
+#edit-readdate {
+    width: 125px;
+    margin-right: 25px;
+    text-align: center;
+}
+#edit-readpage {
+    width: 120px;
+    margin-right: 5px;
+    padding-left: 10px;
+}
+#edit-readcomplete {
+    margin-right: 5px;
+}
+#edit-readpage-label {
+    border: none;
+    margin-right: 15px;
+}
+#edit-readcomplete-label {
+    border: none;
+}
+#edit-summary {
+    width: 595px;
+    margin-top: 10px;
+    margin-left: 150px;
+    padding: 0 10px;
+}
+
 .book-menubtn,
 .book-optionbtn {
     height: 40px;
@@ -91,18 +132,15 @@
     float: right;
     width: 150px;
 }
-#book-writebtn {
-    margin-left: 5px;
-}
-#book-alldeletebtn {
-    margin-right: 5px;
-}
 .book-optionbtn {
     float: right;
     width: 70px;
 }
-.book-editbtn,
+.book-editbtn {
+    margin-right: 10px;
+}
 .book-reviewbtn {
+    width: 150px;
     margin-right: 10px;
 }
 
@@ -187,6 +225,15 @@
     padding: 15px 0;
     border-bottom: 1px solid var(--bs-gray-500);
 }
+.no-book-item {
+    display: block;
+    height: 100%;
+    line-height: 100px;
+    padding: 50px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
 .book-readdate,
 .book-readpage {
     float: left;
@@ -198,11 +245,11 @@
     font-weight: bold;
 }
 .book-readpage {
-    width: 500px;
+    width: 460px;
 }
 .book-summary {
     float: left;
-    width: 920px;
+    width: 745px;
     margin-top: 10px;
     padding-left: 150px;
     word-break: break-all;
