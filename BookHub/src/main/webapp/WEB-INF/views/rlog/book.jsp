@@ -16,6 +16,17 @@
         <!-- ReadingLog Head -->
         <div id="readinglog-head-wrapper">
             <div id="readinglog-head">
+                <div id="readinglog-headbtns">
+                    <a href="/rlog/library"><input id="book-librarybtn" class="book-menubtn" type="button"
+                            value="📚 내 서재"></a>
+                    <input id="book-alldeletebtn" class="book-menubtn" type="button"
+                        onclick="deleteAllReadingLog('${param.isbn}')" value="모든 독서기록 삭제">
+                    <c:if test="${readingLogSum eq bookInfo.get('subInfo').get('itemPage')}">
+                        <a href="/bookdetail?isbn=${param.isbn}">
+                            <input class="book-optionbtn book-reviewbtn" type="button" value="리뷰 작성하기">
+                        </a>
+                    </c:if>
+                </div>
                 <img id="book-thumbnail" src="${bookInfo.get('cover')}">
                 <div id="book-title">
                     <a href="/bookdetail?isbn=${param.isbn}">${bookInfo.get('title')}</a>
@@ -28,8 +39,7 @@
                         <div id="progress-readlabel">독서 진행도</div>
                         <div id="progress-readpage">
                             <c:if test="${empty readingLogSum}">0</c:if>
-                            <c:if test="${!emptyreadingLogSum}">${readingLogSum}</c:if>
-                            /${bookInfo.get('subInfo').get('itemPage')}
+                            <c:if test="${!emptyreadingLogSum}">${readingLogSum}</c:if>/${bookInfo.get('subInfo').get('itemPage')}
                         </div>
                     </div>
                     <progress id="book-progressbar" value="${readingLogSum}"
@@ -38,12 +48,20 @@
             </div>
         </div>
         <!-- ReadingLog Button -->
-        <div id="readinglog-buttons">
-            <a href="/rlog/library"><input id="book-librarybtn" class="book-menubtn" type="button"
-                    value="📚 내 서재"></a>
-            <input id="book-writebtn" class="book-menubtn" type="button" value="📝 새 독서기록 작성">
-            <input id="book-alldeletebtn" class="book-menubtn" type="button"
-                onclick="deleteAllReadingLog('${param.isbn}')" value="모든 독서기록 삭제">
+        <div id="readinglog-edit">
+            <form id="edit-form" action="/rlog/book/edit" method="POST">
+                <input id="edit-readdate" class="edit-input" name="readDate" type="date"
+                    pattern="\d{4}-\d{2}-\d{2}" required>
+                <label id="edit-readpage-label" class="edit-input"><input id="edit-readpage"
+                        class="edit-input" name="readPage" type="number"
+                        max="${bookInfo.get('subInfo').get('itemPage')-readingLogSum}"
+                        placeholder="읽은 페이지 수" required>페이지</label>
+                <input id="book-writebtn" class="book-menubtn" type="submit" value="📝 독서기록 작성">
+                <textarea id="edit-summary" name="summary" maxlength="100"
+                    placeholder="읽은 내용 요약 또는 메모 (선택, 최대 100자)"></textarea>
+                <input type="hidden" name="isbn" value="${param.isbn}">
+                <input id="edit-readcomplete" type="hidden" name="readComplete" value="false">
+            </form>
         </div>
 
         <!-- ReadingLog Book -->
@@ -59,8 +77,8 @@
                     <c:forEach items="${readingLog}" var="log">
                         <div class="book-item">
                             <input class="book-optionbtn book-deletebtn" type="button"
-                                onclick="deleteReadingLog('${log.bookISBN}', '${log.num}')" value="✖️ 삭제">
-                            <input class="book-optionbtn book-editbtn" type="button" value="✏️ 수정">
+                                onclick="deleteReadingLog('${log.bookISBN}', '${log.num}')" value="✖️ 독서기록 삭제">
+                            <!-- <input class="book-optionbtn book-editbtn" type="button" value="✏️ 수정"> -->
                             <fmt:parseDate value="${log.readDate}" pattern="yyyy-MM-dd'T'HH:mm"
                                 var="parsedReadDate" />
                             <span class="book-readdate">
@@ -74,7 +92,7 @@
                                 <c:set var="pageCount" value="${pageCount - log.readPage}" />
                             </span>
                             <c:if test="${!empty log.summary}">
-                                <span class="book-summary">${log.summary}</span>
+                                <span class="book-summary">📑 ${log.summary}</span>
                             </c:if>
                         </div>
                     </c:forEach>
