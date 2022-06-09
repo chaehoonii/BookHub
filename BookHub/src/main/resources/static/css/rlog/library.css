@@ -52,19 +52,19 @@
 
 .library-info {
     float: left;
-    width: 540px;
+    width: 585px;
     height: 200px;
 }
 .library-bookinfo,
 .library-progress {
     float: left;
-    width: 540px;
+    width: 585px;
     margin: 10px auto;
 }
 .library-summary {
     float: left;
     display: -webkit-box;
-    width: 540px;
+    width: 585px;
     height: 45px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -133,7 +133,7 @@
 .library-progressbar {
     -webkit-appearance: none;
     float: left;
-    width: 540px;
+    width: 585px;
     height: 10px;
 }
 .library-progressbar::-webkit-progress-bar {
@@ -147,16 +147,17 @@
 
 .library-option {
     float: left;
-    width: 200px;
-    height: 200px;
-    padding: 40px 0;
+    width: 130px;
+    height: 180px;
+    padding: 20px 0;
+    margin: 10px 10px 10px 15px;
 }
 .library-optionbtn {
     float: right;
     width: 130px;
     height: 40px;
     border-radius: 5px;
-    margin: 10px;
+    margin: 15px 0;
     font-size: 16px;
     border: 1px solid var(--bs-gray-500);
     user-select: none;
