@@ -21,9 +21,12 @@
 }
 .second_intro h1{
 	font-size: 32px;
+	margin-bottom: 5%;
 }
 .second_intro h3{
 	font-size: 25px;
+	margin-bottom: 25px;
+	text-transform: uppercase;
 }
 .second_intro p{
 	margin-top:20px;
@@ -49,6 +52,9 @@
 	padding:30px;
 	margin-left: 40%;
 }
+.second_intro #step2 img{
+	width: 100%;
+}
 .second_intro #step3{
 	margin-top:8%;
 	box-shadow: 10px 10px 5px #c0c0c0;
@@ -56,6 +62,9 @@
 	border-radius:15px;
 	padding:30px;
 	width: 55%;
+}
+.second_intro #step3 img{
+	width: 100%;
 }
 .third_intro{
 	margin-top:5%;
