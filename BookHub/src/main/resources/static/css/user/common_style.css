@@ -80,5 +80,5 @@ section.container {
 	flex-direction: row;
 	flex-wrap: nowrap;
 	margin-top: 160px;
-	min-height: 900px;
+	min-height: 77vh;
 }

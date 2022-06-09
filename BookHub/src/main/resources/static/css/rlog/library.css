@@ -1,7 +1,6 @@
 @charset "UTF-8";
 
 #library-searchmenu {
-    box-sizing: border-box;
     width: 100%;
     padding: 10px 0;
     border-bottom: 1px solid var(--bs-gray-500);
@@ -9,18 +8,28 @@
 
 .searchmenu {
     height: 30px;
+    line-height: 30px;
     padding: 5px;
     border: 1px solid var(--bs-gray-500);
     border-radius: 5px;
-    font-weight: bold;
-}
-
-#searchmenu-searchbar {
-    box-sizing: border-box;
-    width: 920px;
-    margin: 0 10px;
     font-size: 16px;
-    font-weight: normal;
+}
+#searchmenu-searchbar {
+    width: 775px;
+    margin: 0 5px 0 10px;
+    padding: 0 10px;
+}
+#searchmenu-readoption {
+    width: 130px;
+    margin: 0 10px 0 5px;
+    padding: 0 10px;
+    background-color: var(--bs-gray-200);
+}
+#searchmenu-readoption:hover {
+    background-color: var(--bs-gray-300);
+}
+#searchmenu-readoption option{
+    background-color: white;
 }
 
 #library-content {
@@ -61,19 +70,16 @@
     word-break: break-all;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
-    color: var(--bs-gray-800);
 }
 
-.library-thumbnail,
-.library-itemoption {
+.library-thumbnail {
     float: left;
     width: 180px;
     height: 180px;
     margin: 10px;
-}
-.library-thumbnail {
     object-fit: contain;
     border: 1px solid var(--bs-gray-500);
+    background-color: white;
 }
 
 .library-title {
@@ -101,17 +107,26 @@
     font-size: 16px;
     color: var(--bs-gray-600);
 }
+
+.library-progresslabel {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
 .library-readpercent,
 .library-readdate,
+.library-readlabel,
 .library-readpage {
-    float: left;
     height: 25px;
     line-height: 25px;
     font-size: 16px;
     color: var(--bs-gray-600);
 }
+.library-readlabel {
+    text-align: center;
+}
 .library-readpage {
-    float: right;
+    text-align: right;
 }
 
 .library-progressbar {
@@ -127,4 +142,29 @@
 .library-progressbar::-webkit-progress-value {
     border-radius: 5px;
     background-color: var(--bs-gray-700);
+}
+
+.library-option {
+    float: left;
+    width: 200px;
+    height: 200px;
+    padding: 40px 0;
+}
+.library-optionbtn {
+    float: right;
+    width: 130px;
+    height: 40px;
+    border-radius: 5px;
+    margin: 10px;
+    font-size: 16px;
+    border: 1px solid var(--bs-gray-500);
+    user-select: none;
+    background-color: var(--bs-gray-200);
+}
+.library-optionbtn:hover {
+    cursor: pointer;
+    background-color: var(--bs-gray-300);
+}
+.library-optionbtn:focus {
+    border: 2px solid black;
 }

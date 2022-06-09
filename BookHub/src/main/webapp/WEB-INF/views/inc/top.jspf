@@ -6,9 +6,6 @@
 <html>
 	<head>
 		<title>BookHub</title>
-		<link rel="shortcut icon" type="image/jpg" href="static/img/fav_logo.png">
-		<link rel="stylesheet" href="/static/css/inc/top.css" type="text/css">
-		<link rel="stylesheet" href="/static/css/inc/bottom.css" type="text/css">
 		<!-- jQuery WebJars -->
 		<script src="/webjars/jquery/jquery.min.js"></script>
 		<!-- sweetalert CDN libs -->
