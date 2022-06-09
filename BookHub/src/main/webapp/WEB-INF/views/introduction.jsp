@@ -19,18 +19,18 @@
 			<h3>Step 2</h3>
 			<hr/>
 			<p>매일 읽은 페이지 수 기록하기</p>
-			<img id="intro_s2" alt="독서 기록" src="#">
+			<img id="intro_s2" alt="독서 기록" src="/static/img/intro/booklogw.JPG">
 		</div>
 		<div id="step3">
 			<h3>Step 3</h3>
 			<hr/>
 			<p>페이지 수에 따른 색깔 차이와 달력에 채워지는 색들로 독서 기록 확인하기</p>		
-			<img id="intro_s3" alt="독서 기록 달력" src="#">
+			<img id="intro_s3" alt="독서 기록 달력" src="/static/img/intro/booklog.JPG">
 		</div>
 	</div>
 	<div class="third_intro">
 		<h1>"책을 통한 소통"</h1>
 		<p>다 읽은 책에 리뷰를 작성하여, 다른 사람들과 생각 공유하기</p>
-		<img alt="리뷰 달기" src="">
+		<img alt="리뷰 달기" src="/static/img/intro/bookreview.png">
 	</div>
 </div>

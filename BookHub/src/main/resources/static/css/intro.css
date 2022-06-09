@@ -52,6 +52,9 @@
 	padding:30px;
 	margin-left: 40%;
 }
+.second_intro #step2 img{
+	width: 100%;
+}
 .second_intro #step3{
 	margin-top:8%;
 	box-shadow: 10px 10px 5px #c0c0c0;
@@ -59,6 +62,9 @@
 	border-radius:15px;
 	padding:30px;
 	width: 55%;
+}
+.second_intro #step3 img{
+	width: 100%;
 }
 .third_intro{
 	margin-top:5%;
