@@ -21,6 +21,11 @@
                             value="📚 내 서재"></a>
                     <input id="book-alldeletebtn" class="book-menubtn" type="button"
                         onclick="deleteAllReadingLog('${param.isbn}')" value="모든 독서기록 삭제">
+                    <c:if test="${readingLogSum eq bookInfo.get('subInfo').get('itemPage')}">
+                        <a href="/bookdetail?isbn=${param.isbn}">
+                            <input class="book-optionbtn book-reviewbtn" type="button" value="리뷰 작성하기">
+                        </a>
+                    </c:if>
                 </div>
                 <img id="book-thumbnail" src="${bookInfo.get('cover')}">
                 <div id="book-title">
@@ -74,12 +79,6 @@
                             <input class="book-optionbtn book-deletebtn" type="button"
                                 onclick="deleteReadingLog('${log.bookISBN}', '${log.num}')" value="✖️ 삭제">
                             <input class="book-optionbtn book-editbtn" type="button" value="✏️ 수정">
-                            <c:if test="${log.readComplete}">
-                                <a href="/bookdetail?isbn=${param.isbn}">
-                                    <input class="book-optionbtn book-reviewbtn" type="button"
-                                        value="리뷰 작성하기">
-                                </a>
-                            </c:if>
                             <fmt:parseDate value="${log.readDate}" pattern="yyyy-MM-dd'T'HH:mm"
                                 var="parsedReadDate" />
                             <span class="book-readdate">

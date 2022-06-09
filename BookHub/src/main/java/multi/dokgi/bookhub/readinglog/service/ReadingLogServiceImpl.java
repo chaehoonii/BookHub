@@ -86,17 +86,15 @@ public class ReadingLogServiceImpl implements IReadingLogService {
 			String readComplete) {
 		// 입력된 연-월-일 문자열을 parse
 		LocalDateTime readDateParsed = LocalDate.parse(readDate).atStartOfDay();
-		// 완독여부 체크박스가 체크되지 않았으면 null이므로 false, 체크되어 null이 아니면 true
-		boolean readCompleteParsed = false;
-		if (readComplete.equals("true")) {
-			readCompleteParsed = true;
-		}
 
 		// DTO 생성
-		ReadingLogDTO rlDTO = new ReadingLogDTO(userId, bookISBN, readPage, summary, readDateParsed,
-				readCompleteParsed);
+		ReadingLogDTO rlDTO = new ReadingLogDTO(userId, bookISBN, readPage, summary, readDateParsed);
 		// DB에 입력
 		int result = rlDAO.writeReadingLog(rlDTO);
+
+		if (readComplete.equals("true")) {
+			rlDAO.checkReadComplete(userId, bookISBN);
+		}
 
 		// 입력 결과 반환(1행 입력이므로 정상 결과값 1)
 		return result;

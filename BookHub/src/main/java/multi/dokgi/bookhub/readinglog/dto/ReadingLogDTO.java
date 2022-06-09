@@ -25,6 +25,6 @@ public class ReadingLogDTO {
 	private final String summary; // 독서활동 요약
 	private final LocalDateTime readDate; // 읽은 날짜
 	private LocalDateTime writeDate; // 기록한 날짜
-	private final boolean readComplete; // 완독여부
+	private boolean readComplete; // 완독여부
 
 }
