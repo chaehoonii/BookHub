@@ -44,13 +44,18 @@
         </div>
         <!-- ReadingLog Button -->
         <div id="readinglog-edit">
-            <form action="/rlog/book/edit" method="POST">
-                <input id="edit-readdate" class="edit-input" name="readDate" type="date" pattern="\d{4}-\d{2}-\d{2}" required>
-                <label id="edit-readpage-label" class="edit-input"><input id="edit-readpage" class="edit-input" name="readPage" type="number" required>페이지</label>
-                <label id="edit-readcomplete-label" class="edit-input"><input id="edit-readcomplete" class="edit-input" name="readComplete" value="true" type="checkbox">완독</label>
+            <form id="edit-form" action="/rlog/book/edit" method="POST">
+                <input id="edit-readdate" class="edit-input" name="readDate" type="date"
+                    pattern="\d{4}-\d{2}-\d{2}" required>
+                <label id="edit-readpage-label" class="edit-input"><input id="edit-readpage"
+                        class="edit-input" name="readPage" type="number"
+                        max="${bookInfo.get('subInfo').get('itemPage')-readingLogSum}"
+                        placeholder="읽은 페이지 수" required>페이지</label>
                 <input id="book-writebtn" class="book-menubtn" type="submit" value="📝 독서기록 작성">
-                <input id="edit-summary" class="edit-input" name="summary" type="text">
+                <textarea id="edit-summary" name="summary" maxlength="100"
+                    placeholder="읽은 내용 요약 또는 메모 (선택, 최대 100자)"></textarea>
                 <input type="hidden" name="isbn" value="${param.isbn}">
+                <input id="edit-readcomplete" type="hidden" name="readComplete" value="false">
             </form>
         </div>
 

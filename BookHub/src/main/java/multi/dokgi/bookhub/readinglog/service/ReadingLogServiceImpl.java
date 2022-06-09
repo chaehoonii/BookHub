@@ -88,7 +88,7 @@ public class ReadingLogServiceImpl implements IReadingLogService {
 		LocalDateTime readDateParsed = LocalDate.parse(readDate).atStartOfDay();
 		// 완독여부 체크박스가 체크되지 않았으면 null이므로 false, 체크되어 null이 아니면 true
 		boolean readCompleteParsed = false;
-		if (readComplete != null) {
+		if (readComplete.equals("true")) {
 			readCompleteParsed = true;
 		}
 
